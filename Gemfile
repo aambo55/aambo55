@@ -1,6 +1,0 @@
-source 'https://rubygems.org'
-gem 'dotenv'
-gem 'line-bot-api'
-gem 'mqtt'
-gem 'sinatra'
-ruby '2.6.5'
