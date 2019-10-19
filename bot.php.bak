@@ -11,9 +11,9 @@ if ( sizeof($deCode['events']) > 0 ) {
         $reply_token = $event['replyToken'];
         $text = $event['message']['text'];
 
-		$messages = [];
-	    $messages['replyToken'] = $replyToken;
-	    $messages['messages'][0] = getFormatTextMessage("เอ้ย ถามอะไรก็ตอบได้");
+	//	$messages = [];
+	//    $messages['replyToken'] = $replyToken;
+	//    $messages['messages'][0] = getFormatTextMessage("เอ้ย ถามอะไรก็ตอบได้");
 
         $data = [
             'replyToken' => $reply_token,
