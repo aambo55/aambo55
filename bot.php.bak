@@ -12,7 +12,7 @@ if ( sizeof($deCode['events']) > 0 ) {
         $text = $event['message']['text'];
 		$messages = [];
 	    $messages['replyToken'] = $replyToken;
-	    $messages['messages'][0] = getFormatTextMessage("ggg");
+	    $messages['messages'][0] = getFormatTextMessage("สวัสดี");
 
         $data = [
             'replyToken' => $replyToken,
