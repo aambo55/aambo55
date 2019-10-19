@@ -38,10 +38,11 @@ echo "OK <br>";
 	//	$comma_separated = implode("", $matches[0]);
     //    print $comma_separated;
 	//   print_r($matches);
-	     echo $matches[0];
-		 echo "<br>";
-		 echo $matches[1];
-
+    foreach ($matches as $key => $value) {
+    // $arr[3] will be updated with each value from $arr...
+    echo "{$key} => {$value} <br>";
+    print_r($arr);
+}
 
 
 function send_reply_message($url, $post_header, $post_body)
