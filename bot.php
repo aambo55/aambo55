@@ -18,8 +18,8 @@ if ( sizeof($deCode['events']) > 0 ) {
 		}
         else {
 
-           $text = "fff";
-		}
+     //      $text = "fff";   
+	//	}
 
         $data = [
             'replyToken' => $replyToken,
@@ -29,7 +29,7 @@ if ( sizeof($deCode['events']) > 0 ) {
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
         echo "Result: ".$send_result."\r\n";
-		
+		}
     }
 }
 echo "OK";
