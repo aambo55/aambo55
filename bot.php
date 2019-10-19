@@ -37,14 +37,10 @@ echo "OK <br>";
 
 $html = "<b>bold text</b><a href=howdy.html>click me</a>";
 
-preg_match_all("/(bold)/", $html, $matches, PREG_SET_ORDER);
+preg_match_all("/(ow)/", $html, $matches, PREG_SET_ORDER);
 
 foreach ($matches as $val) {
     echo "matched: " . $val[0] . "\n";
-    echo "part 1: " . $val[1] . "\n";
-    echo "part 2: " . $val[2] . "\n";
-    echo "part 3: " . $val[3] . "\n";
-    echo "part 4: " . $val[4] . "\n\n";
 }
 
 function send_reply_message($url, $post_header, $post_body)
