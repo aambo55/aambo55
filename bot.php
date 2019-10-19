@@ -35,9 +35,9 @@ if ( sizeof($deCode['events']) > 0 ) {
 }
 echo "OK";
 		preg_match('/(bar)/', 'foobarbaz', $matches, PREG_OFFSET_CAPTURE);
-        print $matches[0];
-		print $matches[1];
-		print $matches[2];
+		$comma_separated = implode("", $matches[0]);
+        print $comma_separated;
+
 
 
 function send_reply_message($url, $post_header, $post_body)
