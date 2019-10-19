@@ -7,11 +7,8 @@ $request = file_get_contents('php://input');   // Get request content
 $request_array = json_decode($request, true);   // Decode JSON to Array
 if ( sizeof($request_array['events']) > 0 ) {
     foreach ($request_array['events'] as $event) {
-
-        #$messages = [];
-		$reply_message = '';
+        $reply_message = '';
         $reply_token = $event['replyToken'];
-		#$messages['messages'][0] = getFormatTextMessage("เอ้ย ถามอะไรก็ตอบได้");
         $data = [
             'replyToken' => $reply_token,
             'messages' => [['type' => 'text', 'text' => json_encode($request_array)]]
@@ -35,5 +32,4 @@ function send_reply_message($url, $post_header, $post_body)
     curl_close($ch);
     return $result;
 }
-
 ?>
