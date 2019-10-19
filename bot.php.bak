@@ -10,8 +10,11 @@ if ( sizeof($request_array['events']) > 0 ) {
         $reply_message = '';
         $reply_token = $event['replyToken'];
         $text = $event['message']['text'];
-		if ($text = "\u0e2a\u0e27\u0e31\u0e2a\u0e14\u0e35"){
+		if ($text == "\u0e2a\u0e27\u0e31\u0e2a\u0e14\u0e35"){
 			$text= "ดีครับ";
+		}
+		else{
+            $text= "ดีค่ะ";
 		}
         $data = [
             'replyToken' => $reply_token,
@@ -22,6 +25,7 @@ if ( sizeof($request_array['events']) > 0 ) {
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
         echo "Result: ".$send_result."\r\n";
+		
     }
 }
 echo "OK";
