@@ -7,7 +7,7 @@
 	$replyToken = $deCode['events'][0]['replyToken'];
 	$messages = [];
 	$messages['replyToken'] = $replyToken;
-	$messages['messages'][0] = getFormatTextMessage("เอ้ย ถามอะไรก็ตอบได้");
+	$messages['messages'][0] = getFormatTextMessage("ttt");
 	$encodeJson = json_encode($messages);
 	$LINEDatas['url'] = "https://api.line.me/v2/bot/message";
   	$LINEDatas['token'] = 'C37KqAyzCZVk/hEGnpkz2ztML1DbHJE7JQDC4l8+USFND54JAxPAA/TXHFiBl+utcYVRWj27bdl2wzdRxHC4LonEIHj96W2npcTLFdE3DlmB1OlkqhS5PSQDO2ngZQ4JUpyiPjt8sloCnNgJagz4DgdB04t89/1O/w1cDnyilFU=';
