@@ -2,7 +2,7 @@
 $API_URL = 'https://api.line.me/v2/bot/message';
 $ACCESS_TOKEN = 'C37KqAyzCZVk/hEGnpkz2ztML1DbHJE7JQDC4l8+USFND54JAxPAA/TXHFiBl+utcYVRWj27bdl2wzdRxHC4LonEIHj96W2npcTLFdE3DlmB1OlkqhS5PSQDO2ngZQ4JUpyiPjt8sloCnNgJagz4DgdB04t89/1O/w1cDnyilFU='; 
 //$channelSecret = '16f5d3687cdd2b8b7fd918380f84922a';
-$POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' . $ACCESS_TOKEN);
+$POST_HEADER = array('Content-Type: content-type: application/json; charset=UTF-8', 'Authorization: Bearer ' . $ACCESS_TOKEN);
 $datas = file_get_contents('php://input');   // Get request content
 $deCode = json_decode($datas, true);   // Decode JSON to Array
 if ( sizeof($deCode['events']) > 0 ) {
