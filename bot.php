@@ -10,8 +10,8 @@ if ( sizeof($request_array['events']) > 0 ) {
         $reply_message = '';
         $reply_token = $event['replyToken'];
         $text = $event['message']['text'];
-		if ($text == "\u0e43\u0e0a\u0e48\u0e44\u0e2b\u0e21"){
-			$text_reply= "ใช่ครับ";
+		if ($text == "%E0%B9%83%E0%B8%8A%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%A1"){
+			$text_reply= "%E0%B9%83%E0%B8%8A%E0%B9%88%E0%B8%84%E0%B8%A3%E0%B8%B1%E0%B8%9A";
 		}
         $data = [
             'replyToken' => $reply_token,
