@@ -8,13 +8,14 @@ $request_array = json_decode($request, true);   // Decode JSON to Array
 if ( sizeof($request_array['events']) > 0 ) {
     foreach ($request_array['events'] as $event) {
 
-        $messages = [];
+        #$messages = [];
+		$reply_message = '';
         $reply_token = $event['replyToken'];
-		$messages['messages'][0] = getFormatTextMessage("เอ้ย ถามอะไรก็ตอบได้");
+		#$messages['messages'][0] = getFormatTextMessage("เอ้ย ถามอะไรก็ตอบได้");
 
         $data = [
             'replyToken' => $reply_token,
-            'messages' => [['type' => 'text', 'text' => json_encode($messages)]]
+            'messages' => [['type' => 'text', 'text' => json_encode($request_array)]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
