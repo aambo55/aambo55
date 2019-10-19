@@ -34,14 +34,18 @@ if ( sizeof($deCode['events']) > 0 ) {
     }
 }
 echo "OK <br>";
-		preg_match('/(bar)/', 'foobarbaz', $matches, PREG_OFFSET_CAPTURE);
-	//	$comma_separated = implode("", $matches[0]);
-    //    print $comma_separated;
-	//   print_r($matches);
-   foreach ($matches[0][0] as $ht){
-  echo $ht;
-}
 
+$html = "<b>bold text</b><a href=howdy.html>click me</a>";
+
+preg_match_all("/(bold)/", $html, $matches, PREG_SET_ORDER);
+
+foreach ($matches as $val) {
+    echo "matched: " . $val[0] . "\n";
+    echo "part 1: " . $val[1] . "\n";
+    echo "part 2: " . $val[2] . "\n";
+    echo "part 3: " . $val[3] . "\n";
+    echo "part 4: " . $val[4] . "\n\n";
+}
 
 function send_reply_message($url, $post_header, $post_body)
 {
