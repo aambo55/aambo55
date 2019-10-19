@@ -42,6 +42,8 @@ preg_match_all("/(ow)/", $html, $matches, PREG_SET_ORDER);
 foreach ($matches as $val) {
     echo "matched: " . $val[0] . "\n";
 }
+ $comma_separated = implode("", $matches[0]);
+ print $comma_separated;
 
 function send_reply_message($url, $post_header, $post_body)
 {
