@@ -11,7 +11,7 @@ if ( sizeof($request_array['events']) > 0 ) {
         $reply_token = $event['replyToken'];
         $text = $event['message']['text'];
 		if ($text == "fuck"){
-			$text= '\u0e2a\u0e27\u0e31\u0e2a\u0e14\u0e35';
+			$text= '/\u0e2a/\u0e27/\u0e31/\u0e2a/\u0e14/\u0e35';
 		}
 		else{
             $text= "hi";
