@@ -38,9 +38,8 @@ echo "OK <br>";
 	//	$comma_separated = implode("", $matches[0]);
     //    print $comma_separated;
 	//   print_r($matches);
-   foreach ($matches as $v) {
-    echo $matches[$i] => $v;
-    $i++;
+   foreach ($matches[0] as $ht){
+  echo $ht;
 }
 
 
