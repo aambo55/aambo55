@@ -37,7 +37,7 @@ echo "OK";
 		preg_match('/(bar)/', 'foobarbaz', $matches, PREG_OFFSET_CAPTURE);
 	//	$comma_separated = implode("", $matches[0]);
     //    print $comma_separated;
-	    print_r $matches;
+	   print_r($matches);
 
 
 
