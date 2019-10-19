@@ -39,11 +39,11 @@ $html = "<b>bold text</b><a href=howdy.html>click me</a>";
 
 preg_match_all("/(ow)/", $html, $matches, PREG_SET_ORDER);
 
-//foreach ($matches as $val) {
- //   echo "matched: " . $val[0] . "\n";
-//}
- $comma_separated = implode("", $matches[0]);
- print $comma_separated;
+foreach ($matches as $val) {
+   $textm = $val[0];
+}
+
+print $textm;
 
 function send_reply_message($url, $post_header, $post_body)
 {
