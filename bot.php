@@ -10,7 +10,6 @@ if ( sizeof($deCode['events']) > 0 ) {
         $reply_message = '';
         $replyToken = $event['replyToken'];
         $text = $event['message']['text'];
-            $text 
 		$messages = [];
 	    $messages['replyToken'] = $replyToken;
 	    $messages['messages'][0] = getFormatTextMessage("เอ้ย ถามอะไรก็ตอบได้");
