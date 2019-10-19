@@ -12,7 +12,7 @@ if ( sizeof($deCode['events']) > 0 ) {
         $text = $event['message']['text'];
 		$messages = [];
 	    $messages['replyToken'] = $replyToken;
-	    $messages['messages'][0] = getFormatTextMessage('ddd');
+	    $messages['messages'][0] = getFormatTextMessage('´´´');
 
         $data = [
             'replyToken' => $replyToken,
