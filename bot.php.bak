@@ -13,7 +13,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 		$text_reply="ใช่ครับ";
 		$text_reply= iconv("tis-620","utf-8",$text_reply); 
         $text = iconv("utf-8","tis-620",$text); 
-		if($text = "ใช่ไหม"){
+		if($text == "ใช่ไหม"){
            $text = $text_reply;
 		}
         else {
