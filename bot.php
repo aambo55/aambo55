@@ -38,10 +38,9 @@ echo "OK <br>";
 	//	$comma_separated = implode("", $matches[0]);
     //    print $comma_separated;
 	//   print_r($matches);
-    foreach ($matches as $key => $value) {
-    // $arr[3] will be updated with each value from $arr...
-    echo "{$key} => {$value} <br>";
-    print_r($arr);
+   foreach ($a as $v) {
+    echo "\$a[$i] => $v.\n";
+    $i++;
 }
 
 
