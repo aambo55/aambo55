@@ -34,11 +34,8 @@ if ( sizeof($deCode['events']) > 0 ) {
     }
 }
 echo "OK";
-		if (preg_match("/\bweb\b/i", "PHP is the website scripting language of choice.")) {
-            echo "A match was found.";
-        } else {
-            echo "A match was not found.";
-        }
+		preg_match('/(bar)/', 'foobarbaz', $matches, PREG_OFFSET_CAPTURE);
+        print_r($matches);
 
 function send_reply_message($url, $post_header, $post_body)
 {
