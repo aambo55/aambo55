@@ -8,17 +8,17 @@ $request_array = json_decode($request, true);   // Decode JSON to Array
 if ( sizeof($request_array['events']) > 0 ) {
     foreach ($request_array['events'] as $event) {
 
-		$reply_message = '';
+        $messages = [];
         $reply_token = $event['replyToken'];
+		$messages['messages'][0] = getFormatTextMessage("เอ้ย ถามอะไรก็ตอบได้");
 
         $data = [
             'replyToken' => $reply_token,
-            'messages' => [['type' => 'text', 'text' => json_encode($request_array)]]
+            'messages' => [['type' => 'text', 'text' => json_encode($messages)]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
         echo "Result: ".$send_result."\r\n";
-        $post_body= "555";
         
     }
 }
@@ -35,4 +35,11 @@ function send_reply_message($url, $post_header, $post_body)
     curl_close($ch);
     return $result;
 }
+function getFormatTextMessage($text)
+	{
+		$datas = [];
+		$datas['type'] = 'text';
+		$datas['text'] = $text;
+		return $datas;
+	}
 ?>
