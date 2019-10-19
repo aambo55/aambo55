@@ -10,10 +10,10 @@ if ( sizeof($deCode['events']) > 0 ) {
         $reply_message = '';
         $replyToken = $event['replyToken'];
         $text = $event['message']['text'];
-
-	//	$messages = [];
-	//    $messages['replyToken'] = $replyToken;
-	//    $messages['messages'][0] = getFormatTextMessage("เอ้ย ถามอะไรก็ตอบได้");
+            $text 
+		$messages = [];
+	    $messages['replyToken'] = $replyToken;
+	    $messages['messages'][0] = getFormatTextMessage("เอ้ย ถามอะไรก็ตอบได้");
 
         $data = [
             'replyToken' => $replyToken,
@@ -21,7 +21,8 @@ if ( sizeof($deCode['events']) > 0 ) {
                'messages' => [['type' => 'text', 'text' => $text ]]
             //'messages' => [['type' => 'text', 'text' => $text_reply ]]
         ];
-        $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
+        //$post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
+		$post_body = json_encode($messages);
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
         echo "Result: ".$send_result."\r\n";
 		
@@ -40,4 +41,11 @@ function send_reply_message($url, $post_header, $post_body)
     curl_close($ch);
     return $result;
 }
+function getFormatTextMessage($text)
+	{
+		$datas = [];
+		$datas['type'] = 'text';
+		$datas['text'] = $text;
+		return $datas;
+	}
 ?>
