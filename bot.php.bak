@@ -10,20 +10,23 @@ if ( sizeof($deCode['events']) > 0 ) {
         $reply_message = '';
         $replyToken = $event['replyToken'];
         $text = $event['message']['text'];
-		$textt="สวัสดี";
-		$testtt= iconv("tis-620","utf-8",$textt); 
-		$messages = [];
-	    $messages['replyToken'] = $replyToken;
-	    $messages['messages'][0] = getFormatTextMessage($testtt);
+		$text_reply="ใช่ครับ";
+		$text_reply= iconv("tis-620","utf-8",$text_reply); 
+        $text = iconv("utf-8","tis-620",$text); 
+		if($text = "ใช่ไหม"){
+           $text = $text_reply;
+		}
+        else {
+
+           $text = "fff";
+		}
 
         $data = [
             'replyToken' => $replyToken,
             // 'messages' => [['type' => 'text', 'text' => json_encode($deCode) ]]  Debug Detail message
                'messages' => [['type' => 'text', 'text' => $text ]]
-            //'messages' => [['type' => 'text', 'text' => $text_reply ]]
         ];
-        //$post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
-		$post_body = json_encode($messages);
+        $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
         echo "Result: ".$send_result."\r\n";
 		
@@ -42,11 +45,4 @@ function send_reply_message($url, $post_header, $post_body)
     curl_close($ch);
     return $result;
 }
-function getFormatTextMessage($text)
-	{
-		$datas = [];
-		$datas['type'] = 'text';
-		$datas['text'] = $text;
-		return $datas;
-	}
 ?>
