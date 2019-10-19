@@ -8,7 +8,7 @@ $deCode = json_decode($datas, true);   // Decode JSON to Array
 if ( sizeof($deCode['events']) > 0 ) {
     foreach ($deCode['events'] as $event) {
         $reply_message = '';
-        $replyToken = $event['replyToken'];
+        $reply_token = $event['replyToken'];
         $text = $event['message']['text'];
 
 		$messages = [];
@@ -16,7 +16,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 	    $messages['messages'][0] = getFormatTextMessage("เอ้ย ถามอะไรก็ตอบได้");
 
         $data = [
-            'replyToken' => $replyToken,
+            'replyToken' => $reply_token,
             // 'messages' => [['type' => 'text', 'text' => json_encode($deCode) ]]  Debug Detail message
                'messages' => [['type' => 'text', 'text' => $text ]]
             //'messages' => [['type' => 'text', 'text' => $text_reply ]]
