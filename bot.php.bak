@@ -10,9 +10,11 @@ if ( sizeof($deCode['events']) > 0 ) {
         $reply_message = '';
         $replyToken = $event['replyToken'];
         $text = $event['message']['text'];
+		$textt="ÊÇÑÊ´Õ";
+		$testtt= iconv("tis-620","utf-8",$textt); 
 		$messages = [];
 	    $messages['replyToken'] = $replyToken;
-	    $messages['messages'][0] = getFormatTextMessage('´´´');
+	    $messages['messages'][0] = getFormatTextMessage($testtt);
 
         $data = [
             'replyToken' => $replyToken,
