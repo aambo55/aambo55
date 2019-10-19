@@ -10,13 +10,13 @@ if ( sizeof($request_array['events']) > 0 ) {
         $reply_message = '';
         $reply_token = $event['replyToken'];
         $text = $event['message']['text'];
-		if ($text == "ใช่ไหม"){
+		if ($text == "\u0e43\u0e0a\u0e48\u0e44\u0e2b\u0e21"){
 			$text_reply= "ใช่ครับ";
 		}
         $data = [
             'replyToken' => $reply_token,
             // 'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  Debug Detail message
-            'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]
+            'messages' => [['type' => 'text', 'text' => $text_reply ]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
