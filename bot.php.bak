@@ -15,21 +15,21 @@ if ( sizeof($deCode['events']) > 0 ) {
         $text = iconv("utf-8","tis-620",$text); 
 		if($text == "ใช่ไหม"){
            $text = $text_reply;
+
+			$data = [
+			   'replyToken' => $replyToken,
+		     // 'messages' => [['type' => 'text', 'text' => json_encode($deCode) ]]  Debug Detail message
+		       'messages' => [['type' => 'text', 'text' => $text ]]
+            ];
+            $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
+            $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
+            echo "Result: ".$send_result."\r\n";
 		}
-        else {
+
+	//	else {
 
      //      $text = "fff";   
 	//	}
-
-        $data = [
-            'replyToken' => $replyToken,
-            // 'messages' => [['type' => 'text', 'text' => json_encode($deCode) ]]  Debug Detail message
-               'messages' => [['type' => 'text', 'text' => $text ]]
-        ];
-        $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
-        $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
-        echo "Result: ".$send_result."\r\n";
-		}
     }
 }
 echo "OK";
