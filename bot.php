@@ -9,6 +9,7 @@ if ( sizeof($request_array['events']) > 0 ) {
     foreach ($request_array['events'] as $event) {
 
         #$messages = [];
+		$reply_message = '';
         $reply_token = $event['replyToken'];
 		#$messages['messages'][0] = getFormatTextMessage("เอ้ย ถามอะไรก็ตอบได้");
 
