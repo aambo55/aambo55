@@ -13,6 +13,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 		$text_reply="ใช่ครับ";
 		$text_reply= iconv("tis-620","utf-8",$text_reply); 
         $text = iconv("utf-8","tis-620",$text); 
+
 		if($text == "ใช่ไหม"){
            $text = $text_reply;
 
@@ -33,6 +34,12 @@ if ( sizeof($deCode['events']) > 0 ) {
     }
 }
 echo "OK";
+		if (preg_match("/\bweb\b/i", "PHP is the website scripting language of choice.")) {
+            echo "A match was found.";
+        } else {
+            echo "A match was not found.";
+        }
+
 function send_reply_message($url, $post_header, $post_body)
 {
     $ch = curl_init($url);
