@@ -39,7 +39,7 @@ echo "OK <br>";
     //    print $comma_separated;
 	//   print_r($matches);
    foreach ($matches as $v) {
-    echo "\$matches[$i] => $v.\n";
+    echo $matches[$i] => $v;
     $i++;
 }
 
