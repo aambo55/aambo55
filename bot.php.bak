@@ -8,7 +8,11 @@ $deCode = json_decode($datas, true);   // Decode JSON to Array
 //ประกาศ Array คำคอบ
 $answer =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอบเผือกครับ","ว่างมากเหรอ","ใช่แล้ว","ใช่เลย","มั่วแระ","แม่นแล้ว","หมันเลย","ใช่แล้วไงอะ");
 // Test Code Zone
+/*
+if ( sizeof($deCode['destination']) > 0 ) {
+	foreach ($deCode['destination'] as $event1) {
 echo $deCode['destination'];
+}*/
 //End test zone
 
 if ( sizeof($deCode['events']) > 0 ) {
@@ -21,7 +25,7 @@ if ( sizeof($deCode['events']) > 0 ) {
         //แปลงรหัสให้เพื่อให้โปรแกรมเอามาเปรียบเทียบได้
 		$text_reply= iconv("tis-620","utf-8",$answer[$random_keys]); 
         $text = iconv("utf-8","tis-620",$text); 
-        
+        print_r $deCode;
        //ค้นหาคำที่ต้องการจะโต้ตอบ
         preg_match_all("/(ใช่ไหม)(ใช่เหรอ)(เปิดปั๊ม)/", $text, $matches, PREG_SET_ORDER);
 
