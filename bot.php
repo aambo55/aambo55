@@ -19,7 +19,44 @@ $text_open1 = iconv("tis-620","utf-8",$text_wrong);
 
 //Array ( [userId] => U8ec1d38548c43fb44dd07b90df4ac427 [displayName] => Karaket Saefung [pictureUrl] => https://profile.line-scdn.net/0hSjj7sgVEDEVXTie7ridzEmsLAiggYAoNL3hHI3dKWnEtKRhDYi0Tc3dIV31zdx5GPyBAKiZHVSBy [result] => E )
 
+$r = array("ใช่ไหม","ใช่เหรอ","ปั๊ม","เปิด","เปิด","1","2");
+ foreach ($r as $vall) {
 
+              if($vall[$i] == "ใช่ไหม" || $vall[$i] == "ใช่เหรอ"){
+				  $text = $vall[$i];
+              }
+			  elseif($vall[$i] == "ปั๊ม"){
+                 $text1_1 = $vall[$i];
+			  }
+			  elseif($vall[$i] == "เปิด"){
+                 $text1_2= $vall[$i];
+			  }
+              elseif($vall[$i] == "ปิด"){
+                 $text1_3= $vall[$i];
+			  }
+			  elseif($vall[$i] == "1"){
+                 $text2_1= $vall[$i];
+			  }
+			  elseif($vall[$i] == "2"){
+                 $text2_2= $vall[$i];
+			  }
+			  
+			  $i++;
+ }
+		//$text1 = ปั๊ม 1 เปิด
+        $text1= $text1_1.$text2_1.$text1_2;
+		//$text2 = ปั๊ม 1 ปิด
+		$text2= $text1_1.$text2_1.$text1_3;
+
+        //$text3 = ปั๊ม 2 เปิด
+		$text3= $text1_1.$text2_2.$text1_2;
+		//$text4 = ปั๊ม 2 ปิด
+		$text4= $text1_1.$text2_2.$text1_3;
+
+		print $text1."<br>";
+		print $text2."<br>";
+		print $text3."<br>";
+		print $text4."<br>";
 
 /*
 
