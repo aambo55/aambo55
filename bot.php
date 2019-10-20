@@ -54,8 +54,10 @@ if ( sizeof($deCode['events']) > 0 ) {
           // $text = $userId; //Debug userID
             $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
             echo "Result: ".$send_result."\r\n";
-		}elseif($text == "เปิดปั๊ม"){
-            $text = "@".$idname['displayName']." ระบุด้วย เปิดปั๊มถังที่ 1 หรือ เปิดปั๊มถังที่ 2";
+		}elseif($text == "เปิดปั๊ม" || $text == "ปั๊มเปิด" ){
+			$text_reply = "ระบุด้วย เปิดปั๊มถังที่ 1 หรือ เปิดปั๊มถังที่ 2";
+			iconv("tis-620","utf-8",$answer[$random_keys]);
+            $text = "@".$idname['displayName']." ".$text_reply;
 
           // $text = $userId; //Debug userID
             $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
