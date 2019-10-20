@@ -54,8 +54,13 @@ if ( sizeof($deCode['events']) > 0 ) {
           // $text = $userId; //Debug userID
             $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
             echo "Result: ".$send_result."\r\n";
-		}
+		}elseif($text == "เปิดปั๊ม"){
+            $text = "@".$idname['displayName']." เปิดปั๊มถังที่ 1 หรือ เปิดปั๊มถังที่ 2";
 
+          // $text = $userId; //Debug userID
+            $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
+            echo "Result: ".$send_result."\r\n";
+        }
 	//	else {
 
      //      $text = "fff";   
