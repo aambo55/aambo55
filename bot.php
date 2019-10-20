@@ -109,9 +109,9 @@ function getLINEProfile($datas)
           $datasReturn['result'] = 'S';
           $datasReturn['message'] = 'Success';
       }else{
-		$datasReturn = json_decode($response, true);
         $datasReturn['result'] = 'E';
         //  $datasReturn['message'] = $response;
+		$datasReturn = json_decode($response, true);
 		 
       }
    }   return $datasReturn;
