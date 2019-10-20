@@ -48,7 +48,7 @@ function send_reply_message($url, $post_header, $replyToken, $text)
 {
     $data = [
 			   'replyToken' => $replyToken,
-		      'messages' => [['type' => 'text', 'text' => json_encode($deCode) ]]  Debug Detail message
+		      'messages' => [['type' => 'text', 'text' => json_encode($text) ]]  Debug Detail message
 		      // 'messages' => [['type' => 'text', 'text' => $text ]]
     ];
     $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
