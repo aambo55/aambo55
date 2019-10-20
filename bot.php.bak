@@ -18,45 +18,23 @@ $text_open1 = iconv("tis-620","utf-8",$text_wrong);
 //{"events":[{"type":"message","replyToken":"254f2da0a8d5454cb5023f5aa0bb862b","source":{"userId":"U8ec1d38548c43fb44dd07b90df4ac427","type":"user"},"timestamp":1571539105278,"message":{"type":"text","id":"10771871390735","text":"\u0e43\u0e0a\u0e48\u0e40\u0e2b\u0e23\u0e2d"}}],"destination":"Ub7cffc449b3567dd78a3b1b8b58555d7"}
 
 //Array ( [userId] => U8ec1d38548c43fb44dd07b90df4ac427 [displayName] => Karaket Saefung [pictureUrl] => https://profile.line-scdn.net/0hSjj7sgVEDEVXTie7ridzEmsLAiggYAoNL3hHI3dKWnEtKRhDYi0Tc3dIV31zdx5GPyBAKiZHVSBy [result] => E )
-/*
-$r = array("ee","ff","aa","bb","cc","","");
-//$r = iconv("utf-8","tis-620",$r);
-foreach ($r as $val[$i]l) {
-              if($val[$i]l == "ใช่ไหม" || $val[$i]l == "ใช่เหรอ"){
-				  $text = $val[$i]l;
+
+$text5 ="swdedaafer";
+preg_match_all("/(ใช่ไหม)(ใช่เหรอ)(aa)(bb)(cc)(1)(2)/", $text5, $matches, PREG_SET_ORDER);
+foreach ($matches as $val) {
+              //$text = $val[0];
+			  
+
+			  if($val[$i] == "ใช่ไหม"){
+				  $text = $val[$i];
               }
-			  elseif($val[$i]l == "aa"){
-                 $text1_1 = $val[$i]l;
+			  elseif($val[$i] == "aa"){
+                 $text1_1 = $val[$i];
+			  }
 
-			  }
-			  elseif($val[$i]l == "bb"){
-                 $text1_2= $val[$i]l;
-			  }
-              elseif($val[$i]l == "cc"){
-                 $text1_3= $val[$i]l;
-			  }
-			  elseif($val[$i]l == "1"){
-                 $text2_1= $val[$i]l;
-			  }
-			  elseif($val[$i]l == "2"){
-                 $text2_2= $val[$i]l;
-			  }
- }
-		//$text1 = ปั๊ม 1 เปิด
-        $text1= $text1_1.$text2_1.$text1_2;
-		//$text2 = ปั๊ม 1 ปิด
-		$text2= $text1_1.$text2_1.$text1_3;
-
-        //$text3 = ปั๊ม 2 เปิด
-		$text3= $text1_1.$text2_2.$text1_2;
-		//$text4 = ปั๊ม 2 ปิด
-		$text4= $text1_1.$text2_2.$text1_3;
-
-		print $text1."<br>";
-		print $text2."<br>";
-		print $text3."<br>";
-		print $text4."<br>";
-*/
+               $i++;
+}
+		print $text1_1."<BR>";
 /*
 
 }*/
