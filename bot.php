@@ -31,8 +31,8 @@ if ( sizeof($deCode['events']) > 0 ) {
 		if($text == "ใช่ไหม" || $text == "ใช่เหรอ" ){
            $text = $text_reply;
 		   //debug bot reply
-           $text = json_encode($deCode);
-            $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
+           $texttt = json_encode($deCode);
+            $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text, $texttt);
             echo "Result: ".$send_result."\r\n";
 		}
 
@@ -48,7 +48,7 @@ function send_reply_message($url, $post_header, $replyToken, $text)
 {
     $data = [
 			   'replyToken' => $replyToken,
-		      'messages' => [['type' => 'text', 'text' => json_encode($text) ]]  Debug Detail message
+		      'messages' => [['type' => 'text', 'text' => json_encode($texttt) ]]  Debug Detail message
 		      // 'messages' => [['type' => 'text', 'text' => $text ]]
     ];
     $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
