@@ -13,7 +13,6 @@ if ( sizeof($deCode['events']) > 0 ) {
         $reply_message = '';
         $replyToken = $event['replyToken'];
         $text = $event['message']['text'];
-		$id = $event['source']['userId'];
         // สุ่มคำตอบ
 		$random_keys = array_rand($answer);
         //แปลงรหัสให้เพื่อให้โปรแกรมเอามาเปรียบเทียบได้
@@ -31,7 +30,6 @@ if ( sizeof($deCode['events']) > 0 ) {
 
 		if($text == "ใช่ไหม" || $text == "ใช่เหรอ" ){
            $text = $text_reply;
-           $text = $id;
             $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
             echo "Result: ".$send_result."\r\n";
 		}
