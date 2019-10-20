@@ -13,7 +13,7 @@ if ( sizeof($deCode['destination']) > 0 ) {
 	foreach ($deCode['destination'] as $event1) {
 echo $deCode['destination'];
 }*/
-print_r(json_encode($deCode));
+print json_encode($deCode);
 //End test zone
 
 if ( sizeof($deCode['events']) > 0 ) {
