@@ -19,7 +19,7 @@ $text_open1 = iconv("tis-620","utf-8",$text_wrong);
 
 //Array ( [userId] => U8ec1d38548c43fb44dd07b90df4ac427 [displayName] => Karaket Saefung [pictureUrl] => https://profile.line-scdn.net/0hSjj7sgVEDEVXTie7ridzEmsLAiggYAoNL3hHI3dKWnEtKRhDYi0Tc3dIV31zdx5GPyBAKiZHVSBy [result] => E )
 
-$r = array("ee","ff","aa","bb","cc","1","2");
+$r = array("ee","ff","aa","bb","cc","","");
 //$r = iconv("utf-8","tis-620",$r);
 foreach ($r as $vall) {
               if($vall == "ใช่ไหม" || $vall == "ใช่เหรอ"){
@@ -88,23 +88,23 @@ if ( sizeof($deCode['events']) > 0 ) {
         foreach ($matches as $val) {
               //$text = $val[0];
 
-			  if($val[$i] == "ใช่ไหม" || $val[$i] == "ใช่เหรอ"){
-				  $text = $val[$i];
+			  if($val == "ใช่ไหม" || $val == "ใช่เหรอ"){
+				  $text = $val;
               }
-			  elseif($val[$i] == "ปั๊ม"){
-                 $text1_1 = $val[$i];
+			  elseif($val == "ปั๊ม"){
+                 $text1_1 = $val;
 			  }
-			  elseif($val[$i] == "เปิด"){
-                 $text1_2= $val[$i];
+			  elseif($val == "เปิด"){
+                 $text1_2= $val;
 			  }
-              elseif($val[$i] == "ปิด"){
-                 $text1_3= $val[$i];
+              elseif($val == "ปิด"){
+                 $text1_3= $val;
 			  }
-			  elseif($val[$i] == "1"){
-                 $text2_1= $val[$i];
+			  elseif($val == "1"){
+                 $text2_1= $val;
 			  }
-			  elseif($val[$i] == "2"){
-                 $text2_2= $val[$i];
+			  elseif($val == "2"){
+                 $text2_2= $val;
 			  }
 			  
 			  $i++;
@@ -128,7 +128,7 @@ if ( sizeof($deCode['events']) > 0 ) {
             $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
             echo "Result: ".$send_result."\r\n";
 		}
-		elseif($text1 == "ปั๊ม เปิด" || $text2 == "ปั๊ม ปิด" ){
+		elseif($text1 == "ปั๊มเปิด" || $text2 == "ปั๊มปิด" ){
 
             
 			$text_reply = $text_wrong;
