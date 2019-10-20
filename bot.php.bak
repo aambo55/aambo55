@@ -13,7 +13,7 @@ if ( sizeof($deCode['events']) > 0 ) {
         $reply_message = '';
         $replyToken = $event['replyToken'];
         $text = $event['message']['text'];
-		$id = $event['message']['id'];
+		$id = $event['source']['userId'];
         // สุ่มคำตอบ
 		$random_keys = array_rand($answer);
         //แปลงรหัสให้เพื่อให้โปรแกรมเอามาเปรียบเทียบได้
