@@ -7,9 +7,10 @@ $datas = file_get_contents('php://input');   // Get request content
 $deCode = json_decode($datas, true);   // Decode JSON to Array
 //ประกาศ Array คำคอบ
 $answer =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอบเผือกครับ","ว่างมากเหรอ","ใช่แล้ว","ใช่เลย","มั่วแระ","แม่นแล้ว","หมันเลย","ใช่แล้วไงอะ");
+
 if ( sizeof($deCode['events']) > 0 ) {
     foreach ($deCode['events'] as $event) {
-        $reply_message = '';
+       // $reply_message = '';
         $replyToken = $event['replyToken'];
         $text = $event['message']['text'];
         // สุ่มคำตอบ
@@ -19,7 +20,7 @@ if ( sizeof($deCode['events']) > 0 ) {
         $text = iconv("utf-8","tis-620",$text); 
         
        //ค้นหาคำที่ต้องการจะโต้ตอบ
-        preg_match_all("/(ใช่ไหม)(ใช่เหรอ)/", $text, $matches, PREG_SET_ORDER);
+        preg_match_all("/(ใช่ไหม)(ใช่เหรอ)(เปิดปั๊ม)/", $text, $matches, PREG_SET_ORDER);
 
         foreach ($matches as $val) {
               $text = $val[0];
