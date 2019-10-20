@@ -86,6 +86,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 
         foreach ($matches as $val) {
               //$text = $val[0];
+			  
 
 			  if($val[$i] == "ใช่ไหม"){
 				  $text = $val[$i];
@@ -107,6 +108,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 			  }
                $i++;
         }
+		$text1_1="aa";
 /*		//$text1 = ปั๊ม 1 เปิด
         $text1= $text1_1.$text2_1.$text1_2;
 		//$text2 = ปั๊ม 1 ปิด
