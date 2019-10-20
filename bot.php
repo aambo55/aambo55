@@ -18,7 +18,7 @@ if ( sizeof($deCode['events']) > 0 ) {
         $text = iconv("utf-8","tis-620",$text); 
         
        // $html = "ขี้เหร่ใช่ไหม";
-        preg_match_all("/(ใช่ไหม)/", $text, $matches, PREG_SET_ORDER);
+        preg_match_all("/(ใช่ไหม)(ใช่เหรอ)/", $text, $matches, PREG_SET_ORDER);
 
         foreach ($matches as $val) {
               $text = $val[0];
@@ -26,7 +26,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 
        //print $text;
 
-		if($text == "ใช่ไหม"){
+		if($text == "ใช่ไหม" || $text == "ใช่เหรอ" ){
            $text = $text_reply;
 
 			$data = [
