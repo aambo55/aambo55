@@ -22,11 +22,11 @@ $text_open1 = iconv("tis-620","utf-8",$text_wrong);
 $text5 ="swdedaafer";
 preg_match_all("/(aa)(bb)(cc)/", $text5, $matches, PREG_SET_ORDER);
 //print_r($matches);
-foreach ($matches as $val) {
+//foreach ($matches as $val) {
               //$text = $val[0];
 			  //print $val[0];
 			 
-}
+//}
 	//	print $text1_1."<BR>";
 /*
 
