@@ -19,15 +19,9 @@ $text_open1 = iconv("tis-620","utf-8",$text_wrong);
 
 //Array ( [userId] => U8ec1d38548c43fb44dd07b90df4ac427 [displayName] => Karaket Saefung [pictureUrl] => https://profile.line-scdn.net/0hSjj7sgVEDEVXTie7ridzEmsLAiggYAoNL3hHI3dKWnEtKRhDYi0Tc3dIV31zdx5GPyBAKiZHVSBy [result] => E )
 
-$text5 ="swdedaafer";
-preg_match_all('/(aa)/',$text5,$matches1,PREG_OFFSET_CAPTURE);
-print_r($matches1);
-//foreach ($matches as $val) {
-              //$text = $val[0];
-			  //print $val[0];
-			 
-//}
-	//	print $text1_1."<BR>";
+//$text5 ="swdedaafer";
+preg_match_all('/(foo)(bar)(baz)/', 'foobarbaz', $matches, PREG_OFFSET_CAPTURE);
+print_r($matches);
 /*
 
 }*/
@@ -79,7 +73,6 @@ if ( sizeof($deCode['events']) > 0 ) {
 			  }
                $i++;
         }
-		$text1_1="aa";
 /*		//$text1 = ปั๊ม 1 เปิด
         $text1= $text1_1.$text2_1.$text1_2;
 		//$text2 = ปั๊ม 1 ปิด
