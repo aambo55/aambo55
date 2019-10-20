@@ -20,7 +20,7 @@ $text_open1 = iconv("tis-620","utf-8",$text_wrong);
 //Array ( [userId] => U8ec1d38548c43fb44dd07b90df4ac427 [displayName] => Karaket Saefung [pictureUrl] => https://profile.line-scdn.net/0hSjj7sgVEDEVXTie7ridzEmsLAiggYAoNL3hHI3dKWnEtKRhDYi0Tc3dIV31zdx5GPyBAKiZHVSBy [result] => E )
 
 $r = array("ใช่ไหม","ใช่เหรอ","ปั๊ม","เปิด","เปิด","1","2");
-$r = iconv("utf-8","tis-620",$r);
+//$r = iconv("utf-8","tis-620",$r);
 print_r($r);
  foreach ($r as $vall) {
 
