@@ -23,7 +23,7 @@ $text5 ='foobarbaz';
 preg_match_all('/(foo)(bar)(baz)/', $text5 , $matches, PREG_OFFSET_CAPTURE);
 print_r($matches);
 foreach ($matches as $testt){
-	print $testt[0];
+	print $testt."<br>";
 }
 /*
 
