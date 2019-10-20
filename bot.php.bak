@@ -44,12 +44,13 @@ if ( sizeof($deCode['events']) > 0 ) {
     }
 }
 echo "OK <br>";
-        $answers =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย");
-		$random = array_rand($answers,2);
-		echo $answers[$random[0]];
-		echo $answers[$random[1]];
-		$text_reply1 = $answers[$random[0]];
-		echo $text_reply1;
+        $a =array("aa","bb");
+		$random_keys = array_rand($a,2);
+		$a= iconv("tis-620","utf-8",$a); 
+		echo $a[$random_keys[0]]."<br>";
+		echo $a[$random_keys[1]];
+		//$text_reply1 = $answers[$random[0]];
+		//echo $text_reply1;
 function send_reply_message($url, $post_header, $post_body)
 {
     $ch = curl_init($url);
