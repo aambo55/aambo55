@@ -23,7 +23,7 @@ $r = array("ee","ff","aa","bb","cc","1","2");
 //$r = iconv("utf-8","tis-620",$r);
 print_r($r);
  
- foreach ($r as $vall) {
+foreach ($r as $vall) {
 
               if($vall[$i] == "ใช่ไหม" || $vall[$i] == "ใช่เหรอ"){
 				  $text = $vall[$i];
@@ -45,6 +45,7 @@ print_r($r);
 			  }
 			  
 			  $i++;
+			  print $i;
  }
 		//$text1 = ปั๊ม 1 เปิด
         $text1= $text1_1.$text2_1.$text1_2;
