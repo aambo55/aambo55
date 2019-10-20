@@ -22,6 +22,9 @@ $text_open1 = iconv("tis-620","utf-8",$text_wrong);
 $text5 ='foobarbaz';
 preg_match_all('/(foo)(bar)(baz)/', $text5 , $matches, PREG_OFFSET_CAPTURE);
 print_r($matches);
+foreach ($matches as $testt){
+	print $testt[0];
+}
 /*
 
 }*/
@@ -47,45 +50,12 @@ if ( sizeof($deCode['events']) > 0 ) {
 		$text_reply= iconv("tis-620","utf-8",$answer[$random_keys]); 
         $text = iconv("utf-8","tis-620",$text); 
        //ค้นหาคำที่ต้องการจะโต้ตอบ
-        preg_match_all("/(ใช่ไหม)(ใช่เหรอ)(aa)(bb)(cc)(1)(2)/", $text, $matches, PREG_SET_ORDER);
+        preg_match_all("/(ใช่ไหม)(ใช่เหรอ)/", $text, $matches, PREG_SET_ORDER);
 
         foreach ($matches as $val) {
-              //$text = $val[0];
-			  
+              $text = $val[0];
 
-			  if($val[$i] == "ใช่ไหม"){
-				  $text = $val[$i];
-              }
-			  elseif($val[$i] == "aa"){
-                 $text1_1 = $val[$i];
-			  }
-			  elseif($val[$i] == "bb"){
-                 $text1_2= $val[$i];
-			  }
-              elseif($val[$i] == "cc"){
-                 $text1_3= $val[$i];
-			  }
-			  elseif($val[$i] == "1"){
-                 $text2_1= $val[$i];
-			  }
-			  elseif($val[$i] == "2"){
-                 $text2_2= $val[$i];
-			  }
-               $i++;
         }
-/*		//$text1 = ปั๊ม 1 เปิด
-        $text1= $text1_1.$text2_1.$text1_2;
-		//$text2 = ปั๊ม 1 ปิด
-		$text2= $text1_1.$text2_1.$text1_3;
-
-        //$text3 = ปั๊ม 2 เปิด
-		$text3= $text1_1.$text2_2.$text1_2;
-		//$text4 = ปั๊ม 2 ปิด
-		$text4= $text1_1.$text2_2.$text1_3;
-        $text1 = iconv("utf-8","tis-620",$text1); 
-		$text2 = iconv("utf-8","tis-620",$text2); 
-       //print $text;
-*/
 
 		if($text == "ใช่ไหม" || $text == "ใช่เหรอ" ){
            $text = "@".$idname['displayName']." ".$text_reply;
@@ -102,23 +72,7 @@ if ( sizeof($deCode['events']) > 0 ) {
             $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
             echo "Result: ".$send_result."\r\n";
 		}
-/*		elseif($text1 == "ปั๊มเปิด" || $text2 == "ปั๊มปิด" ){
 
-            
-			$text_reply = $text_wrong;
-			    
-            $text = "@".$idname['displayName']." ".$text_reply;
-            $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
-            echo "Result: ".$send_result."\r\n";
-		}
-        elseif($text1 == "ปั๊ม1เปิด"){
-		    $text_reply = $text_open1;
-			    
-            $text = "@".$idname['displayName']." ".$text_reply;
-            $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
-            echo "Result: ".$send_result."\r\n";
-		}
-		*/
      }
 }
 echo "OK <br>";
