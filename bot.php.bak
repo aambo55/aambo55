@@ -48,6 +48,7 @@ echo "OK <br>";
 		$random_keys = array_rand($a,1);
 		$a[$random_keys[0]]= iconv("tis-620","utf-8",$a[$random_keys[0]]); 
 		echo $a[$random_keys[0]]."<br>";
+		echo $a[$random_keys[1]]."<br>";
 
 		//$text_reply1 = $answers[$random[0]];
 		//echo $text_reply1;
