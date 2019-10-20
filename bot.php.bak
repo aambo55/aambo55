@@ -82,7 +82,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 		$text_reply= iconv("tis-620","utf-8",$answer[$random_keys]); 
         $text = iconv("utf-8","tis-620",$text); 
        //ค้นหาคำที่ต้องการจะโต้ตอบ
-        preg_match_all("/(ใช่ไหม)(ใช่เหรอ)(ปั๊ม)(เปิด)(เปิด)(1)(2)/", $text, $matches, PREG_SET_ORDER);
+        preg_match_all("/(ใช่ไหม)(ใช่เหรอ)(aa)(bb)(cc)(1)(2)/", $text, $matches, PREG_SET_ORDER);
 
         foreach ($matches as $val) {
               //$text = $val[0];
@@ -90,13 +90,13 @@ if ( sizeof($deCode['events']) > 0 ) {
 			  if($val[$i] == "ใช่ไหม"){
 				  $text = $val[$i];
               }
-			  elseif($val[$i] == "ปั๊ม"){
+			  elseif($val[$i] == "aa"){
                  $text1_1 = $val[$i];
 			  }
-			  elseif($val[$i] == "เปิด"){
+			  elseif($val[$i] == "bb"){
                  $text1_2= $val[$i];
 			  }
-              elseif($val[$i] == "ปิด"){
+              elseif($val[$i] == "cc"){
                  $text1_3= $val[$i];
 			  }
 			  elseif($val[$i] == "1"){
@@ -129,7 +129,7 @@ if ( sizeof($deCode['events']) > 0 ) {
             $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
             echo "Result: ".$send_result."\r\n";
 		}
-		elseif($text1_1 <> ""){
+		elseif($text1_1 == "aa"){
 			$text1_1 = iconv("tis-620","utf-8",$text1_1);
             $text_reply = $text1_1;
 			    
