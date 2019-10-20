@@ -45,10 +45,9 @@ if ( sizeof($deCode['events']) > 0 ) {
 }
 echo "OK <br>";
         $a =array("ใช่ครับ","ใช่เลย");
-		$random_keys = array_rand($a,1);
-		$a[$random_keys[0]]= iconv("tis-620","utf-8",$a[$random_keys[0]]); 
-		echo $a[$random_keys[0]]."<br>";
-		echo $a[$random_keys[1]]."<br>";
+		$random_keys = array_rand($a,2);
+		$test = iconv("tis-620","utf-8",$a[$random_keys[0]]); 
+		echo $test."<br>";
 
 		//$text_reply1 = $answers[$random[0]];
 		//echo $text_reply1;
