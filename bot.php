@@ -17,10 +17,11 @@ $userId = "U8ec1d38548c43fb44dd07b90df4ac427";
 $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
 $LINEDatas['token'] = $ACCESS_TOKEN;
 $results1 = getLINEProfile($LINEDatas);
-//print_r($results1);
 
-$results2 = $results1['message'];
-foreach ($results2 as $event1) {
+//print_r($results1);
+$results3 = json_decode($results1, true);
+print_r($results3);
+foreach ($results3 as $event1) {
     echo $event1['displayName'];
 }
 /*
