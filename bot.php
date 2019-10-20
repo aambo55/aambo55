@@ -18,8 +18,8 @@ $LINEDatas['token'] = $ACCESS_TOKEN;
 $results1 = getLINEProfile($LINEDatas);
 //print_r($results1);
 //print_r($results1);
-foreach ($results1['events'] as $event3) {
-  $text5 = $event3['message']['displayName'];
+foreach ($results1['message'] as $event3) {
+  $text5 = $event3['displayName'];
   echo $text5;
 }
 /*
