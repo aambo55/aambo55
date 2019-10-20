@@ -13,6 +13,7 @@ if ( sizeof($deCode['destination']) > 0 ) {
 	foreach ($deCode['destination'] as $event1) {
 echo $deCode['destination'];
 }*/
+print_r(json_encode($deCode));
 //End test zone
 
 if ( sizeof($deCode['events']) > 0 ) {
@@ -47,7 +48,7 @@ if ( sizeof($deCode['events']) > 0 ) {
     }
 }
 echo "OK <br>";
-        print_r($deCode);
+        
 
 function send_reply_message($url, $post_header, $replyToken, $text)
 {
