@@ -19,12 +19,8 @@ $LINEDatas['token'] = $ACCESS_TOKEN;
 $results1 = getLINEProfile($LINEDatas);
 //print_r($results1);
 //print_r($results1);
-print $results1['message'];
-foreach ($results1 as $eventr) {
-  print  $eventr['message'];
-//  echo $text5;
+print $results1['message']['displayName'];
 
-}
 /*
 if ( sizeof($deCode['destination']) > 0 ) {
 	foreach ($deCode['destination'] as $event1) {
