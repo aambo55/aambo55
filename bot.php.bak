@@ -5,20 +5,21 @@ $ACCESS_TOKEN = 'C37KqAyzCZVk/hEGnpkz2ztML1DbHJE7JQDC4l8+USFND54JAxPAA/TXHFiBl+u
 $POST_HEADER = array('Content-Type: application/json; charset=UTF-8','cache-control: no-cache', 'Authorization: Bearer ' . $ACCESS_TOKEN);
 $datas = file_get_contents('php://input');   // Get request content
 $deCode = json_decode($datas, true);   // Decode JSON to Array
+//ประกาศ Array คำคอบ
 $answer =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอบเผือกครับ","ว่างมากเหรอ","ใช่แล้ว","ใช่เลย","มั่วแระ","แม่นแล้ว","หมันเลย","ใช่แล้วไงอะ");
 if ( sizeof($deCode['events']) > 0 ) {
     foreach ($deCode['events'] as $event) {
         $reply_message = '';
         $replyToken = $event['replyToken'];
         $text = $event['message']['text'];
-
+        // สุ่มคำตอบ
 		$random_keys = array_rand($answer);
-
+        //แปลงรหัสให้เพื่อให้โปรแกรมเอามาเปรียบเทียบได้
 		$text_reply= iconv("tis-620","utf-8",$answer[$random_keys]); 
         $text = iconv("utf-8","tis-620",$text); 
         
-       // $html = "ขี้เหร่ใช่ไหม";
-        preg_match_all("/(ใช่ไหม)/", $text, $matches, PREG_SET_ORDER);
+       //ค้นหาคำที่ต้องการจะโต้ตอบ
+        preg_match_all("/(ใช่ไหม)(ใช่เหรอ)/", $text, $matches, PREG_SET_ORDER);
 
         foreach ($matches as $val) {
               $text = $val[0];
@@ -26,16 +27,10 @@ if ( sizeof($deCode['events']) > 0 ) {
 
        //print $text;
 
-		if($text == "ใช่ไหม"){
+		if($text == "ใช่ไหม" || $text == "ใช่เหรอ" ){
            $text = $text_reply;
 
-			$data = [
-			   'replyToken' => $replyToken,
-		     // 'messages' => [['type' => 'text', 'text' => json_encode($deCode) ]]  Debug Detail message
-		       'messages' => [['type' => 'text', 'text' => $text ]]
-            ];
-            $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
-            $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
+            $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body, $replyToken, $text);
             echo "Result: ".$send_result."\r\n";
 		}
 
@@ -47,9 +42,15 @@ if ( sizeof($deCode['events']) > 0 ) {
 }
 echo "OK <br>";
 
-function send_reply_message($url, $post_header, $post_body)
+function send_reply_message($url, $post_header, $post_body, $replyToken, $text)
 {
-    $ch = curl_init($url);
+    $data = [
+			   'replyToken' => $replyToken,
+		     // 'messages' => [['type' => 'text', 'text' => json_encode($deCode) ]]  Debug Detail message
+		       'messages' => [['type' => 'text', 'text' => $text ]]
+    ];
+    $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
+	$ch = curl_init($url);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, $post_header);
