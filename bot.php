@@ -5,14 +5,16 @@ $ACCESS_TOKEN = 'C37KqAyzCZVk/hEGnpkz2ztML1DbHJE7JQDC4l8+USFND54JAxPAA/TXHFiBl+u
 $POST_HEADER = array('Content-Type: application/json; charset=UTF-8','cache-control: no-cache', 'Authorization: Bearer ' . $ACCESS_TOKEN);
 $datas = file_get_contents('php://input');   // Get request content
 $deCode = json_decode($datas, true);   // Decode JSON to Array
-//$answer =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอบเผือกครับ","ว่างมากเหรอ","ใช่แล้ว","ใช่เลย","มั่วแระ","แม่นแล้ว","หมันเลย","ใช่แล้วไงอะ");
+$answer =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอบเผือกครับ","ว่างมากเหรอ","ใช่แล้ว","ใช่เลย","มั่วแระ","แม่นแล้ว","หมันเลย","ใช่แล้วไงอะ");
 if ( sizeof($deCode['events']) > 0 ) {
     foreach ($deCode['events'] as $event) {
         $reply_message = '';
         $replyToken = $event['replyToken'];
         $text = $event['message']['text'];
 
-		$text_reply= iconv("tis-620","utf-8",$text_reply); 
+		$random_keys = array_rand($answer);
+
+		$text_reply= iconv("tis-620","utf-8",$answer[$random_keys]); 
         $text = iconv("utf-8","tis-620",$text); 
         
        // $html = "ขี้เหร่ใช่ไหม";
@@ -44,14 +46,7 @@ if ( sizeof($deCode['events']) > 0 ) {
     }
 }
 echo "OK <br>";
-        $a =array("ใช่ครับ","ใช่เลย");
-		$random_keys = array_rand($a);
-		//$test = iconv("tis-620","utf-8",$a[$random_keys[0]]); 
-		$test = iconv("tis-620","utf-8",$a[$random_keys]); 
-		echo $test."<br>";
 
-		//$text_reply1 = $answers[$random[0]];
-		//echo $text_reply1;
 function send_reply_message($url, $post_header, $post_body)
 {
     $ch = curl_init($url);
