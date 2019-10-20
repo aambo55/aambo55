@@ -18,7 +18,8 @@ $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
 $LINEDatas['token'] = $ACCESS_TOKEN;
 $results1 = getLINEProfile($LINEDatas);
 //print_r($results1);
-print_r($results1);
+//print_r($results1);
+print $results1['message'];
 foreach ($results1 as $eventr) {
   print  $eventr['message'];
 //  echo $text5;
