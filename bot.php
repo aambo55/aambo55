@@ -5,7 +5,7 @@ $ACCESS_TOKEN = 'C37KqAyzCZVk/hEGnpkz2ztML1DbHJE7JQDC4l8+USFND54JAxPAA/TXHFiBl+u
 $POST_HEADER = array('Content-Type: application/json; charset=UTF-8','cache-control: no-cache', 'Authorization: Bearer ' . $ACCESS_TOKEN);
 $datas = file_get_contents('php://input');   // Get request content
 $deCode = json_decode($datas, true);   // Decode JSON to Array
-$answer =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอบเผือกครับ","ว่างมากเหรอ","ใช่แล้ว","ใช่เลย","มั่วแระ","แม่นแล้ว","หมันเลย","ใช่แล้วไงอะ");
+//$answer =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอบเผือกครับ","ว่างมากเหรอ","ใช่แล้ว","ใช่เลย","มั่วแระ","แม่นแล้ว","หมันเลย","ใช่แล้วไงอะ");
 if ( sizeof($deCode['events']) > 0 ) {
     foreach ($deCode['events'] as $event) {
         $reply_message = '';
@@ -44,8 +44,9 @@ if ( sizeof($deCode['events']) > 0 ) {
     }
 }
 echo "OK <br>";
-		$random = array_rand($answer,1);
-		$text_reply1 = $answer[$random[0]];
+        $answers =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย"
+		$random = array_rand($answers,1);
+		$text_reply1 = $answers[$random[0]];
 		echo $text_reply1;
 function send_reply_message($url, $post_header, $post_body)
 {
