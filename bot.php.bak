@@ -7,6 +7,12 @@ $datas = file_get_contents('php://input');   // Get request content
 $deCode = json_decode($datas, true);   // Decode JSON to Array
 //ประกาศ Array คำคอบ
 $answer =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอบเผือกครับ","ว่างมากเหรอ","ใช่แล้ว","ใช่เลย","มั่วแระ","แม่นแล้ว","หมันเลย","ใช่แล้วไงอะ");
+$text_wrong = 'คำสั่งคือ "เปิดปั๊ม1" หรือ "เปิดปั๊ม2"';
+$text_open1 = "เปิดปั๊มถังที่ 1 แล้ว";            
+			
+			
+$text_wrong = iconv("tis-620","utf-8",$text_wrong);
+$text_open1 = iconv("tis-620","utf-8",$text_wrong);
 
 // Test Code Zone
 //{"events":[{"type":"message","replyToken":"254f2da0a8d5454cb5023f5aa0bb862b","source":{"userId":"U8ec1d38548c43fb44dd07b90df4ac427","type":"user"},"timestamp":1571539105278,"message":{"type":"text","id":"10771871390735","text":"\u0e43\u0e0a\u0e48\u0e40\u0e2b\u0e23\u0e2d"}}],"destination":"Ub7cffc449b3567dd78a3b1b8b58555d7"}
@@ -85,40 +91,21 @@ if ( sizeof($deCode['events']) > 0 ) {
             $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
             echo "Result: ".$send_result."\r\n";
 		}
-		elseif($text1 == "ปั๊มเปิด" || ){
+		elseif($text1 == "ปั๊มเปิด" || $text2 == "ปั๊มปิด" ){
 
-            $text_wrong = 'คำสั่งคือ "เปิดปั๊ม1" หรือ "เปิดปั๊ม2"';
-			$text_reply = iconv("tis-620","utf-8",$text_wrong);
-			if($text == "เปิดปั๊ม" || $text == "ปั๊มเปิด" || $text2 == "เปิดปั๊ม" || $text2 == "ปั๊มเปิด"){
+            
+			$text_reply = $text_wrong;
 			    
-                $text = "@".$idname['displayName']." ".$text_reply;
-
-                // $text = $userId; //Debug userID
-                $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
-                echo "Result: ".$send_result."\r\n";
-            }
-			if($text == "เปิดปั๊ม"){}
-			elseif($text == "เปิดปั๊ม" || $text == "1" || $text == "2" || $text2 == "เปิดปั๊ม" || $text2 == "1" || $text2 == "2"){
-                if($text == "เปิดปั๊ม" || $text == "1"){
-			        $text_open1 = 'ปั๊มถังที่ 1 ทำงานแล้ว"';
-			        $text_reply = iconv("tis-620","utf-8",$text_open1);
-                    $text = "@".$idname['displayName']." ".$text_reply;
-
-                    // $text = $userId; //Debug userID
-                    $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
-                    echo "Result: ".$send_result."\r\n";
-				}
-				elseif($text == "เปิดปั๊ม" || $text == "2"){
-                    $text_open2 = 'ปั๊มถังที่ 2 ทำงานแล้ว"';
-			        $text_reply = iconv("tis-620","utf-8",$text_open2);
-                    $text = "@".$idname['displayName']." ".$text_reply;
-
-                    // $text = $userId; //Debug userID
-                    $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
-                    echo "Result: ".$send_result."\r\n";
-				}
-            }
-
+            $text = "@".$idname['displayName']." ".$text_reply;
+            $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
+            echo "Result: ".$send_result."\r\n";
+		}
+        elseif($text1 == "ปั๊ม1เปิด"){
+		    $text_reply = $text_open1;
+			    
+            $text = "@".$idname['displayName']." ".$text_reply;
+            $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
+            echo "Result: ".$send_result."\r\n";
 		}
      }
 }
