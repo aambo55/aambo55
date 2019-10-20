@@ -24,16 +24,8 @@ preg_match_all("/(aa)(bb)(cc)/", $text5, $matches, PREG_SET_ORDER);
 print_r($matches);
 foreach ($matches as $val) {
               //$text = $val[0];
-			  
-
-			  if($val == "ใช่ไหม"){
-				  $text = $val;
-              }
-			  elseif($val == "aa"){
-                 $text1_1 = $val;
-			  }else{}
-
-               $i++;
+			  print $val[0];
+			 
 }
 	//	print $text1_1."<BR>";
 /*
