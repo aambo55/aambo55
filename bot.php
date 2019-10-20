@@ -19,7 +19,7 @@ $LINEDatas['token'] = $ACCESS_TOKEN;
 $results1 = getLINEProfile($LINEDatas);
 //print_r($results1);
 //print_r($results1);
-foreach ($results1['message'] as $event3) {
+foreach ($results1 as $event3) {
   print  $event3[$i];
 //  echo $text5;
    $i++;
