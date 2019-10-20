@@ -40,7 +40,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 		$text_reply= iconv("tis-620","utf-8",$answer[$random_keys]); 
         $text = iconv("utf-8","tis-620",$text); 
        //ค้นหาคำที่ต้องการจะโต้ตอบ
-        preg_match_all("/(ใช่ไหม)(ใช่เหรอ)(เปิดปั๊ม)(ปั๊มเปิด)/", $text, $matches, PREG_SET_ORDER);
+        preg_match_all("/(ใช่ไหม)(ใช่เหรอ)(เปิดปั๊ม)(ปั๊มเปิด)(ถังที่่)(1)(2)/", $text, $matches, PREG_SET_ORDER);
 
         foreach ($matches as $val) {
               $text = $val[0];
@@ -54,20 +54,42 @@ if ( sizeof($deCode['events']) > 0 ) {
           // $text = $userId; //Debug userID
             $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
             echo "Result: ".$send_result."\r\n";
-		}elseif($text == "เปิดปั๊ม" || $text == "ปั๊มเปิด" ){
-			$text_reply = "ระบุด้วย เปิดปั๊มถังที่ 1 หรือ เปิดปั๊มถังที่ 2";
-			$text_reply = iconv("tis-620","utf-8",$text_reply);
-            $text = "@".$idname['displayName']." ".$text_reply;
+		}
+		elseif($text == "เปิดปั๊ม" || $text == "ปั๊มเปิด" || $text == "1" || $text == "2"){
 
-          // $text = $userId; //Debug userID
-            $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
-            echo "Result: ".$send_result."\r\n";
-        }
-	//	else {
+            $text_wrong = 'คำสั่งคือ "เปิดปั๊ม1" หรือ "เปิดปั๊ม2"';
+			$text_reply = iconv("tis-620","utf-8",$text_wrong);
+			if($text == "เปิดปั๊ม" || $text == "ปั๊มเปิด"){
+			    
+                $text = "@".$idname['displayName']." ".$text_reply;
 
-     //      $text = "fff";   
-	//	}
-    }
+                // $text = $userId; //Debug userID
+                $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
+                echo "Result: ".$send_result."\r\n";
+            }
+			elseif($text == "เปิดปั๊ม" || $text == "1" || $text == "2"){
+                if($text == "เปิดปั๊ม" || $text == "1"){
+			        $text_open1 = 'ปั๊มถังที่ 1 ทำงานแล้ว"';
+			        $text_reply = iconv("tis-620","utf-8",$text_open1);
+                    $text = "@".$idname['displayName']." ".$text_reply;
+
+                    // $text = $userId; //Debug userID
+                    $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
+                    echo "Result: ".$send_result."\r\n";
+				}
+				elseif($text == "เปิดปั๊ม" || $text == "2"){
+                    $text_open2 = 'ปั๊มถังที่ 2 ทำงานแล้ว"';
+			        $text_reply = iconv("tis-620","utf-8",$text_open2);
+                    $text = "@".$idname['displayName']." ".$text_reply;
+
+                    // $text = $userId; //Debug userID
+                    $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
+                    echo "Result: ".$send_result."\r\n";
+				}
+            }
+
+		}
+     }
 }
 echo "OK <br>";
         
