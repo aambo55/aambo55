@@ -130,6 +130,7 @@ if ( sizeof($deCode['events']) > 0 ) {
             echo "Result: ".$send_result."\r\n";
 		}
 		elseif($text1_1 <> ""){
+			$text1_1 = iconv("tis-620","utf-8",$text1_1);
             $text_reply = $text1_1;
 			    
             $text = $text_reply;
