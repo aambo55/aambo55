@@ -85,10 +85,10 @@ if ( sizeof($deCode['events']) > 0 ) {
         preg_match_all("/(ใช่ไหม)(ใช่เหรอ)(ปั๊ม)(เปิด)(เปิด)(1)(2)/", $text, $matches, PREG_SET_ORDER);
 
         foreach ($matches as $val) {
-              //$text = $val[$i][0];
+              //$text = $val[0];
 
 			  if($val[$i] == "ใช่ไหม" || $val[$i] == "ใช่เหรอ"){
-				  $text = $val[$i][$i];
+				  $text = $val[$i];
               }
 			  elseif($val[$i] == "ปั๊ม"){
                  $text1_1 = $val[$i];
