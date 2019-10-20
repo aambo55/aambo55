@@ -18,9 +18,9 @@ $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
 $LINEDatas['token'] = $ACCESS_TOKEN;
 $results1 = getLINEProfile($LINEDatas);
 //print_r($results1);
-//print_r($results1);
-foreach ($results1 as $event3) {
-  print  $event3['E'][$i];
+print_r($results1);
+foreach ($results1 as $eventr) {
+  print  $eventr['E'][$i];
 //  echo $text5;
    $i++;
 }
@@ -100,7 +100,7 @@ function getLINEProfile($datas)
        "cache-control: no-cache"
      ),
    ));   $response = curl_exec($curl);
-   $err = curl_error($curl);   curl_close($curl);   if($err){
+   $err = curl_error($curl);   curl_close($curl);  /* if($err){
       $datasReturn['result'] = 'E';
       $datasReturn['message'] = $err;
    }else{
@@ -111,6 +111,6 @@ function getLINEProfile($datas)
           $datasReturn['result'] = 'E';
           $datasReturn['message'] = $response;
       }
-   }   return $datasReturn;
+   } */  return $datasReturn;
 }
 ?>
