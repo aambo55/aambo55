@@ -21,6 +21,7 @@ $text_open1 = iconv("tis-620","utf-8",$text_wrong);
 
 $text5 ="swdedaafer";
 preg_match_all("/(ใช่ไหม)(ใช่เหรอ)(aa)(bb)(cc)(1)(2)/", $text5, $matches, PREG_SET_ORDER);
+print_r($matches);
 foreach ($matches as $val) {
               //$text = $val[0];
 			  
