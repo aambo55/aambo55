@@ -20,7 +20,7 @@ $results1 = getLINEProfile($LINEDatas);
 //print_r($results1);
 //print_r($results1);
 foreach ($results1 as $event3) {
-  print  $event3['message'][$i];
+  print  $event3['E'][$i];
 //  echo $text5;
    $i++;
 }
