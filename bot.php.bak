@@ -24,7 +24,7 @@ $r = array("ee","ff","aa","bb","cc","1","2");
 print_r($r);
  
 foreach ($r as $vall) {
-
+              print $vall[$i]."<br>";
               if($vall[$i] == "ใช่ไหม" || $vall[$i] == "ใช่เหรอ"){
 				  $text = $vall[$i];
               }
