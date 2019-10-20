@@ -21,33 +21,28 @@ $text_open1 = iconv("tis-620","utf-8",$text_wrong);
 
 $r = array("ee","ff","aa","bb","cc","1","2");
 //$r = iconv("utf-8","tis-620",$r);
-print_r($r);
- 
 foreach ($r as $vall) {
-              print $vall[$i]."<br>";
-              if($vall[$i] == "ใช่ไหม" || $vall[$i] == "ใช่เหรอ"){
-				  $text = $vall[$i];
+              print $vall."<br>";
+              if($vall == "ใช่ไหม" || $vall == "ใช่เหรอ"){
+				  $text = $vall;
               }
-			  elseif($vall[$i] == "aa"){
-                 $text1_1 = $vall[$i];
+			  elseif($vall == "aa"){
+                 $text1_1 = $vall;
 				 print $text1_1 ;
 
 			  }
-			  elseif($vall[$i] == "bb"){
-                 $text1_2= $vall[$i];
+			  elseif($vall == "bb"){
+                 $text1_2= $vall;
 			  }
-              elseif($vall[$i] == "cc"){
-                 $text1_3= $vall[$i];
+              elseif($vall == "cc"){
+                 $text1_3= $vall;
 			  }
-			  elseif($vall[$i] == "1"){
-                 $text2_1= $vall[$i];
+			  elseif($vall == "1"){
+                 $text2_1= $vall;
 			  }
-			  elseif($vall[$i] == "2"){
-                 $text2_2= $vall[$i];
+			  elseif($vall == "2"){
+                 $text2_2= $vall;
 			  }
-			  
-			  $i++;
-			  print $i;
  }
 		//$text1 = ปั๊ม 1 เปิด
         $text1= $text1_1.$text2_1.$text1_2;
