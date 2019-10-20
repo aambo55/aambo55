@@ -13,6 +13,7 @@ if ( sizeof($deCode['events']) > 0 ) {
         $reply_message = '';
         $replyToken = $event['replyToken'];
         $text = $event['message']['text'];
+		$id = $event['message']['id'];
         // สุ่มคำตอบ
 		$random_keys = array_rand($answer);
         //แปลงรหัสให้เพื่อให้โปรแกรมเอามาเปรียบเทียบได้
@@ -30,11 +31,11 @@ if ( sizeof($deCode['events']) > 0 ) {
 
 		if($text == "ใช่ไหม" || $text == "ใช่เหรอ" ){
            $text = $text_reply;
-
-            $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text, $deCode);
+           $text = $id;
+            $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
             echo "Result: ".$send_result."\r\n";
 		}
-
+//{"events":[{"type":"message","replyToken":"254f2da0a8d5454cb5023f5aa0bb862b","source":{"userId":"U8ec1d38548c43fb44dd07b90df4ac427","type":"user"},"timestamp":1571539105278,"message":{"type":"text","id":"10771871390735","text":"\u0e43\u0e0a\u0e48\u0e40\u0e2b\u0e23\u0e2d"}}],"destination":"Ub7cffc449b3567dd78a3b1b8b58555d7"}
 	//	else {
 
      //      $text = "fff";   
@@ -43,12 +44,12 @@ if ( sizeof($deCode['events']) > 0 ) {
 }
 echo "OK <br>";
 
-function send_reply_message($url, $post_header, $replyToken, $text, $deCode)
+function send_reply_message($url, $post_header, $replyToken, $text)
 {
     $data = [
 			   'replyToken' => $replyToken,
-		      'messages' => [['type' => 'text', 'text' => json_encode($deCode) ]]  //Debug Detail message
-		      // 'messages' => [['type' => 'text', 'text' => $text ]]
+		      //'messages' => [['type' => 'text', 'text' => json_encode($deCode) ]]  //Debug Detail message
+		       'messages' => [['type' => 'text', 'text' => $text ]]
     ];
     $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
 	$ch = curl_init($url);
