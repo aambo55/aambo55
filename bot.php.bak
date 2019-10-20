@@ -18,7 +18,7 @@ $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
 $LINEDatas['token'] = $ACCESS_TOKEN;
 $results1 = getLINEProfile($LINEDatas);
 
-print_r($results1);
+print $results1['displayName'];
 //$results3 = json_decode($results1, true);
 //print_r($results3);
 //foreach ($results3 as $event1) {
