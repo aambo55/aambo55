@@ -117,7 +117,8 @@ if ( sizeof($deCode['events']) > 0 ) {
 		$text3= $text1_1.$text2_2.$text1_2;
 		//$text4 = ปั๊ม 2 ปิด
 		$text4= $text1_1.$text2_2.$text1_3;
-
+        $text1 = iconv("utf-8","tis-620",$text1); 
+		$text2 = iconv("utf-8","tis-620",$text2); 
        //print $text;
 
 		if($text == "ใช่ไหม" || $text == "ใช่เหรอ" ){
