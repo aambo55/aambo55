@@ -45,8 +45,9 @@ if ( sizeof($deCode['events']) > 0 ) {
 }
 echo "OK <br>";
         $answers =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย");
-		$random = array_rand($answers,1);
+		$random = array_rand($answers,2);
 		echo $answers[$random[0]];
+		echo $answers[$random[1]];
 		$text_reply1 = $answers[$random[0]];
 		echo $text_reply1;
 function send_reply_message($url, $post_header, $post_body)
