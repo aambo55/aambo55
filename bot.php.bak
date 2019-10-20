@@ -21,25 +21,25 @@ $text_open1 = iconv("tis-620","utf-8",$text_wrong);
 /*
 $r = array("ee","ff","aa","bb","cc","","");
 //$r = iconv("utf-8","tis-620",$r);
-foreach ($r as $val[$i]l) {
-              if($val[$i]l == "ใช่ไหม" || $val[$i]l == "ใช่เหรอ"){
-				  $text = $val[$i]l;
+foreach ($r as $vall) {
+              if($vall == "ใช่ไหม" || $vall == "ใช่เหรอ"){
+				  $text = $vall;
               }
-			  elseif($val[$i]l == "aa"){
-                 $text1_1 = $val[$i]l;
+			  elseif($vall == "aa"){
+                 $text1_1 = $vall;
 
 			  }
-			  elseif($val[$i]l == "bb"){
-                 $text1_2= $val[$i]l;
+			  elseif($vall == "bb"){
+                 $text1_2= $vall;
 			  }
-              elseif($val[$i]l == "cc"){
-                 $text1_3= $val[$i]l;
+              elseif($vall == "cc"){
+                 $text1_3= $vall;
 			  }
-			  elseif($val[$i]l == "1"){
-                 $text2_1= $val[$i]l;
+			  elseif($vall == "1"){
+                 $text2_1= $vall;
 			  }
-			  elseif($val[$i]l == "2"){
-                 $text2_2= $val[$i]l;
+			  elseif($vall == "2"){
+                 $text2_2= $vall;
 			  }
  }
 		//$text1 = ปั๊ม 1 เปิด
@@ -87,26 +87,24 @@ if ( sizeof($deCode['events']) > 0 ) {
         foreach ($matches as $val) {
               //$text = $val[0];
 
-			  if($val[$i] == "ใช่ไหม"){
-				  $text = $val[$i];
+			  if($val == "ใช่ไหม"){
+				  $text = $val;
               }
-			  elseif($val[$i] == "aa"){
-                 $text1_1 = $val[$i];
+			  elseif($val == "aa"){
+                 $text1_1 = $val;
 			  }
-			  elseif($val[$i] == "bb"){
-                 $text1_2= $val[$i];
+			  elseif($val == "bb"){
+                 $text1_2= $val;
 			  }
-              elseif($val[$i] == "cc"){
-                 $text1_3= $val[$i];
+              elseif($val == "cc"){
+                 $text1_3= $val;
 			  }
-			  elseif($val[$i] == "1"){
-                 $text2_1= $val[$i];
+			  elseif($val == "1"){
+                 $text2_1= $val;
 			  }
-			  elseif($val[$i] == "2"){
-                 $text2_2= $val[$i];
+			  elseif($val == "2"){
+                 $text2_2= $val;
 			  }
-			  
-			  $i++;
         }
 /*		//$text1 = ปั๊ม 1 เปิด
         $text1= $text1_1.$text2_1.$text1_2;
