@@ -8,6 +8,17 @@ $deCode = json_decode($datas, true);   // Decode JSON to Array
 //ประกาศ Array คำคอบ
 $answer =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอบเผือกครับ","ว่างมากเหรอ","ใช่แล้ว","ใช่เลย","มั่วแระ","แม่นแล้ว","หมันเลย","ใช่แล้วไงอะ");
 // Test Code Zone
+
+$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('C37KqAyzCZVk/hEGnpkz2ztML1DbHJE7JQDC4l8+USFND54JAxPAA/TXHFiBl+utcYVRWj27bdl2wzdRxHC4LonEIHj96W2npcTLFdE3DlmB1OlkqhS5PSQDO2ngZQ4JUpyiPjt8sloCnNgJagz4DgdB04t89/1O/w1cDnyilFU=');
+$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '16f5d3687cdd2b8b7fd918380f84922a']);
+$response = $bot->getProfile('U8ec1d38548c43fb44dd07b90df4ac427');
+if ($response->isSucceeded()) {
+    $profile = $response->getJSONDecodedBody();
+    echo $profile['displayName'];
+    echo $profile['pictureUrl'];
+    echo $profile['statusMessage'];
+}
+
 /*
 if ( sizeof($deCode['destination']) > 0 ) {
 	foreach ($deCode['destination'] as $event1) {
