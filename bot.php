@@ -19,21 +19,22 @@ $text_open1 = iconv("tis-620","utf-8",$text_wrong);
 
 //Array ( [userId] => U8ec1d38548c43fb44dd07b90df4ac427 [displayName] => Karaket Saefung [pictureUrl] => https://profile.line-scdn.net/0hSjj7sgVEDEVXTie7ridzEmsLAiggYAoNL3hHI3dKWnEtKRhDYi0Tc3dIV31zdx5GPyBAKiZHVSBy [result] => E )
 
-$r = array("ใช่ไหม","ใช่เหรอ","ปั๊ม","เปิด","เปิด","1","2");
+$r = array("ee","ff","aa","bb","cc","1","2");
 $r = iconv("utf-8","tis-620",$r);
 print_r($r);
+
  foreach ($r as $vall) {
 
               if($vall[$i] == "ใช่ไหม" || $vall[$i] == "ใช่เหรอ"){
 				  $text = $vall[$i];
               }
-			  elseif($vall[$i] == "ปั๊ม"){
+			  elseif($vall[$i] == "aa"){
                  $text1_1 = $vall[$i];
 			  }
-			  elseif($vall[$i] == "เปิด"){
+			  elseif($vall[$i] == "bb"){
                  $text1_2= $vall[$i];
 			  }
-              elseif($vall[$i] == "ปิด"){
+              elseif($vall[$i] == "cc"){
                  $text1_3= $vall[$i];
 			  }
 			  elseif($vall[$i] == "1"){
