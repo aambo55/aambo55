@@ -44,7 +44,7 @@ if ( sizeof($deCode['events']) > 0 ) {
     }
 }
 echo "OK <br>";
-        $answers =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย"
+        $answers =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย");
 		$random = array_rand($answers,1);
 		$text_reply1 = $answers[$random[0]];
 		echo $text_reply1;
