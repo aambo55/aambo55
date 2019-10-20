@@ -13,6 +13,15 @@ if ( sizeof($deCode['events']) > 0 ) {
 		$text_reply="ใช่ครับ";
 		$text_reply= iconv("tis-620","utf-8",$text_reply); 
         $text = iconv("utf-8","tis-620",$text); 
+    
+       // $html = "ขี้เหร่ใช่ไหม";
+        preg_match_all("/(ใช่ไหม)/", $text, $matches, PREG_SET_ORDER);
+
+        foreach ($matches as $val) {
+              $text = $val[0];
+        }
+
+       //print $text;
 
 		if($text == "ใช่ไหม"){
            $text = $text_reply;
@@ -34,16 +43,6 @@ if ( sizeof($deCode['events']) > 0 ) {
     }
 }
 echo "OK <br>";
-
-$html = "<b>bold text</b><a href=howdy.html>click me</a>";
-
-preg_match_all("/(ow)/", $html, $matches, PREG_SET_ORDER);
-
-foreach ($matches as $val) {
-   $textm = $val[0];
-}
-
-print $textm;
 
 function send_reply_message($url, $post_header, $post_body)
 {
