@@ -25,7 +25,6 @@ if ( sizeof($deCode['events']) > 0 ) {
         //แปลงรหัสให้เพื่อให้โปรแกรมเอามาเปรียบเทียบได้
 		$text_reply= iconv("tis-620","utf-8",$answer[$random_keys]); 
         $text = iconv("utf-8","tis-620",$text); 
-        print_r $deCode;
        //ค้นหาคำที่ต้องการจะโต้ตอบ
         preg_match_all("/(ใช่ไหม)(ใช่เหรอ)(เปิดปั๊ม)/", $text, $matches, PREG_SET_ORDER);
 
@@ -48,6 +47,7 @@ if ( sizeof($deCode['events']) > 0 ) {
     }
 }
 echo "OK <br>";
+        print_r $deCode;
 
 function send_reply_message($url, $post_header, $replyToken, $text)
 {
