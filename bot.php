@@ -21,10 +21,8 @@ $text_open1 = iconv("tis-620","utf-8",$text_wrong);
 
 $r = array("ee","ff","aa","bb","cc","1","2");
 //$r = iconv("utf-8","tis-620",$r);
-print_r($r);
- 
 foreach ($r as $vall) {
-              print $vall[$i]."<br>";
+              print $vall."<br>";
               if($vall[$i] == "ใช่ไหม" || $vall[$i] == "ใช่เหรอ"){
 				  $text = $vall[$i];
               }
@@ -45,9 +43,6 @@ foreach ($r as $vall) {
 			  elseif($vall[$i] == "2"){
                  $text2_2= $vall[$i];
 			  }
-			  
-			  $i++;
-			  print $i;
  }
 		//$text1 = ปั๊ม 1 เปิด
         $text1= $text1_1.$text2_1.$text1_2;
