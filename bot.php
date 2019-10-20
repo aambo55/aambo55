@@ -30,10 +30,10 @@ foreach ($matches as $val) {
               }
 			  elseif($val[$i] == "aa"){
                  $text1_1 = $val[$i];
-			  }
+			  }else{}
 
                $i++;
-        }
+}
 		print $text1_1."<BR>";
 /*
 
