@@ -23,7 +23,7 @@ $text5 ='foobarbaz';
 preg_match_all('/(foo)(bar)(baz)/', $text5 , $matches, PREG_OFFSET_CAPTURE);
 print_r($matches);
 foreach ($matches as $testt){
-	print $testt[0];
+	print $testt."<br>";
 }
 /*
 
@@ -50,7 +50,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 		$text_reply= iconv("tis-620","utf-8",$answer[$random_keys]); 
         $text = iconv("utf-8","tis-620",$text); 
        //ค้นหาคำที่ต้องการจะโต้ตอบ
-        preg_match_all("/(ใช่ไหม)(ใช่เหรอ)/", $text, $matches, PREG_SET_ORDER);
+        preg_match_all("/(ใช่ไหม)/", $text, $matches, PREG_SET_ORDER);
 
         foreach ($matches as $val) {
               $text = $val[0];
