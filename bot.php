@@ -9,9 +9,8 @@ $deCode = json_decode($datas, true);   // Decode JSON to Array
 $answer =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอบเผือกครับ","ว่างมากเหรอ","ใช่แล้ว","ใช่เลย","มั่วแระ","แม่นแล้ว","หมันเลย","ใช่แล้วไงอะ");
 
 // Test Code Zone
-$results2 = '{"events":[{"type":"message","replyToken":"254f2da0a8d5454cb5023f5aa0bb862b","source":{"userId":"U8ec1d38548c43fb44dd07b90df4ac427","type":"user"},
-"timestamp":1571539105278,"message":{"type":"text","id":"10771871390735","text":"\u0e43\u0e0a\u0e48\u0e40\u0e2b\u0e23\u0e2d"}}],"destination":"Ub7cffc449b3567dd78a3b1b8b58555d7"}';
-//Array ( [result] => E [message] => {"userId":"U8ec1d38548c43fb44dd07b90df4ac427","displayName":"Karaket Saefung","pictureUrl":"https://profile.line-scdn.net/0hSjj7sgVEDEVXTie7ridzEmsLAiggYAoNL3hHI3dKWnEtKRhDYi0Tc3dIV31zdx5GPyBAKiZHVSBy"} ) OK 
+// '{"events":[{"type":"message","replyToken":"254f2da0a8d5454cb5023f5aa0bb862b","source":{"userId":"U8ec1d38548c43fb44dd07b90df4ac427","type":"user"},"timestamp":1571539105278,"message":{"type":"text","id":"10771871390735","text":"\u0e43\u0e0a\u0e48\u0e40\u0e2b\u0e23\u0e2d"}}],"destination":"Ub7cffc449b3567dd78a3b1b8b58555d7"}';
+//Array ( [result] => E [message] => {"userId":"U8ec1d38548c43fb44dd07b90df4ac427","displayName":"Karaket Saefung","pictureUrl":"https://profile.line-scdn.net/0hSjj7sgVEDEVXTie7ridzEmsLAiggYAoNL3hHI3dKWnEtKRhDYi0Tc3dIV31zdx5GPyBAKiZHVSBy"} )
 
 $userId = "U8ec1d38548c43fb44dd07b90df4ac427";
 $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
@@ -26,9 +25,7 @@ print $results1['displayName'];
  //   echo $event1['displayName'];
 //}
 /*
-if ( sizeof($deCode['destination']) > 0 ) {
-	foreach ($deCode['destination'] as $event1) {
-echo $deCode['destination'];
+
 }*/
 //End test zone
 
@@ -109,9 +106,10 @@ function getLINEProfile($datas)
           $datasReturn['result'] = 'S';
           $datasReturn['message'] = 'Success';
       }else{
+		$datasReturn = json_decode($response, true);
         $datasReturn['result'] = 'E';
         //  $datasReturn['message'] = $response;
-		$datasReturn = json_decode($response, true);
+		
 		 
       }
    }   return $datasReturn;
