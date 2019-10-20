@@ -30,7 +30,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 		if($text == "ใช่ไหม" || $text == "ใช่เหรอ" ){
            $text = $text_reply;
 
-            $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body, $replyToken, $text);
+            $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
             echo "Result: ".$send_result."\r\n";
 		}
 
@@ -42,7 +42,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 }
 echo "OK <br>";
 
-function send_reply_message($url, $post_header, $post_body, $replyToken, $text)
+function send_reply_message($url, $post_header, $replyToken, $text)
 {
     $data = [
 			   'replyToken' => $replyToken,
