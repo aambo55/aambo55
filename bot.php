@@ -11,11 +11,11 @@ if ( sizeof($deCode['events']) > 0 ) {
         $reply_message = '';
         $replyToken = $event['replyToken'];
         $text = $event['message']['text'];
-		$text_reply="ใช่ครับ";
+		$random = array_rand($answer,1);
+		$text_reply = $answer[$random[0]];
 		$text_reply= iconv("tis-620","utf-8",$text_reply); 
         $text = iconv("utf-8","tis-620",$text); 
-        $random = array_rand($answer,1);
-		$text = $answer[$random[0]];
+        
        // $html = "ขี้เหร่ใช่ไหม";
         preg_match_all("/(ใช่ไหม)/", $text, $matches, PREG_SET_ORDER);
 
