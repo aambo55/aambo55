@@ -47,7 +47,7 @@ if ( sizeof($deCode['events']) > 0 ) {
     }
 }
 echo "OK <br>";
-        print_r $deCode;
+        print_r($deCode);
 
 function send_reply_message($url, $post_header, $replyToken, $text)
 {
