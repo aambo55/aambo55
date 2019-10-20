@@ -87,7 +87,7 @@ if ( sizeof($deCode['events']) > 0 ) {
         foreach ($matches as $val) {
               //$text = $val[0];
 
-			  if($val[$i] == "ใช่ไหม" || $val[$i] == "ใช่เหรอ"){
+			  if($val[$i] == "ใช่ไหม"){
 				  $text = $val[$i];
               }
 			  elseif($val[$i] == "ปั๊ม"){
