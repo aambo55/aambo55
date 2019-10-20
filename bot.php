@@ -25,11 +25,11 @@ foreach ($matches as $val) {
               //$text = $val[0];
 			  
 
-			  if($val[$i] == "ใช่ไหม"){
-				  $text = $val[$i];
+			  if($val == "ใช่ไหม"){
+				  $text = $val;
               }
-			  elseif($val[$i] == "aa"){
-                 $text1_1 = $val[$i];
+			  elseif($val == "aa"){
+                 $text1_1 = $val;
 			  }else{}
 
                $i++;
