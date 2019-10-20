@@ -35,7 +35,7 @@ foreach ($matches as $val) {
 
                $i++;
 }
-		print $text1_1."<BR>";
+	//	print $text1_1."<BR>";
 /*
 
 }*/
