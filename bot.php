@@ -9,8 +9,9 @@ $deCode = json_decode($datas, true);   // Decode JSON to Array
 $answer =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอบเผือกครับ","ว่างมากเหรอ","ใช่แล้ว","ใช่เลย","มั่วแระ","แม่นแล้ว","หมันเลย","ใช่แล้วไงอะ");
 
 // Test Code Zone
-$results2 = '{"events":[{"type":"message","replyToken":"254f2da0a8d5454cb5023f5aa0bb862b","source":{"userId":"U8ec1d38548c43fb44dd07b90df4ac427","type":"user"},"timestamp":1571539105278,"message":{"type":"text","id":"10771871390735","text":"\u0e43\u0e0a\u0e48\u0e40\u0e2b\u0e23\u0e2d"}}],"destination":"Ub7cffc449b3567dd78a3b1b8b58555d7"}';
-
+$results2 = '{"events":[{"type":"message","replyToken":"254f2da0a8d5454cb5023f5aa0bb862b","source":{"userId":"U8ec1d38548c43fb44dd07b90df4ac427","type":"user"},
+"timestamp":1571539105278,"message":{"type":"text","id":"10771871390735","text":"\u0e43\u0e0a\u0e48\u0e40\u0e2b\u0e23\u0e2d"}}],"destination":"Ub7cffc449b3567dd78a3b1b8b58555d7"}';
+//Array ( [result] => E [message] => {"userId":"U8ec1d38548c43fb44dd07b90df4ac427","displayName":"Karaket Saefung","pictureUrl":"https://profile.line-scdn.net/0hSjj7sgVEDEVXTie7ridzEmsLAiggYAoNL3hHI3dKWnEtKRhDYi0Tc3dIV31zdx5GPyBAKiZHVSBy"} ) OK 
 
 $userId = "U8ec1d38548c43fb44dd07b90df4ac427";
 $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
@@ -18,7 +19,7 @@ $LINEDatas['token'] = $ACCESS_TOKEN;
 $results1 = getLINEProfile($LINEDatas);
 //print_r($results1);
 print_r($results1);
-foreach ($results1['message'] as $event3) {
+foreach ($results1 as $event3) {
   $text5 = $event3['displayName'];
   echo $text5;
 }
