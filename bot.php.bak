@@ -22,7 +22,6 @@ $text_open1 = iconv("tis-620","utf-8",$text_wrong);
 $r = array("ee","ff","aa","bb","cc","1","2");
 //$r = iconv("utf-8","tis-620",$r);
 foreach ($r as $vall) {
-              print $vall."<br>";
               if($vall == "ใช่ไหม" || $vall == "ใช่เหรอ"){
 				  $text = $vall;
               }
