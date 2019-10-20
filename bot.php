@@ -18,12 +18,12 @@ $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
 $LINEDatas['token'] = $ACCESS_TOKEN;
 $results1 = getLINEProfile($LINEDatas);
 
-//print_r($results1);
-$results3 = json_decode($results1, true);
-print_r($results3);
-foreach ($results3 as $event1) {
-    echo $event1['displayName'];
-}
+print_r($results1);
+//$results3 = json_decode($results1, true);
+//print_r($results3);
+//foreach ($results3 as $event1) {
+ //   echo $event1['displayName'];
+//}
 /*
 if ( sizeof($deCode['destination']) > 0 ) {
 	foreach ($deCode['destination'] as $event1) {
@@ -108,8 +108,9 @@ function getLINEProfile($datas)
           $datasReturn['result'] = 'S';
           $datasReturn['message'] = 'Success';
       }else{
-          $datasReturn['result'] = 'E';
-          $datasReturn['message'] = $response;
+        //  $datasReturn['result'] = 'E';
+        //  $datasReturn['message'] = $response;
+		 $datasReturn = json_decode($response, true);
       }
    }   return $datasReturn;
 }
