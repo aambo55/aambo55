@@ -13,18 +13,8 @@ $answer =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอ
 
 //Array ( [userId] => U8ec1d38548c43fb44dd07b90df4ac427 [displayName] => Karaket Saefung [pictureUrl] => https://profile.line-scdn.net/0hSjj7sgVEDEVXTie7ridzEmsLAiggYAoNL3hHI3dKWnEtKRhDYi0Tc3dIV31zdx5GPyBAKiZHVSBy [result] => E )
 
-$userId = "U8ec1d38548c43fb44dd07b90df4ac427";
-$LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
-$LINEDatas['token'] = $ACCESS_TOKEN;
-$results1 = getLINEProfile($LINEDatas);
 
-//print_r($results1);
-//print $results1['displayName'];
-//$results3 = json_decode($results1, true);
-//print_r($results3);
-//foreach ($results3 as $event1) {
- //   echo $event1['displayName'];
-//}
+
 /*
 
 }*/
@@ -36,7 +26,14 @@ if ( sizeof($deCode['events']) > 0 ) {
         $replyToken = $event['replyToken'];
         $text = $event['message']['text'];
 
-		$id = $event['source']['userId'];
+		//Get user Profile 
+		$userId = $event['source']['userId'];
+        $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
+        $LINEDatas['token'] = $ACCESS_TOKEN;
+        $idname = getLINEProfile($LINEDatas); 
+
+
+		//*************************************
         // สุ่มคำตอบ
 		$random_keys = array_rand($answer);
         //แปลงรหัสให้เพื่อให้โปรแกรมเอามาเปรียบเทียบได้
@@ -52,8 +49,9 @@ if ( sizeof($deCode['events']) > 0 ) {
        //print $text;
 
 		if($text == "ใช่ไหม" || $text == "ใช่เหรอ" ){
-           $text = $text_reply;
-           $text = $id;
+           $text = "@".$idname['displayName']." ".$text_reply;
+
+          // $text = $userId; //Debug userID
             $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
             echo "Result: ".$send_result."\r\n";
 		}
