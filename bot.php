@@ -50,25 +50,17 @@ if ( sizeof($deCode['events']) > 0 ) {
 		$text_reply= iconv("tis-620","utf-8",$answer[$random_keys]); 
         $text = iconv("utf-8","tis-620",$text); 
        //ค้นหาคำที่ต้องการจะโต้ตอบ
-        preg_match_all("/(ใช่ไหม)(ใช่เหรอ)/", $text, $matches, PREG_SET_ORDER);
+        preg_match_all("/(ใช่ไหม)/", $text, $matches, PREG_SET_ORDER);
 
         foreach ($matches as $val) {
               $text = $val[0];
 
         }
 
-		if($text == "ใช่ไหม" || $text == "ใช่เหรอ" ){
+		if($text == "ใช่ไหม"){
            $text = "@".$idname['displayName']." ".$text_reply;
 
           // $text = $userId; //Debug userID
-            $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
-            echo "Result: ".$send_result."\r\n";
-		}
-		if($text1_1 == "aa"){
-			$text1_1 = iconv("tis-620","utf-8",$text1_1);
-            $text_reply = $text1_1;
-			    
-            $text = $text_reply;
             $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
             echo "Result: ".$send_result."\r\n";
 		}
