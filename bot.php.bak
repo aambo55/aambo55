@@ -20,7 +20,7 @@ $results1 = getLINEProfile($LINEDatas);
 //print_r($results1);
 
 $results2 = $results1['message'];
-foreach ($results2['userId'] as $event1) {
+foreach ($results2 as $event1) {
     echo $event1['displayName'];
 }
 /*
