@@ -10,7 +10,7 @@ $answer =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอ
 
 if ( sizeof($deCode['events']) > 0 ) {
     foreach ($deCode['events'] as $event) {
-       // $reply_message = '';
+        $reply_message = '';
         $replyToken = $event['replyToken'];
         $text = $event['message']['text'];
         // สุ่มคำตอบ
