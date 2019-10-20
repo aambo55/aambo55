@@ -30,6 +30,8 @@ foreach ($r as $vall) {
               }
 			  elseif($vall[$i] == "aa"){
                  $text1_1 = $vall[$i];
+				 print $text1_1 ;
+
 			  }
 			  elseif($vall[$i] == "bb"){
                  $text1_2= $vall[$i];
