@@ -56,7 +56,7 @@ if ( sizeof($deCode['events']) > 0 ) {
             echo "Result: ".$send_result."\r\n";
 		}elseif($text == "เปิดปั๊ม" || $text == "ปั๊มเปิด" ){
 			$text_reply = "ระบุด้วย เปิดปั๊มถังที่ 1 หรือ เปิดปั๊มถังที่ 2";
-			iconv("tis-620","utf-8",$answer[$random_keys]);
+			$text_reply = iconv("tis-620","utf-8",$text_reply);
             $text = "@".$idname['displayName']." ".$text_reply;
 
           // $text = $userId; //Debug userID
