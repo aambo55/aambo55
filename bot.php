@@ -47,7 +47,7 @@ if ( sizeof($deCode['events']) > 0 ) {
         $text_reply = yes_no_message($text);
 		if($text_reply <> ''){
 		   $text_reply= iconv("tis-620","utf-8",$text_reply);
-           $text = $idname['displayName']."<br>".$text_reply;
+           $text = $idname['displayName']."\n".$text_reply;
 
           // $text = $userId; //Debug userID
             $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
