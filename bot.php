@@ -60,6 +60,7 @@ echo "<br> OK <br>";
 function how_control($text)
 {
    $check_order ='';
+   $text_select = '';
    $order_command = "\nการสั่งงานระบบ ให้พิมพ์คำสั่งตามข้อความด้านล่าง  \n 1. แจ้งสถานะ   \n 2. เปิดปั๊ม 1(หรือ 2) \n 3. ปิดปั๊ม 1(หรือ  2)";
    $text_select = $text;
    preg_match('/(คำสั่ง)/', $text_select, $matches1, PREG_OFFSET_CAPTURE);
@@ -96,7 +97,7 @@ function yes_no_message($text)
 		$answertrue =array("จริงครับ","จริง เคยเห็น","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอบเผือกครับ","ว่างมากเหรอ","จริงแท้แน่นอน","เป็นเรื่องจริง","มั่วแระ","แม่นแล้ว","จริงแล้วไงอะ","จริงซิจ๊ะ","ไม่จริงอะ");
      // สุ่มคำตอบ
 		$random_keys = array_rand($answeryes);
-		
+		$text_select = '';
 		$check_order ='';
         //ค้นหาคำที่ต้องการจะโต้ตอบ
         $text_select = $text;
