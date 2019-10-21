@@ -1,6 +1,7 @@
 <?php
 
-   preg_match('/(foo)(baz)(bar)/', 'foobarbaz', $matches, PREG_OFFSET_CAPTURE);
+   $keywords = preg_split("/(hypertext)(language)(programming)/", "hypertextlanguageprogramming");
+print_r($keywords);
 
    print_r($matches);
 /*
