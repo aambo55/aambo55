@@ -102,9 +102,9 @@ function yes_no_message($text)
         //ค้นหาคำที่ต้องการจะโต้ตอบ
         $text_select = $text;
         preg_match('/(ใช่ไหม)/', $text_select, $matches1, PREG_OFFSET_CAPTURE);
-        preg_match('/(ใช่เหรอ)/', $text_select, $matches1, PREG_OFFSET_CAPTURE);
+        preg_match('/(ใช่เหรอ)/', $text_select, $matches2, PREG_OFFSET_CAPTURE);
         preg_match('/(จริงไหม)/', $text_select, $matches3, PREG_OFFSET_CAPTURE);
-		preg_match('/(จริงเหรอ)/', $text_select, $matches3, PREG_OFFSET_CAPTURE);
+		preg_match('/(จริงเหรอ)/', $text_select, $matches4, PREG_OFFSET_CAPTURE);
    
         // print_r($matches);
         if($matches1[0][0]=="ใช่ไหม"){
@@ -112,7 +112,7 @@ function yes_no_message($text)
 	        $check_order = '1';
      
         }
-        elseif($matches1[0][0]=="ใช่เหรอ"){
+        elseif($matches2[0][0]=="ใช่เหรอ"){
          
 		    $check_order = '1';
 		    
@@ -122,7 +122,7 @@ function yes_no_message($text)
 		    $check_order = '2';
      
         }
-		elseif($matches3[0][0]=="จริงเหรอ"){
+		elseif($matches4[0][0]=="จริงเหรอ"){
             $y = array_rand($answertrue);
 		    $check_order = '2';
      
