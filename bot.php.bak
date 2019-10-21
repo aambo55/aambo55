@@ -96,7 +96,7 @@ function yes_no_message($text)
         $answeryes =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอบเผือกครับ","ว่างมากเหรอ","ใช่แล้ว","ใช่เลย","มั่วแระ","แม่นแล้ว","หมันเลย","ใช่แล้วไงอะ");
 		$answertrue =array("จริงครับ","จริง เคยเห็น","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอบเผือกครับ","ว่างมากเหรอ","จริงแท้แน่นอน","เป็นเรื่องจริง","มั่วแระ","แม่นแล้ว","จริงแล้วไงอะ","จริงซิจ๊ะ","ไม่จริงอะ");
      // สุ่มคำตอบ
-		$answer = array_rand($answeryes);
+		$k = array_rand($answeryes);
 		$text_select = '';
 		$check_order ='';
         //ค้นหาคำที่ต้องการจะโต้ตอบ
@@ -117,13 +117,16 @@ function yes_no_message($text)
 		    
         }
         elseif($matches3[0][0]=="จริงไหม"){
-            $$answer = array_rand($answertrue);
-		    $check_order = '1';
+            $y = array_rand($answertrue);
+		    $check_order = '2';
      
         }
         if($check_order == '1'){
-	        $text_reply = $answer;
+	        $text_reply = $answeryes[$k];
         }
+		elseif($check_order == '2'){
+		    $text_reply = $answertrue[$y];
+		}
 
    return $text_reply;
 
