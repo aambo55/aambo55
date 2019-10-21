@@ -1,16 +1,6 @@
 <?php
 
-   $text = "sdffgrfdfffswa";
-   preg_match_all("/(fff)/", $text, $matches, PREG_SET_ORDER);
-
-        foreach ($matches as $val) {
-              $text = $val[0];
-
-        }
-		print $text;
-
-   
-/*   preg_match('/(foo)(bar)(baz)/', 'foobarbaz', $matches, PREG_OFFSET_CAPTURE);
+   preg_match('/(foo)(bar)(baz)(xxx)/', 'foobarxxxbaz', $matches, PREG_OFFSET_CAPTURE);
 
    foreach($matches as $val){
 	      $i++;
