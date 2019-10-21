@@ -42,8 +42,12 @@ if ( sizeof($deCode['events']) > 0 ) {
 
         //แปลงรหัสให้เพื่อให้โปรแกรมเอามาเปรียบเทียบได้
 		
-        if($text_reply == ''){  $text_reply = how_control($text);  }
-        elseif($text_reply == ''){ $text_reply = yes_no_message($text); }
+        if($text_reply == ''){ 
+			$text_reply = how_control($text);  
+		}
+        if($text_reply == ''){ 
+			$text_reply = yes_no_message($text); 
+		}
 		if($text_reply <> ''){
 		   $text_reply= iconv("tis-620","utf-8",$text_reply);
            $text = $idname['displayName']." ".$text_reply;
