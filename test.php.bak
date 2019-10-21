@@ -3,7 +3,7 @@
 
    foreach($matches as $val){
 	      $i++;
-          print $val[$i][0]
+          print $val[$i][0]."<br>";
 		 
    }
 
