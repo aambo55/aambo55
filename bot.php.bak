@@ -47,7 +47,7 @@ if ( sizeof($deCode['events']) > 0 ) {
         $text_reply = yes_no_message($text);
 		if($text_reply <> ''){
 		   $text_reply= iconv("tis-620","utf-8",$text_reply);
-           $text = $idname['displayName']." ".$text_reply;
+           $text = $idname['displayName']."<br>".$text_reply;
 
           // $text = $userId; //Debug userID
             $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
@@ -58,24 +58,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 }
 echo "<br> OK <br>";
 
-function yes_no_message($text)
-{
-     //ประกาศ Array คำคอบ
-        $answer =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอบเผือกครับ","ว่างมากเหรอ","ใช่แล้ว","ใช่เลย","มั่วแระ","แม่นแล้ว","หมันเลย","ใช่แล้วไงอะ");
-     // สุ่มคำตอบ
-		$random_keys = array_rand($answer);
-        //ค้นหาคำที่ต้องการจะโต้ตอบ
-        preg_match_all("/(ใช่ไหม)/", $text, $matches, PREG_SET_ORDER);
 
-        foreach ($matches as $val) {
-              $text = $val[0];
-
-        }
-		if($text == "ใช่ไหม"){
-		      $text_reply = $answer[$random_keys]; 
-		}
-        return $text_reply;
-}
 
 function send_reply_message($url, $post_header, $replyToken, $text)
 {
@@ -127,5 +110,24 @@ function getLINEProfile($datas)
 		 
       }
    }   return $datasReturn;
+}
+
+function yes_no_message($text)
+{
+     //ประกาศ Array คำคอบ
+        $answer =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอบเผือกครับ","ว่างมากเหรอ","ใช่แล้ว","ใช่เลย","มั่วแระ","แม่นแล้ว","หมันเลย","ใช่แล้วไงอะ");
+     // สุ่มคำตอบ
+		$random_keys = array_rand($answer);
+        //ค้นหาคำที่ต้องการจะโต้ตอบ
+        preg_match_all("/(ใช่ไหม)/", $text, $matches, PREG_SET_ORDER);
+
+        foreach ($matches as $val) {
+              $text = $val[0];
+
+        }
+		if($text == "ใช่ไหม"){
+		      $text_reply = $answer[$random_keys]; 
+		}
+        return $text_reply;
 }
 ?>
