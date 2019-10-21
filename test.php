@@ -1,9 +1,8 @@
 <?php
 
-   $keywords = preg_split("/(hypertext)(language)(programming)/", "hypertextlanguageprogramming");
-print_r($keywords);
-
+   preg_match_all('/(foo)(bar)(baz)/', 'foobarbaz', $matches, PREG_OFFSET_CAPTURE);
    print_r($matches);
+
 /*
    foreach($matches as $val){
 	      $i++;
