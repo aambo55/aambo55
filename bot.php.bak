@@ -43,7 +43,7 @@ if ( sizeof($deCode['events']) > 0 ) {
         //แปลงรหัสให้เพื่อให้โปรแกรมเอามาเปรียบเทียบได้
 		
          
-        $text_reply = how_control($text);
+      //  $text_reply = how_control($text);
         $text_reply = yes_no_message($text);
 		if($text_reply <> ''){
 		   $text_reply= iconv("tis-620","utf-8",$text_reply);
@@ -58,7 +58,8 @@ if ( sizeof($deCode['events']) > 0 ) {
 }
 echo "<br> OK <br>";
 
-function how_control($text){
+function how_control($text)
+{
 
    $check_order ='';
    $order_command 'คำสั่งของระบบ\n 1. แจ้งสถานะ 1\n 2. เปิดปั๊ม 1(หรือ 2)\n  3. ปิดปั๊ม 1(หรือ 2)';
