@@ -2,7 +2,8 @@
 
  $answertrue =array("aa","bb","cc","dd","ee","ff","gg","hh","ii","jj","kk","ll","mm");
      // สุ่มคำตอบ
-		print_r(array_rand($answertrue));
+		$k=array_rand($answertrue);
+		print $answertrue[$k];
 /*
    $order_command 'คำสั่งของระบบ\n 1. แจ้งสถานะ 1\n 2. เปิดปั๊ม 1(หรือ 2)\n  3. ปิดปั๊ม 1(หรือ 2)';
    $text_select = 'foobarคำสั่งumhowpbhow3az';
