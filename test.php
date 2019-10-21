@@ -1,6 +1,6 @@
 <?php
 
-   preg_match('/(foo)(bar)(baz)(xxx)/', 'foobarbazxxx', $matches, PREG_OFFSET_CAPTURE);
+   preg_match('/(foo)(bar)(baz)(xxx)/', 'fooxxxbarbaz', $matches, PREG_OFFSET_CAPTURE);
 
    print_r($matches);
 /*
