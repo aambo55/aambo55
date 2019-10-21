@@ -84,7 +84,7 @@ function how_control($text)
 		 $check_order = '1';
      
    }
-   else{}
+   else{ $text_reply = '';}
    if($check_order == '1'){
 	   // $text_reply = $order_command;
    }
