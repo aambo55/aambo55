@@ -6,9 +6,9 @@
   $t3= $matches[3][0]."<br>";
 
 
-  print $t1;
-  print $t2;
- // print $t3;
+  echo $t1;
+  echo $t2;
+  echo $t3;
 //  foreach($matches as $val){
  //      print $val[$i][0]."<br>";
 //	   $i++
