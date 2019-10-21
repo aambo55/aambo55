@@ -43,7 +43,7 @@ if ( sizeof($deCode['events']) > 0 ) {
         //แปลงรหัสให้เพื่อให้โปรแกรมเอามาเปรียบเทียบได้
 		
          
-       
+        $text_reply = how_control($text);
         $text_reply = yes_no_message($text);
 		if($text_reply <> ''){
 		   $text_reply= iconv("tis-620","utf-8",$text_reply);
@@ -83,12 +83,11 @@ function how_control($text)
 		 $check_order = '1';
      
    }
-   else{ $text_reply = '';}
    if($check_order == '1'){
-	   // $text_reply = $order_command;
+	    $text_reply = $order_command;
    }
 
- //  return $text_reply;
+   return $text_reply;
 
 }
 
