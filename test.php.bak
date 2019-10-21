@@ -1,6 +1,6 @@
 <?php
 
-   $text_select = 'foobarhow1pumpbaz';
+   $text_select = 'foobarhow2pumpbaz';
    preg_match('/(how1)/', $text_select, $matches, PREG_OFFSET_CAPTURE);
    preg_match('/(how2)/', $text_select, $matches, PREG_OFFSET_CAPTURE);
    preg_match('/(how3)/', $text_select, $matches, PREG_OFFSET_CAPTURE);
