@@ -87,7 +87,7 @@ function how_control($text)
    }
    if($check_order == '1'){$text_reply = $order_command;}
 
-   return $text_reply;
+ //  return $text_reply;
 
 }
 
