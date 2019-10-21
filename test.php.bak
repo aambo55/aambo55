@@ -1,9 +1,14 @@
 <?php
    $tt= preg_match('/(foo)(bar)(baz)/', 'foobarbaz', $matches, PREG_OFFSET_CAPTURE);
  //  print_r($matches)."<br>";
-  print $matches[1][0]."<br>";
-  print $matches[2][0]."<br>";
-  print $matches[3][0]."<br>";
+  $t1= $matches[1][0]."<br>";
+  $t2= $matches[2][0]."<br>";
+  $t3= $matches[3][0]."<br>";
+
+
+  print $t1;
+  print $t2;
+  print $t3;
 //  foreach($matches as $val){
  //      print $val[$i][0]."<br>";
 //	   $i++
