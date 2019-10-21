@@ -64,7 +64,7 @@ echo "<br> OK <br>";
 function how_control($text)
 {
    $check_order ='';
-   $order_command = 'คำสั่งของระบบ\n 1. แจ้งสถานะ 1\n 2. เปิดปั๊ม 1(หรือ 2)\n  3. ปิดปั๊ม 1(หรือ 2)';
+   $order_command = 'คำสั่งของระบบ \n 1. แจ้งสถานะ 1 \n 2. เปิดปั๊ม 1(หรือ 2) \n 3. ปิดปั๊ม 1(หรือ 2)';
    $text_select = $text;
    preg_match('/(คำสั่ง)/', $text_select, $matches1, PREG_OFFSET_CAPTURE);
    preg_match('/(วิธีใช้)/', $text_select, $matches2, PREG_OFFSET_CAPTURE);
