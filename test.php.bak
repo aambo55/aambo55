@@ -2,6 +2,8 @@
 
    preg_match('/(foo)(bar)(baz)(xxx)/', 'foobarxxxbaz', $matches, PREG_OFFSET_CAPTURE);
 
+   print_r($matches);
+/*
    foreach($matches as $val){
 	      $i++;
           print $matches[$i][0]."<br>";
