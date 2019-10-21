@@ -1,5 +1,9 @@
 <?php
 
+ $answertrue =array("aa","bb","cc","dd","ee","ff","gg","hh","ii","jj","kk","ll","mm");
+     // ÊØèÁ¤ÓµÍº
+		print array_rand($answertrue);
+/*
    $order_command '¤ÓÊÑè§¢Í§ÃÐºº\n 1. á¨é§Ê¶Ò¹Ð 1\n 2. à»Ô´»ÑêÁ 1(ËÃ×Í 2)\n  3. »Ô´»ÑêÁ 1(ËÃ×Í 2)';
    $text_select = 'foobar¤ÓÊÑè§umhowpbhow3az';
    preg_match('/(¤ÓÊÑè§)/', $text_select, $matches1, PREG_OFFSET_CAPTURE);
@@ -23,6 +27,9 @@
 		 print $order_command;
      
    }
+
+
+
  //  print $matches[0][0];
 /*
    foreach($matches as $val){
