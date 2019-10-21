@@ -1,8 +1,8 @@
 <?php
 
-   preg_match('/(bar)/', 'foobarbaz', $matches, PREG_OFFSET_CAPTURE);
+   preg_match('/(yes)/', 'foobaryesbaz', $matches, PREG_OFFSET_CAPTURE);
 
-   print $matches[0];
+   print $matches;
 /*
    foreach($matches as $val){
 	      $i++;
