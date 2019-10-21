@@ -43,7 +43,7 @@ if ( sizeof($deCode['events']) > 0 ) {
         //แปลงรหัสให้เพื่อให้โปรแกรมเอามาเปรียบเทียบได้
 		
          
-       
+        $text_reply = how_control($text);
         $text_reply = yes_no_message($text);
 		if($text_reply <> ''){
 		   $text_reply= iconv("tis-620","utf-8",$text_reply);
@@ -58,7 +58,37 @@ if ( sizeof($deCode['events']) > 0 ) {
 }
 echo "<br> OK <br>";
 
+function how_control($text){
 
+   $check_order ='';
+   $order_command 'คำสั่งของระบบ\n 1. แจ้งสถานะ 1\n 2. เปิดปั๊ม 1(หรือ 2)\n  3. ปิดปั๊ม 1(หรือ 2)';
+   $text_select = $text;
+   preg_match('/(คำสั่ง)/', $text_select, $matches1, PREG_OFFSET_CAPTURE);
+   preg_match('/(วิธีใช้)/', $text_select, $matches2, PREG_OFFSET_CAPTURE);
+   preg_match('/(การใช้งาน)/', $text_select, $matches3, PREG_OFFSET_CAPTURE);
+   
+  // print_r($matches);
+   if($matches1[0][0]=="คำสั่ง"){
+	 
+	 $check_order = '1';
+     
+   }
+   elseif($matches2[0][0]=="วิธีใช้"){
+         
+		 $check_order = '1';
+		 
+     
+   }
+   elseif($matches3[0][0]=="การใช้งาน"){
+         
+		 $check_order = '1';
+     
+   }
+   if($check_order == '1'){$text_reply = $order_command;}
+
+   return $text_reply;
+
+}
 
 function send_reply_message($url, $post_header, $replyToken, $text)
 {
