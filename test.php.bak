@@ -1,5 +1,5 @@
 <?php
-   $tt= preg_match('/(foo)(bar)(baz)/', 'foobarbaz', $matches, PREG_SET_ORDER);
+   $tt= preg_match('/(foo)(bar)(baz)/', 'foobarbaz', $matches, PREG_PATTERN_ORDER);
  //  print_r($matches)."<br>";
    $t= count($matches);
    print $t;
