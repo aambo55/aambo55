@@ -117,7 +117,7 @@ function yes_no_message($text)
 		    
         }
         elseif($matches3[0][0]=="จริงไหม"){
-            $answertrue = array_rand($answer);
+            $$answer = array_rand($answertrue);
 		    $check_order = '1';
      
         }
