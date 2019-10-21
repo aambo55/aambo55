@@ -1,8 +1,8 @@
 <?php
 
-   preg_match_all('/(baz)(bar)/', 'foobarbaz', $matches, PREG_OFFSET_CAPTURE);
-   print_r($matches);
+   preg_match('/(bar)/', 'foobarbaz', $matches, PREG_OFFSET_CAPTURE);
 
+   print $matches[0];
 /*
    foreach($matches as $val){
 	      $i++;
