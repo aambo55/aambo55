@@ -42,12 +42,8 @@ if ( sizeof($deCode['events']) > 0 ) {
 
         //แปลงรหัสให้เพื่อให้โปรแกรมเอามาเปรียบเทียบได้
 		
-        if($text_reply == ''){ 
-			$text_reply = how_control($text);  
-		}
-        if($text_reply == ''){ 
-			$text_reply = yes_no_message($text); 
-		}
+        if($text_reply == ''){ $text_reply = how_control($text);  } //บอกวิธีการสั่งงาน
+        if($text_reply == ''){ $text_reply = yes_no_message($text); }//ตอบกลับประโยคที่มีคำว่า ใช่ไหม
 		if($text_reply <> ''){
 		   $text_reply= iconv("tis-620","utf-8",$text_reply);
            $text = $idname['displayName']." ".$text_reply;
@@ -152,16 +148,34 @@ function yes_no_message($text)
         $answer =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอบเผือกครับ","ว่างมากเหรอ","ใช่แล้ว","ใช่เลย","มั่วแระ","แม่นแล้ว","หมันเลย","ใช่แล้วไงอะ");
      // สุ่มคำตอบ
 		$random_keys = array_rand($answer);
+		$check_order ='';
         //ค้นหาคำที่ต้องการจะโต้ตอบ
-        preg_match_all("/(ใช่ไหม)/", $text, $matches, PREG_SET_ORDER);
-
-        foreach ($matches as $val) {
-              $text = $val[0];
-
+        $text_select = $text;
+        preg_match('/(ใช่ไหม)/', $text_select, $matches1, PREG_OFFSET_CAPTURE);
+        preg_match('/(ใช่เหรอ)/', $text_select, $matches2, PREG_OFFSET_CAPTURE);
+        preg_match('/(ใช่ป่าว)/', $text_select, $matches3, PREG_OFFSET_CAPTURE);
+   
+        // print_r($matches);
+        if($matches1[0][0]=="ใช่ไหม"){
+	 
+	        $check_order = '1';
+     
         }
-		if($text == "ใช่ไหม"){
-		      $text_reply = $answer[$random_keys]; 
-		}
-        return $text_reply;
+        elseif($matches2[0][0]=="ใช่เหรอ"){
+         
+		    $check_order = '1';
+		    
+        }
+        elseif($matches3[0][0]=="ใช่ป่าว"){
+         
+		    $check_order = '1';
+     
+        }
+        if($check_order == '1'){
+	        $text_reply = $order_command;
+        }
+
+   return $text_reply;
+
 }
 ?>
