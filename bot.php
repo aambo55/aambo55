@@ -153,9 +153,9 @@ function yes_no_message($text)
 		$check_order ='';
         //ค้นหาคำที่ต้องการจะโต้ตอบ
         $text_select = $text;
-        preg_match('/(ใช่ไหม)/', $answer_yes , $matches1, PREG_OFFSET_CAPTURE);
-        preg_match('/(ใช่เหรอ)/', $answer_yes t, $matches2, PREG_OFFSET_CAPTURE);
-        preg_match('/(จริงไหม)/', $answer_true , $matches3, PREG_OFFSET_CAPTURE);
+        preg_match('/(ใช่ไหม)/', $text_select, $matches1, PREG_OFFSET_CAPTURE);
+        preg_match('/(ใช่เหรอ)/', $text_select, $matches2, PREG_OFFSET_CAPTURE);
+        preg_match('/(จริงไหม)/', $text_select, $matches3, PREG_OFFSET_CAPTURE);
    
         // print_r($matches);
         if($matches1[0][0]=="ใช่ไหม"){
