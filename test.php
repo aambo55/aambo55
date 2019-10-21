@@ -3,9 +3,10 @@
  //  print_r($matches)."<br>";
 
   foreach($matches as $val){
-       print $val[$i][0]."<br>";
+     //  print $val[$i][0]."<br>";
+	   print $i."<br>";
 	   $i++
-
+       
    }
 ?>
 
