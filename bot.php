@@ -145,15 +145,17 @@ function getLINEProfile($datas)
 function yes_no_message($text)
 {
      //ประกาศ Array คำคอบ
-        $answer =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอบเผือกครับ","ว่างมากเหรอ","ใช่แล้ว","ใช่เลย","มั่วแระ","แม่นแล้ว","หมันเลย","ใช่แล้วไงอะ");
+        $answer_yes =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอบเผือกครับ","ว่างมากเหรอ","ใช่แล้ว","ใช่เลย","มั่วแระ","แม่นแล้ว","หมันเลย","ใช่แล้วไงอะ","ขอถามทางบ้านดูก่อนนะ","จะใช่หรือไม่ใช่ก็อยู่เฉยๆไว้ดีกว่า");
+		$answer_true =array("จริงครับ","จริงๆเคยเห็น","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอบเผือกครับ","ว่างมากเหรอ","จริงแท้แน่นอน","เป็นเรื่องจริง","มั่วแระ","แม่นแล้ว","หมันเลย","จริงแล้วไงอะ","ขอถามเพื่อนดูก่อน","จริงซิจ๊ะ","ไม่จริงอะ","ตรวจสอบดูดีๆ");
      // สุ่มคำตอบ
-		$random_keys = array_rand($answer);
+		$random_keys = array_rand($answer_yes);
+		
 		$check_order ='';
         //ค้นหาคำที่ต้องการจะโต้ตอบ
         $text_select = $text;
         preg_match('/(ใช่ไหม)/', $text_select, $matches1, PREG_OFFSET_CAPTURE);
         preg_match('/(ใช่เหรอ)/', $text_select, $matches2, PREG_OFFSET_CAPTURE);
-        preg_match('/(ใช่ป่าว)/', $text_select, $matches3, PREG_OFFSET_CAPTURE);
+        preg_match('/(จริงไหม)/', $text_select, $matches3, PREG_OFFSET_CAPTURE);
    
         // print_r($matches);
         if($matches1[0][0]=="ใช่ไหม"){
@@ -166,13 +168,13 @@ function yes_no_message($text)
 		    $check_order = '1';
 		    
         }
-        elseif($matches3[0][0]=="ใช่ป่าว"){
-         
+        elseif($matches3[0][0]=="จริงไหม"){
+            $random_keys = array_rand($answer_true);
 		    $check_order = '1';
      
         }
         if($check_order == '1'){
-	        $text_reply = $order_command;
+	        $text_reply = $random_keys;
         }
 
    return $text_reply;
