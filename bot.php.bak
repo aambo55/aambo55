@@ -61,7 +61,7 @@ echo "<br> OK <br>";
 function how_control($text)
 {
    $check_order ='';
-   $order_command 'คำสั่งของระบบ\n 1. แจ้งสถานะ 1\n 2. เปิดปั๊ม 1(หรือ 2)\n  3. ปิดปั๊ม 1(หรือ 2)';
+   $order_command = 'คำสั่งของระบบ\n 1. แจ้งสถานะ 1\n 2. เปิดปั๊ม 1(หรือ 2)\n  3. ปิดปั๊ม 1(หรือ 2)';
    $text_select = $text;
    preg_match('/(คำสั่ง)/', $text_select, $matches1, PREG_OFFSET_CAPTURE);
    preg_match('/(วิธีใช้)/', $text_select, $matches2, PREG_OFFSET_CAPTURE);
@@ -76,20 +76,21 @@ function how_control($text)
    elseif($matches2[0][0]=="วิธีใช้"){
          
 		 $check_order = '1';
-		 
-     
+		    
    }
    elseif($matches3[0][0]=="การใช้งาน"){
          
 		 $check_order = '1';
      
    }
-   else{ $text_reply = '';}
+   else{
+	   $text_reply = '';
+   }
    if($check_order == '1'){
-	   // $text_reply = $order_command;
+	    $text_reply = $order_command;
    }
 
- //  return $text_reply;
+   return $text_reply;
 
 }
 
