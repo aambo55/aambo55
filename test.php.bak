@@ -2,7 +2,7 @@
 
    preg_match('/(yes)/', 'foobaryesbaz', $matches, PREG_OFFSET_CAPTURE);
 
-   print $matches;
+   print_r($matches);
 /*
    foreach($matches as $val){
 	      $i++;
