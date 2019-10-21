@@ -1,22 +1,25 @@
 <?php
 
-   $text_select = 'foobarhow1pumpbaz';
+   $text_select = 'foobarhow2pumpbaz';
    preg_match('/(how1)/', $text_select, $matches, PREG_OFFSET_CAPTURE);
+   preg_match('/(how2)/', $text_select, $matches, PREG_OFFSET_CAPTURE);
+   preg_match('/(how3)/', $text_select, $matches, PREG_OFFSET_CAPTURE);
 
   // print_r($matches);
    if($matches[0][0]=="how1"){
-	 preg_match('/(how2)/', $text_select, $matches, PREG_OFFSET_CAPTURE);
+	 
 	 print "how1";
-
-   }
-   elseif($matches[0][0]=="how2"){
-         preg_match('/(how3)/', $text_select, $matches, PREG_OFFSET_CAPTURE);
-		 print "how2";
      
    }
    elseif($matches[0][0]=="how2"){
-         preg_match('/(how3)/', $text_select, $matches, PREG_OFFSET_CAPTURE);
+         
 		 print "how2";
+		 
+     
+   }
+   elseif($matches[0][0]=="how3"){
+         
+		 print "how3";
      
    }
  //  print $matches[0][0];
@@ -35,4 +38,4 @@
 		}
     }
 	*/
-?>=
+?>
