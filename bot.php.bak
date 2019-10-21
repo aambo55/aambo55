@@ -89,7 +89,44 @@ function how_control($text)
    return $text_reply;
 
 }
+function yes_no_message($text)
+{
+     //ประกาศ Array คำคอบ
+        $answeryes =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอบเผือกครับ","ว่างมากเหรอ","ใช่แล้ว","ใช่เลย","มั่วแระ","แม่นแล้ว","หมันเลย","ใช่แล้วไงอะ");
+		$answertrue =array("จริงครับ","จริง เคยเห็น","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอบเผือกครับ","ว่างมากเหรอ","จริงแท้แน่นอน","เป็นเรื่องจริง","มั่วแระ","แม่นแล้ว","จริงแล้วไงอะ","จริงซิจ๊ะ","ไม่จริงอะ");
+     // สุ่มคำตอบ
+		$random_keys = array_rand($answeryes);
+		
+		$check_order ='';
+        //ค้นหาคำที่ต้องการจะโต้ตอบ
+        $text_select = $text;
+        preg_match('/(ใช่ไหม)/', $text_select, $matches1, PREG_OFFSET_CAPTURE);
+        preg_match('/(ใช่เหรอ)/', $text_select, $matches2, PREG_OFFSET_CAPTURE);
+        preg_match('/(จริงไหม)/', $text_select, $matches3, PREG_OFFSET_CAPTURE);
+   
+        // print_r($matches);
+        if($matches1[0][0]=="ใช่ไหม"){
+	 
+	        $check_order = '1';
+     
+        }
+        elseif($matches2[0][0]=="ใช่เหรอ"){
+         
+		    $check_order = '1';
+		    
+        }
+        elseif($matches3[0][0]=="จริงไหม"){
+            $random_keys = array_rand($answertrue);
+		    $check_order = '1';
+     
+        }
+        if($check_order == '1'){
+	        $text_reply = $random_keys;
+        }
 
+   return $text_reply;
+
+}
 function send_reply_message($url, $post_header, $replyToken, $text)
 {
     $data = [
@@ -142,42 +179,5 @@ function getLINEProfile($datas)
    }   return $datasReturn;
 }
 
-function yes_no_message($text)
-{
-     //ประกาศ Array คำคอบ
-        $answeryes =array("ใช่ครับ","ใช่ๆเห็นมากับตาเลย","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอบเผือกครับ","ว่างมากเหรอ","ใช่แล้ว","ใช่เลย","มั่วแระ","แม่นแล้ว","หมันเลย","ใช่แล้วไงอะ");
-		$answertrue =array("จริงครับ","จริง เคยเห็น","ไม่แน่ใจอะ","ไม่รู้ซิ","พอดีไม่ชอบเผือกครับ","ว่างมากเหรอ","จริงแท้แน่นอน","เป็นเรื่องจริง","มั่วแระ","แม่นแล้ว","จริงแล้วไงอะ","จริงซิจ๊ะ","ไม่จริงอะ");
-     // สุ่มคำตอบ
-		$random_keys = array_rand($answeryes);
-		
-		$check_order ='';
-        //ค้นหาคำที่ต้องการจะโต้ตอบ
-        $text_select = $text;
-        preg_match('/(ใช่ไหม)/', $text_select, $matches1, PREG_OFFSET_CAPTURE);
-        preg_match('/(ใช่เหรอ)/', $text_select, $matches2, PREG_OFFSET_CAPTURE);
-        preg_match('/(จริงไหม)/', $text_select, $matches3, PREG_OFFSET_CAPTURE);
-   
-        // print_r($matches);
-        if($matches1[0][0]=="ใช่ไหม"){
-	 
-	        $check_order = '1';
-     
-        }
-        elseif($matches2[0][0]=="ใช่เหรอ"){
-         
-		    $check_order = '1';
-		    
-        }
-        elseif($matches3[0][0]=="จริงไหม"){
-            $random_keys = array_rand($answertrue);
-		    $check_order = '1';
-     
-        }
-        if($check_order == '1'){
-	        $text_reply = $random_keys;
-        }
 
-   return $text_reply;
-
-}
 ?>
