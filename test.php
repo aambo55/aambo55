@@ -1,6 +1,6 @@
 <?php
    preg_match('/(foo)(bar)(baz)/', 'foobarbaz', $matches, PREG_OFFSET_CAPTURE);
-   print_r($matches)."<br>";
+ //  print_r($matches)."<br>";
   print $matches[1][0]."<br>";
   print $matches[2][0]."<br>";
   print $matches[3][0]."<br>";
