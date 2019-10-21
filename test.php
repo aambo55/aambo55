@@ -1,9 +1,25 @@
 <?php
 
-   preg_match('/(yes)/', 'foobaryesbaz', $matches, PREG_OFFSET_CAPTURE);
+   $text_select = 'foobarhow1pumpbaz';
+   preg_match('/(how1)/', $text_select, $matches, PREG_OFFSET_CAPTURE);
 
   // print_r($matches);
-  print $matches[0][0];
+   if($matches[0][0]=="how1"){
+	 preg_match('/(how2)/', $text_select, $matches, PREG_OFFSET_CAPTURE);
+	 print "how1";
+
+   }
+   elseif($matches[0][0]=="how2"){
+         preg_match('/(how3)/', $text_select, $matches, PREG_OFFSET_CAPTURE);
+		 print "how2";
+     
+   }
+   elseif($matches[0][0]=="how2"){
+         preg_match('/(how3)/', $text_select, $matches, PREG_OFFSET_CAPTURE);
+		 print "how2";
+     
+   }
+ //  print $matches[0][0];
 /*
    foreach($matches as $val){
 	      $i++;
@@ -19,4 +35,4 @@
 		}
     }
 	*/
-?>
+?>=
