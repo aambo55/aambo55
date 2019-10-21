@@ -1,7 +1,7 @@
 <?php
 
    $order_command '¤ÓÊÑè§¢Í§ÃÐºº\n 1. á¨é§Ê¶Ò¹Ð 1\n 2. à»Ô´»ÑêÁ 1(ËÃ×Í 2)\n  3. »Ô´»ÑêÁ 1(ËÃ×Í 2)';
-   $text_select = 'foobarhow2pumhowpbhow3az';
+   $text_select = 'foobar¤ÓÊÑè§umhowpbhow3az';
    preg_match('/(¤ÓÊÑè§)/', $text_select, $matches1, PREG_OFFSET_CAPTURE);
    preg_match('/(ÇÔ¸Õãªé)/', $text_select, $matches2, PREG_OFFSET_CAPTURE);
    preg_match('/(¡ÒÃãªé§Ò¹)/', $text_select, $matches3, PREG_OFFSET_CAPTURE);
