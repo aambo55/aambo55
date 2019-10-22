@@ -43,6 +43,8 @@ if ( sizeof($deCode['events']) > 0 ) {
         //แปลงรหัสให้เพื่อให้โปรแกรมเอามาเปรียบเทียบได้
 		
         if($text_reply == ''){ $text_reply = how_control($text);  } //บอกวิธีการสั่งงาน
+		if($text_reply == ''){ $text_reply = system_status($text);  } //แจ้งสถานะการทำงานของระะบบ
+		
         if($text_reply == ''){ $text_reply = yes_no_message($text); }//ตอบกลับประโยคที่มีคำว่า ใช่ไหม
 		if($text_reply <> ''){
 		   $text_reply= iconv("tis-620","utf-8",$text_reply);
@@ -56,6 +58,44 @@ if ( sizeof($deCode['events']) > 0 ) {
      }
 }
 echo "<br> OK <br>";
+
+function system_status($text)
+{
+   $check_order ='';
+   $text_select = '';
+   $temp_status = "xxx";
+   $moisture_status = "yyy";
+   $bin1_status = "on";
+   $bin2_status = "off";
+   $text_status = "\nสถานะของระบบปัจจุบัน\n อุณหถูมิ : ".$temp_status." ํC  ความชื้น RH : ".$moisture_status."%\n"." สถานะปั๊มน้ำถึงที่ 1 : ".$bin1_status."\n สถานะปั๊มน้ำถึงที่ 2 : ".$bin2_status;
+   $text_select = $text;
+   preg_match('/(แจ้งสถานะ)/', $text_select, $matches1, PREG_OFFSET_CAPTURE);
+   preg_match('/(แจ้ง สถานะ)/', $text_select, $matches2, PREG_OFFSET_CAPTURE);
+   preg_match('/(status)/', $text_select, $matches3, PREG_OFFSET_CAPTURE);
+   
+  // print_r($matches);
+   if($matches1[0][0]=="แจ้งสถานะ"){
+	 
+	 $check_order = '1';
+     
+   }
+   elseif($matches2[0][0]=="แจ้ง สถานะ"){
+         
+		 $check_order = '1';
+		    
+   }
+   elseif($matches3[0][0]=="status"){
+         
+		 $check_order = '1';
+     
+   }
+   if($check_order == '1'){
+	    $text_reply = $text_status;
+   }
+
+   return $text_reply;
+
+}
 
 function how_control($text)
 {
