@@ -101,7 +101,7 @@ function system_controll($text)
   // print_r($matches);
    // —Ëßº‘¥
    if($pump_wrong1[0][0]=="‡ª‘¥ª—Í¡"){ $text_reply = $order_command; }
-   elseif($pump_wrong1[0][0]=="ª‘¥ª—Í¡"){ $text_reply = $order_command; }
+   elseif($pump_wrong2[0][0]=="ª‘¥ª—Í¡"){ $text_reply = $order_command; }
    //ª—Í¡ 1 ‡ª‘¥
    elseif($pump1_1[0][0]=="‡ª‘¥ª—Í¡1"){ $text_reply = "\n‡ª‘¥ª—Í¡ 1 ·≈È«  ∂“π– : ".$bin1_on; }
    elseif($pump1_2[0][0]=="‡ª‘¥ª—Í¡ 1"){ $text_reply = "\n‡ª‘¥ª—Í¡ 1 ·≈È«  ∂“π– : ".$bin1_on; }
