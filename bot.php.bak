@@ -70,7 +70,7 @@ function system_controll($text)
    $bin2_on = "on";
    $bin2_off = "off";
    $order_command = "\nการสั่งงานระบบ ให้พิมพ์คำสั่งตามข้อความด้านล่าง  \n 1. แจ้งสถานะ   \n 2. เปิดปั๊ม 1(หรือ 2) \n 3. ปิดปั๊ม 1(หรือ  2) \n 4. ปิดปั๊มทั้งหมด  \n 5. เปิดปั๊มทั้งหมด)";
-   $text_status = "\nสถานะของระบบปัจจุบัน\n อุณหถูมิ : ".$temp_status." ํC  ความชื้น RH : ".$moisture_status."%\n"." สถานะปั๊มน้ำถังที่ 1 : ".$bin1_status."\n สถานะปั๊มน้ำถังที่ 2 : ".$bin2_status;
+   $text_status = "\nสถานะของระบบปัจจุบัน\n อุณหถูมิ : ".$temp_status." ํC\n  ความชื้น RH : ".$moisture_status."%\n"." สถานะปั๊มน้ำถังที่ 1 : ".$bin1_status."\n สถานะปั๊มน้ำถังที่ 2 : ".$bin2_status;
    $text_select = $text;
    
 
@@ -100,27 +100,27 @@ function system_controll($text)
    
   // print_r($matches);
    //ปั๊ม 1 เปิด
-   if($pump1_1[0][0]=="เปิดปั๊ม1"){ $text_reply = "\nเปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_on; }
-   elseif($pump1_2[0][0]=="เปิดปั๊ม 1"){ $text_reply = "\nเปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_on; }
-   elseif($pump1_3[0][0]=="pump 1 on"){ $text_reply = "\nเปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_on; }
+   if($pump1_1[0][0]=="เปิดปั๊ม1"){ $text_reply = "\nเปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_on.$text_status; }
+   elseif($pump1_2[0][0]=="เปิดปั๊ม 1"){ $text_reply = "\nเปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_on.$text_status; }
+   elseif($pump1_3[0][0]=="pump 1 on"){ $text_reply = "\nเปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_on.$text_status; }
    //ปั๊ม 1 ปิด
-   elseif($pump1_4[0][0]=="pump 1 off"){ $text_reply = "\nปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_off; }
-   elseif($pump1_5[0][0]=="ปิดปั๊ม1"){ $text_reply = "\nปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_off; }
-   elseif($pump1_6[0][0]=="ปิดปั๊ม 1"){ $text_reply = "\nปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_off; }
+   elseif($pump1_4[0][0]=="pump 1 off"){ $text_reply = "\nปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_off.$text_status; }
+   elseif($pump1_5[0][0]=="ปิดปั๊ม1"){ $text_reply = "\nปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_off.$text_status; }
+   elseif($pump1_6[0][0]=="ปิดปั๊ม 1"){ $text_reply = "\nปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_off.$text_status; }
    //ปั๊ม 2 เปิด
-   elseif($pump2_1[0][0]=="เปิดปั๊ม2"){ $text_reply = "\nเปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_on; }
-   elseif($pump2_2[0][0]=="เปิดปั๊ม 2"){ $text_reply = "\nเปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_on; }
-   elseif($pump2_3[0][0]=="pump 2 on"){ $text_reply = "\nเปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_on; }
+   elseif($pump2_1[0][0]=="เปิดปั๊ม2"){ $text_reply = "\nเปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_on.$text_status; }
+   elseif($pump2_2[0][0]=="เปิดปั๊ม 2"){ $text_reply = "\nเปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_on.$text_status; }
+   elseif($pump2_3[0][0]=="pump 2 on"){ $text_reply = "\nเปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_on.$text_status; }
    //ปั๊ม 2 ปิด
-   elseif($pump2_4[0][0]=="pump 2 off"){ $text_reply = "\nปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_off; }
-   elseif($pump2_5[0][0]=="ปิดปั๊ม2"){ $text_reply = "\nปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_off; }
-   elseif($pump2_6[0][0]=="ปิดปั๊ม 2"){ $text_reply = "\nปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_off; }
+   elseif($pump2_4[0][0]=="pump 2 off"){ $text_reply = "\nปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_off.$text_status; }
+   elseif($pump2_5[0][0]=="ปิดปั๊ม2"){ $text_reply = "\nปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_off.$text_status; }
+   elseif($pump2_6[0][0]=="ปิดปั๊ม 2"){ $text_reply = "\nปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_off.$text_status; }
    //เปิดปั๊มทุกตัว
-   elseif($pump12_1[0][0]=="pump all on"){ $text_reply = "\nเปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_on."\n"."เปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_on; }
-   elseif($pump12_2[0][0]=="เปิดปั๊มทั้งหมด"){ $text_reply = "\nเปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_on."\n"."เปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_on; }
+   elseif($pump12_1[0][0]=="pump all on"){ $text_reply = "\nเปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_on."\n"."เปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_on.$text_status; }
+   elseif($pump12_2[0][0]=="เปิดปั๊มทั้งหมด"){ $text_reply = "\nเปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_on."\n"."เปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_on.$text_status; }
    //ปิดปั๊มทุกตัว
-   elseif($pump12_3[0][0]=="ปิดปั๊มทั้งหมด"){ $text_reply = "\nปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_off."\n"."ปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_off; }
-   elseif($pump12_4[0][0]=="pump all off"){ $text_reply = "\nปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_off."\n"."ปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_off; }
+   elseif($pump12_3[0][0]=="ปิดปั๊มทั้งหมด"){ $text_reply = "\nปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_off."\n"."ปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_off.$text_status; }
+   elseif($pump12_4[0][0]=="pump all off"){ $text_reply = "\nปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_off."\n"."ปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_off.$text_status; }
    //สั่งผิด
    elseif($pump_wrong1[0][0]=="เปิดปั๊ม"){ $text_reply = $order_command; }
    elseif($pump_wrong2[0][0]=="ปิดปั๊ม"){ $text_reply = $order_command; }
