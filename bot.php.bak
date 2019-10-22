@@ -44,7 +44,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 		
         if($text_reply == ''){ $text_reply = how_control($text);  } //บอกวิธีการสั่งงาน
 		if($text_reply == ''){ $text_reply = system_status($text);  } //แจ้งสถานะการทำงานของระะบบ
-		
+		if($text_reply == ''){ $text_reply = system_controll($text);  } //สั่งให้ระบบทำงาน
         if($text_reply == ''){ $text_reply = yes_no_message($text); }//ตอบกลับประโยคที่มีคำว่า ใช่ไหม
 		if($text_reply <> ''){
 		   $text_reply= iconv("tis-620","utf-8",$text_reply);
