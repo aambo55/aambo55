@@ -137,7 +137,7 @@ function system_status($text)
    $moisture_status = "yyy";
    $bin1_status = "on";
    $bin2_status = "off";
-   $text_status = "\nสถานะของระบบปัจจุบัน\n อุณหถูมิ : ".$temp_status." ํC  ความชื้น RH : ".$moisture_status."%\n"." สถานะปั๊มน้ำถังที่ 1 : ".$bin1_status."\n สถานะปั๊มน้ำถังที่ 2 : ".$bin2_status;
+   $text_status = "\nสถานะของระบบปัจจุบัน\n อุณหถูมิ : ".$temp_status." ํC\n  ความชื้น RH : ".$moisture_status."%\n"." สถานะปั๊มน้ำถังที่ 1 : ".$bin1_status."\n สถานะปั๊มน้ำถังที่ 2 : ".$bin2_status;
    $text_select = $text;
    preg_match('/(แจ้งสถานะ)/', $text_select, $matches1, PREG_OFFSET_CAPTURE);
    preg_match('/(แจ้ง สถานะ)/', $text_select, $matches2, PREG_OFFSET_CAPTURE);
