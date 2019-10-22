@@ -99,11 +99,8 @@ function system_controll($text)
    preg_match('/(pump all off)/', $text_select, $pump12_4, PREG_OFFSET_CAPTURE);
    
   // print_r($matches);
-   //สั่งผิด
-   if($pump_wrong1[0][0]=="เปิดปั๊ม"){ $text_reply = $order_command; }
-   elseif($pump_wrong2[0][0]=="ปิดปั๊ม"){ $text_reply = $order_command; }
    //ปั๊ม 1 เปิด
-   elseif($pump1_1[0][0]=="เปิดปั๊ม1"){ $text_reply = "\nเปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_on; }
+   if($pump1_1[0][0]=="เปิดปั๊ม1"){ $text_reply = "\nเปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_on; }
    elseif($pump1_2[0][0]=="เปิดปั๊ม 1"){ $text_reply = "\nเปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_on; }
    elseif($pump1_3[0][0]=="pump 1 on"){ $text_reply = "\nเปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_on; }
    //ปั๊ม 1 ปิด
@@ -124,6 +121,9 @@ function system_controll($text)
    //ปิดปั๊มทุกตัว
    elseif($pump12_3[0][0]=="ปิดปั๊มทั้งหมด"){ $text_reply = "\nปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_off."\n"."ปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_off; }
    elseif($pump12_4[0][0]=="pump all off"){ $text_reply = "\nปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_off."\n"."ปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_off; }
+   //สั่งผิด
+   elseif($pump_wrong1[0][0]=="เปิดปั๊ม"){ $text_reply = $order_command; }
+   elseif($pump_wrong2[0][0]=="ปิดปั๊ม"){ $text_reply = $order_command; }
 
 
    return $text_reply;
