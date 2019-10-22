@@ -69,9 +69,13 @@ function system_controll($text)
    $bin1_off = "off";
    $bin2_on = "on";
    $bin2_off = "off";
-
+   $order_command = "\nการสั่งงานระบบ ให้พิมพ์คำสั่งตามข้อความด้านล่าง  \n 1. แจ้งสถานะ   \n 2. เปิดปั๊ม 1(หรือ 2) \n 3. ปิดปั๊ม 1(หรือ  2) \n 4. ปิดปั๊มทั้งหมด  \n 5. เปิดปั๊มทั้งหมด)";
    $text_status = "\nสถานะของระบบปัจจุบัน\n อุณหถูมิ : ".$temp_status." ํC  ความชื้น RH : ".$moisture_status."%\n"." สถานะปั๊มน้ำถังที่ 1 : ".$bin1_status."\n สถานะปั๊มน้ำถังที่ 2 : ".$bin2_status;
    $text_select = $text;
+   
+
+   preg_match('/(เปิดปั๊ม)/', $text_select, $pump_wrong1, PREG_OFFSET_CAPTURE);
+   preg_match('/(ปิดปั๊ม)/', $text_select, $pump_wrong2, PREG_OFFSET_CAPTURE);
    //ค้นหาคำเปิดปิดปั๊ม 1
    preg_match('/(เปิดปั๊ม1)/', $text_select, $pump1_1, PREG_OFFSET_CAPTURE);
    preg_match('/(เปิดปั๊ม 1)/', $text_select, $pump1_2, PREG_OFFSET_CAPTURE);
@@ -95,8 +99,11 @@ function system_controll($text)
    preg_match('/(pump all off)/', $text_select, $pump12_4, PREG_OFFSET_CAPTURE);
    
   // print_r($matches);
+   //สั่งผิด
+   if($pump_wrong1[0][0]=="เปิดปั๊ม"){ $text_reply = $order_command; }
+   elseif($pump_wrong1[0][0]=="ปิดปั๊ม"){ $text_reply = $order_command; }
    //ปั๊ม 1 เปิด
-   if($pump1_1[0][0]=="เปิดปั๊ม1"){ $text_reply = "\nเปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_on; }
+   elseif($pump1_1[0][0]=="เปิดปั๊ม1"){ $text_reply = "\nเปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_on; }
    elseif($pump1_2[0][0]=="เปิดปั๊ม 1"){ $text_reply = "\nเปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_on; }
    elseif($pump1_3[0][0]=="pump 1 on"){ $text_reply = "\nเปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_on; }
    //ปั๊ม 1 ปิด
