@@ -65,7 +65,4 @@ var mqttSend = function(topic, msg) {
 	client.send(message); 
 }
 </script>
-<?php 
-               echo   $p;
-?>
 
