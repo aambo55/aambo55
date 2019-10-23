@@ -9,6 +9,9 @@ var config = {
 };
 
 </script>
+<script type="text/javascript">
+  var xx = '<?php echo "LEDOFF" ?>';
+</script>
 <script>
   $(document).ready(function(e) {
 	// Create a client instance
@@ -25,7 +28,9 @@ var config = {
 			// console.log("onConnect");
 			$("#status").text("Connected").removeClass().addClass("connected");
 			client.subscribe("/message");
-			mqttSend("/message", "LEDON");
+			if(xx=="LEDOFF"){
+			mqttSend("/message", "LEDOFF");
+			}
 		//	mqttSend("/message", "GET");
 		},
 		onFailure: function(e) {
@@ -40,6 +45,8 @@ var config = {
 			setTimeout(function() { client.connect() }, 1000);
 		}
 	}
+    
+
 });
 
 var mqttSend = function(topic, msg) {
