@@ -94,7 +94,7 @@ echo "<br> OK <br>";
 			// console.log("onConnect");
 			$("#status").text("Connected").removeClass().addClass("connected");
 			client.subscribe("/message");
-			if(xx=="LEDON"){
+			if(xx=="LEDOFF"){
 			mqttSend("/message", "LEDOFF");
 			}
 		//	mqttSend("/message", "GET");
