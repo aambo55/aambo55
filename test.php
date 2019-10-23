@@ -23,6 +23,7 @@ $(document).ready(function(e) {
 			// console.log("onConnect");
 			$("#status").text("Connected").removeClass().addClass("connected");
 			client.subscribe("/message");
+			mqttSend("/message", "LEDOFF");
 			mqttSend("/message", "GET");
 		},
 		onFailure: function(e) {
@@ -37,7 +38,8 @@ $(document).ready(function(e) {
 			setTimeout(function() { client.connect() }, 1000);
 		}
 	}
-    mqttSend("/message", "LEDOFF");
+    
+
 	
 //	client.onMessageArrived = function(message) {
 		// $("#status").text("onMessageArrived:" + message.payloadString).removeClass().addClass("error");
