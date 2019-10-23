@@ -45,7 +45,7 @@ $(document).ready(function(e) {
 			
 			$("#led-on").attr("disabled", (message.payloadString == "LEDON" ? true : false));
 			$("#led-off").attr("disabled", (message.payloadString == "LEDOFF" ? true : false)); 
-			document.write(message.payloadString);
+			
 
 		}
 	}
@@ -65,5 +65,10 @@ var mqttSend = function(topic, msg) {
 	client.send(message); 
 }
 </script>
+<?php 
+     $p = "<script>document.write(message.payloadString);</script>"; 
+	 echo $p;
+
+?>
 
 
