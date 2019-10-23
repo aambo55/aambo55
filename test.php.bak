@@ -41,11 +41,9 @@ $(document).ready(function(e) {
 	client.onMessageArrived = function(message) {
 		// $("#status").text("onMessageArrived:" + message.payloadString).removeClass().addClass("error");
 		console.log(message.payloadString);
-		if (message.payloadString == "LEDON" || message.payloadString == "LEDOFF") {
-			
-			$("#led-on").attr("disabled", (message.payloadString == "LEDON" ? true : false));
-			$("#led-off").attr("disabled", (message.payloadString == "LEDOFF" ? true : false)); 		
-            var k = message.payloadString;
+		if (message.payloadString == "LEDOFF") {
+			mqttSend("/message", "LEDON");
+
 		}
 	}
 
@@ -57,7 +55,7 @@ $(document).ready(function(e) {
         mqttSend("/message", "LEDOFF");
     });
 });
-document.write(k); 
+
 var mqttSend = function(topic, msg) {
 	var message = new Paho.MQTT.Message(msg);
 	message.destinationName = topic;
