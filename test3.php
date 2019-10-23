@@ -1,10 +1,12 @@
 <script type="text/javascript">
-  var variableToSend = 'fooggg';
-  $.post('test3.php', {variable: variableToSend});
+  var profile_viewer_uid = 1;
+  $.ajax({
+  url: "serverScript.php",
+  method: "POST",
+  data: { "profile_viewer_uid": profile_viewer_uid }
+})
 </script>
 <?php
-
- $variable = $_POST['variable'];
- echo $variable;
-
- ?>
+ $profile_viewer_uid = $_POST['profile_viewer_uid'];
+ echo($profile_viewer_uid);
+?>
