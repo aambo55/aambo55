@@ -1,7 +1,7 @@
 <?php
 require("phpMQTT.php");
  
-$mqtt = new phpMQTT("m11.cloudmqtt.com", 26214, "phpMQTT Pub Example"); //เปลี่ยน www.yourmqttserver.com ไปที่ mqtt server ที่เราสมัครไว้นะครับ
+$mqtt = new phpMQTT("m11.cloudmqtt.com", 36214, "phpMQTT Pub Example"); //เปลี่ยน www.yourmqttserver.com ไปที่ mqtt server ที่เราสมัครไว้นะครับ
  
 
 if ($mqtt->connect(true, NULL,"aambo55","rukyonaja13")) {
