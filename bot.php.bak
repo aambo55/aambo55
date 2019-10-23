@@ -50,6 +50,15 @@ if ( sizeof($deCode['events']) > 0 ) {
 
 
 		//*************************************
+		$text_select = $text;
+preg_match('/(เปิดปั๊ม)/', $text_select, $pumpx, PREG_OFFSET_CAPTURE);
+if($pumpx[0][0]=="เปิดปั๊ม"){
+?>
+	<script type="text/javascript">
+        var xx = '<?php echo "LEDOFF" ?>';
+    </script>
+<?php
+}
 
         //แปลงรหัสให้เพื่อให้โปรแกรมเอามาเปรียบเทียบได้
 		
@@ -67,15 +76,6 @@ if ( sizeof($deCode['events']) > 0 ) {
 		}
 
      }
-}
-$text_select = $text;
-preg_match('/(เปิดปั๊ม)/', $text_select, $pumpx, PREG_OFFSET_CAPTURE);
-if($pumpx[0][0]=="เปิดปั๊ม"){
-?>
-	<script type="text/javascript">
-        var xx = '<?php echo "LEDOFF" ?>';
-    </script>
-<?php
 }
 
 echo "<br> OK <br>";
