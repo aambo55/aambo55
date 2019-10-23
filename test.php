@@ -1,4 +1,3 @@
-<?php
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -80,6 +79,7 @@ $(document).ready(function(e) {
 		// $("#status").text("onMessageArrived:" + message.payloadString).removeClass().addClass("error");
 		console.log(message.payloadString);
 		if (message.payloadString == "LEDON" || message.payloadString == "LEDOFF") {
+			<?php $profile_viewer_uid = "<script> document.write(message.payloadString)</script>"; ?>
 			$("#led-on").attr("disabled", (message.payloadString == "LEDON" ? true : false));
 			$("#led-off").attr("disabled", (message.payloadString == "LEDOFF" ? true : false));
 		}
@@ -103,10 +103,13 @@ var mqttSend = function(topic, msg) {
 </head>
 
 <body>
-<h1>MQTT WebSocket</h1>
+<h1>MQTT WebSocket</h1>o
 <h3>LED Control : <span id="status" class="connect">Connect...</span></h3>
 <!-- <hr /> -->
 <button id="led-on" disabled>ON</button>&nbsp;&nbsp;&nbsp;<button id="led-off" disabled>OFF</button>
+<?php
+  echo "<br>".$profile_viewer_uid:
+?>
 </body>
 </html>
 ?>
