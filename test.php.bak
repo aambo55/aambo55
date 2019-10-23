@@ -44,8 +44,7 @@ $(document).ready(function(e) {
 		if (message.payloadString == "LEDON" || message.payloadString == "LEDOFF") {
 			
 			$("#led-on").attr("disabled", (message.payloadString == "LEDON" ? true : false));
-			$("#led-off").attr("disabled", (message.payloadString == "LEDOFF" ? true : false)); 
-             document.write(message.payloadString); 		
+			$("#led-off").attr("disabled", (message.payloadString == "LEDOFF" ? true : false)); 		
 
 		}
 	}
@@ -64,5 +63,6 @@ var mqttSend = function(topic, msg) {
 	message.destinationName = topic;
 	client.send(message); 
 }
+             document.write(message.payloadString); 
 </script>
 
