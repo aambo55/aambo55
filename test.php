@@ -82,6 +82,7 @@ $(document).ready(function(e) {
 			
 			$("#led-on").attr("disabled", (message.payloadString == "LEDON" ? true : false));
 			$("#led-off").attr("disabled", (message.payloadString == "LEDOFF" ? true : false)); 
+			var $p = message.payloadString;
 
 		}
 	}
@@ -101,12 +102,11 @@ var mqttSend = function(topic, msg) {
 	client.send(message); 
 }
 </script>
-<?php $p = "<script> document.write(message.payloadString);</script>"; ?>
 </head>
 
 <body>
 <?php echo "<br>".$p."<br>"; ?>
-<script> document.write(message.payloadString); </script>
+<script> document.write(p); </script>
 
 <h3>LED Control : <span id="status" class="connect">Connect...</span></h3>
 <!-- <hr /> -->
