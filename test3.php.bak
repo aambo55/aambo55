@@ -1,7 +1,7 @@
 <script type="text/javascript">
   var profile_viewer_uid = 1;
   $.ajax({
-  url: "serverScript.php",
+  url: "test3.php",
   method: "POST",
   data: { "profile_viewer_uid": profile_viewer_uid }
 })
