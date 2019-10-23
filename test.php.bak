@@ -10,7 +10,7 @@ var config = {
 
 </script>
 <script type="text/javascript">
-  var xx = '<?php echo "LEDOFF" ?>';
+  var xx = <?php echo "LEDOFF" ?>;
 </script>
 <script>
   $(document).ready(function(e) {
