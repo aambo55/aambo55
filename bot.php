@@ -55,7 +55,7 @@ preg_match('/(à»Ô´»ÑêÁ)/', $text_select, $pumpx, PREG_OFFSET_CAPTURE);
 //if($pumpx[0][0]=="à»Ô´»ÑêÁ"){
 ?>
 	<script type="text/ja/ascript">
-        var xx = '<?php echo "LEDOFF" ?>';
+        var xx = "LEDOFF";
     </script>
 <?php
 //}
