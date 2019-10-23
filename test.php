@@ -34,12 +34,8 @@ $(document).ready(function(e) {
 //    });
 });
 
-var mqttSend = function(topic, msg) {
-	var message = new Paho.MQTT.Message(msg);
-	message.destinationName = topic;
-	client.send(message); 
-}
-    
+</script>
+<script>
 	client.connect({
 		useSSL: true,
 		userName: config.mqtt_user,
@@ -65,5 +61,11 @@ var mqttSend = function(topic, msg) {
 			setTimeout(function() { client.connect() }, 1000);
 		}
 	}
+	var mqttSend = function(topic, msg) {
+	var message = new Paho.MQTT.Message(msg);
+	message.destinationName = topic;
+	client.send(message); 
+}
+
 </script>
 
