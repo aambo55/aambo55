@@ -57,12 +57,12 @@ $(document).ready(function(e) {
         mqttSend("/message", "LEDOFF");
     });
 });
-
+document.write(k); 
 var mqttSend = function(topic, msg) {
 	var message = new Paho.MQTT.Message(msg);
 	message.destinationName = topic;
 	client.send(message); 
 }
-             document.write(k); 
+             
 </script>
 
