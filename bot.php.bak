@@ -68,18 +68,11 @@ if ( sizeof($deCode['events']) > 0 ) {
 
      }
 }
-		$text_select = $text;
-preg_match('/(à»Ô´»ÑêÁ)/', $text_select, $pumpx, PREG_OFFSET_CAPTURE);
-//if($pumpx[0][0]=="à»Ô´»ÑêÁ"){
-?>
-	<script type="text/ja/ascript">
-        var xx = "LEDOFF";
-    </script>
-<?php
-//}
+
 echo "<br> OK <br>";
 ?>
 <script>
+   var xx = "LEDOFF";
   $(document).ready(function(e) {
 	// Create a client instance
 	client = new Paho.MQTT.Client(config.mqtt_server, config.mqtt_websockets_port, "web_" + parseInt(Math.random() * 100, 10)); 
