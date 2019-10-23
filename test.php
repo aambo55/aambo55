@@ -1,15 +1,21 @@
 <?php
-require("../phpMQTT.php");
-$server = "m11.cloudmqtt.com";     // change if necessary
-$port = 16214;                     // change if necessary
-$username = "aambo55";                   // set your username
-$password = "rukyonaja13";                   // set your password
-$client_id = "phpMQTT-publisher"; // make sure this is unique for connecting to sever - you could use uniqid()
-$mqtt = new phpMQTT($server, $port, $client_id);
-if ($mqtt->connect(true, NULL, $username, $password)) {
-	$mqtt->publish("/message", "LEDON", 0);
-	$mqtt->close();
-} else {
-    echo "Time out!\n";
+require 'phpMQTT.php';
+
+$url = parse_url(getenv('m11.cloudmqtt.com'));
+$topic = substr($url['/message'], 1);
+$client_id = "phpMQTT-publisher";
+
+$message = "LEDON";
+
+$mqtt = new Bluerhinos\phpMQTT($url['m11.cloudmqtt.com'], $url['16214'], $client_id);
+if ($mqtt->connect(true, NULL, $url['aambo55'], $url['rukyonaja13'])) {
+    $mqtt->publish($topic, $message, 0);
+    echo "Published message: " . $message;
+    $mqtt->close();
+}else{
+    echo "Fail or time out<br />";
 }
 ?>
+
+
+
