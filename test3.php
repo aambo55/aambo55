@@ -1,5 +1,5 @@
 <script type="text/javascript">
-  var variableToSend = 'foo';
+  var variableToSend = 'fooggg';
   $.post('test3.php', {variable: variableToSend});
 </script>
 <?php
