@@ -79,9 +79,12 @@ $(document).ready(function(e) {
 		// $("#status").text("onMessageArrived:" + message.payloadString).removeClass().addClass("error");
 		console.log(message.payloadString);
 		if (message.payloadString == "LEDON" || message.payloadString == "LEDOFF") {
-			<?php $profile_viewer_uid = "<script> document.write(message.payloadString)</script>"; ?>
+			
 			$("#led-on").attr("disabled", (message.payloadString == "LEDON" ? true : false));
-			$("#led-off").attr("disabled", (message.payloadString == "LEDOFF" ? true : false));
+			$("#led-off").attr("disabled", (message.payloadString == "LEDOFF" ? true : false)); 
+</script>
+			<?php $profile_viewer_uid = "<script> document.write(message.payloadString)</script>"; ?>
+<script>
 		}
 	}
 
@@ -109,7 +112,6 @@ var mqttSend = function(topic, msg) {
 <?php echo "<br>".$profile_viewer_uid; ?>
 </body>
 </html>
-?>
 
 
 
