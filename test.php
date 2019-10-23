@@ -1,18 +1,14 @@
 <?php
-require 'phpMQTT.php';
+require("phpMQTT.php");
+ 
+$mqtt = new phpMQTT("m11.cloudmqtt.com", 16214, "phpMQTT Pub Example"); //เปลี่ยน www.yourmqttserver.com ไปที่ mqtt server ที่เราสมัครไว้นะครับ
+ 
 
-$url = parse_url(getenv('m11.cloudmqtt.com'));
-$topic = substr($url['/message'], 1);
-$client_id = "phpMQTT-publisher";
-
-$message = "LEDON";
-
-$mqtt = new Bluerhinos\phpMQTT($url['m11.cloudmqtt.com'], $url['16214'], $client_id);
-if ($mqtt->connect(true, NULL, $url['aambo55'], $url['rukyonaja13'])) {
-    $mqtt->publish($topic, $message, 0);
-    echo "Published message: " . $message;
-    $mqtt->close();
-}else{
+if ($mqtt->connect(true, NULL, "aambo55", "rukyonaja13")) {
+$mqtt->publish("/message","LEDON"); // ตัวอย่างคำสั่งเปิดทีวีที่จะส่งไปยัง mqtt server
+$mqtt->close();
+}
+else{
     echo "Fail or time out<br />";
 }
 ?>
