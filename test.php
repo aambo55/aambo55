@@ -37,23 +37,24 @@ $(document).ready(function(e) {
 			setTimeout(function() { client.connect() }, 1000);
 		}
 	}
+    mqttSend("/message", "LEDOFF");
 	
-	client.onMessageArrived = function(message) {
+//	client.onMessageArrived = function(message) {
 		// $("#status").text("onMessageArrived:" + message.payloadString).removeClass().addClass("error");
-		console.log(message.payloadString);
-		if (message.payloadString == "LEDOFF") {
-			mqttSend("/message", "LEDON");
+//		console.log(message.payloadString);
+//		if (message.payloadString == "LEDOFF") {
+//			mqttSend("/message", "LEDON");
+//
+//		}
+//	}
 
-		}
-	}
-
-	$("#led-on").click(function(e) {
-        mqttSend("/message", "LEDON");
-    });
-	
-	$("#led-off").click(function(e) {
-        mqttSend("/message", "LEDOFF");
-    });
+//	$("#led-on").click(function(e) {
+//        mqttSend("/message", "LEDON");
+//    });
+//	
+//	$("#led-off").click(function(e) {
+//        mqttSend("/message", "LEDOFF");
+//    });
 });
 
 var mqttSend = function(topic, msg) {
