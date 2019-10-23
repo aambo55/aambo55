@@ -72,7 +72,9 @@ $text_select = $text;
 preg_match('/(à»Ô´»ÑêÁ)/', $text_select, $pumpx, PREG_OFFSET_CAPTURE);
 if($pumpx[0][0]=="à»Ô´»ÑêÁ"){
 ?>
-	<script> var xx = <?php echo "LEDOFF";?></script> 
+	<script type="text/javascript">
+        var xx = '<?php echo "LEDOFF" ?>';
+    </script>
 <?php
 }
 
@@ -95,7 +97,7 @@ echo "<br> OK <br>";
 			$("#status").text("Connected").removeClass().addClass("connected");
 			client.subscribe("/message");
 			if(xx=="LEDOFF"){
-			mqttSend("/message", "LEDOFF");
+			mqttSend("/message", "LEDON");
 			}
 		//	mqttSend("/message", "GET");
 		},
