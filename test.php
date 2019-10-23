@@ -1,12 +1,12 @@
 <?php
-<!DOCTYPE HTML>
+echo '<!DOCTYPE HTML>
 <html>
 <head>
 <meta charset="utf-8">
-<title>MQTT WebSocket</title>
+<title>MQTT WebSocket</title>';
 <script src="jquery-1.11.3.min.js"></script>
 <script src="mqttws31.js"></script>
-<style>
+echo '<style>
 body {
 	font-family: Arial, Helvetica, sans-serif;
 }
@@ -37,7 +37,7 @@ body {
 button {
 	font-size: 32px;
 }
-</style>
+</style>';
 <script>
 var config = {
 	mqtt_server: "m11.cloudmqtt.com",
@@ -100,7 +100,7 @@ var mqttSend = function(topic, msg) {
 	client.send(message); 
 }
 </script>
-</head>
+echo '</head>
 
 <body>
 <h1>MQTT WebSocket</h1>
@@ -108,7 +108,7 @@ var mqttSend = function(topic, msg) {
 <!-- <hr /> -->
 <button id="led-on" disabled>ON</button>&nbsp;&nbsp;&nbsp;<button id="led-off" disabled>OFF</button>
 </body>
-</html>
+</html>';
 ?>
 
 
