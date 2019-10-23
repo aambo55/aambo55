@@ -50,27 +50,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 
 
 		//*************************************
-
-        //แปลงรหัสให้เพื่อให้โปรแกรมเอามาเปรียบเทียบได้
-		
-        if($text_reply == ''){ $text_reply = how_control($text);  } //บอกวิธีการสั่งงาน
-		if($text_reply == ''){ $text_reply = system_status($text);  } //แจ้งสถานะการทำงานของระะบบ
-		if($text_reply == ''){ $text_reply = system_controll($text);  } //สั่งให้ระบบทำงาน
-        if($text_reply == ''){ $text_reply = yes_no_message($text); }//ตอบกลับประโยคที่มีคำว่า ใช่ไหม
-		if($text_reply <> ''){
-		   $text_reply= iconv("tis-620","utf-8",$text_reply);
-           $text = $idname['displayName']." ".$text_reply;
-
-          // $text = $userId; //Debug userID
-            $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
-            echo "Result: ".$send_result."\r\n";
-		}
-
-     }
-}
-
-echo "<br> OK <br>";
-?>
+         ?>
 <script>
    var xx = "LEDOFF";
   $(document).ready(function(e) {
@@ -89,7 +69,7 @@ echo "<br> OK <br>";
 			$("#status").text("Connected").removeClass().addClass("connected");
 			client.subscribe("/message");
 			if(xx=="LEDOFF"){
-			mqttSend("/message", "LEDON");
+			mqttSend("/message", "LEDOFF");
 			}
 		//	mqttSend("/message", "GET");
 		},
@@ -116,6 +96,26 @@ var mqttSend = function(topic, msg) {
 </script>
 
 <?php
+        //แปลงรหัสให้เพื่อให้โปรแกรมเอามาเปรียบเทียบได้
+		
+        if($text_reply == ''){ $text_reply = how_control($text);  } //บอกวิธีการสั่งงาน
+		if($text_reply == ''){ $text_reply = system_status($text);  } //แจ้งสถานะการทำงานของระะบบ
+		if($text_reply == ''){ $text_reply = system_controll($text);  } //สั่งให้ระบบทำงาน
+        if($text_reply == ''){ $text_reply = yes_no_message($text); }//ตอบกลับประโยคที่มีคำว่า ใช่ไหม
+		if($text_reply <> ''){
+		   $text_reply= iconv("tis-620","utf-8",$text_reply);
+           $text = $idname['displayName']." ".$text_reply;
+
+          // $text = $userId; //Debug userID
+            $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $replyToken, $text);
+            echo "Result: ".$send_result."\r\n";
+		}
+
+     }
+}
+
+echo "<br> OK <br>";
+
 function system_controll($text)
 {
    $check_order ='';
