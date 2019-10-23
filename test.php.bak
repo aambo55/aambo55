@@ -101,12 +101,12 @@ var mqttSend = function(topic, msg) {
 	client.send(message); 
 }
 </script>
-<?php $p = "<script> document.write(message.payloadString)</script>"; ?>
+<?php $p = "<script> document.write(message.payloadString);</script>"; ?>
 </head>
 
 <body>
 <?php echo "<br>".$p."<br>"; ?>
-<script> document.write(message.payloadString)</script>
+
 <h3>LED Control : <span id="status" class="connect">Connect...</span></h3>
 <!-- <hr /> -->
 <button id="led-on" disabled>ON</button>&nbsp;&nbsp;&nbsp;<button id="led-off" disabled>OFF</button>
