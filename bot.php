@@ -48,9 +48,17 @@ if ( sizeof($deCode['events']) > 0 ) {
 
 		//*************************************
 
-        if (preg_match("/à»Ô´·ÕÇÕ/", $text)) {  
+        if (preg_match("/ledon/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
 	              $mqtt->publish("/message", "LEDON", 0);
+	              $mqtt->close();
+        } else {
+                   echo "Time out!\n";
+        }
+        }
+		if (preg_match("/ledoff/", $text)) {  
+		if ($mqtt->connect(true, NULL, $username, $password)) {
+	              $mqtt->publish("/message", "LEDOFF", 0);
 	              $mqtt->close();
         } else {
                    echo "Time out!\n";
