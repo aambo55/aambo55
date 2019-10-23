@@ -1,15 +1,22 @@
 <?php
 require("phpMQTT.php");
- 
-$mqtt = new phpMQTT("m11.cloudmqtt.com", 16214, "phpMQTT Pub Example"); //เปลี่ยน www.yourmqttserver.com ไปที่ mqtt server ที่เราสมัครไว้นะครับ
- 
 
-if ($mqtt->connect(true, NULL, "aambo55", "rukyonaja13")) {
-$mqtt->publish("/message","LEDON"); // ตัวอย่างคำสั่งเปิดทีวีที่จะส่งไปยัง mqtt server
-$mqtt->close();
-}
-else{
-    echo "Fail or time out<br />";
+//config.php, you can all these on the details page for your instance
+$server   = "m11.cloudmqtt.com"; 
+$port     = 26214;
+$username = "aambo55";
+$password = "rukyonaja13";
+
+$message = "LEDON";
+//MQTT client id to use for the device. "" will generate a client id automatically
+$mqtt = new bluerhinos\phpMQTT($host, $port, "ClientID".rand());
+
+if ($mqtt->connect(true,NULL,$username,$password)) {
+  $mqtt->publish("/message",$message, 0);
+  $mqtt->close();
+}else{
+  echo "Fail or time out
+";
 }
 ?>
 
