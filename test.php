@@ -1,16 +1,18 @@
 <?php
-require("phpMQTT.php");
- 
-$mqtt = new phpMQTT("m11.cloudmqtt.com", 36214, "phpMQTT Pub Example"); //เปลี่ยน www.yourmqttserver.com ไปที่ mqtt server ที่เราสมัครไว้นะครับ
- 
+require("../phpMQTT.php");
+$server = "m11.cloudmqtt.com";     // change if necessary
+$port = 16214;                     // change if necessary
+$username = "aambo55";                   // set your username
+$password = "rukyonaja13";                   // set your password
+$client_id = "phpMQTT-publisher"; // make sure this is unique for connecting to sever - you could use uniqid()
+$mqtt = new phpMQTT($server, $port, $client_id);
+if ($mqtt->connect(true, NULL, $username, $password)) {
+	$mqtt->publish("/message", "LEDON", 0);
+	$mqtt->close();
+} else {
+    echo "Time out!\n";
+}
 
-if ($mqtt->connect(true, NULL,"aambo55","rukyonaja13")) {
-$mqtt->publish("/message","LEDON"); // ตัวอย่างคำสั่งเปิดทีวีที่จะส่งไปยัง mqtt server
-$mqtt->close();
-}
-else{
-    echo "Fail or time out<br />";
-}
 ?>
 
 
