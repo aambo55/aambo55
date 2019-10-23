@@ -106,7 +106,7 @@ var mqttSend = function(topic, msg) {
 <h3>LED Control : <span id="status" class="connect">Connect...</span></h3>
 <!-- <hr /> -->
 <button id="led-on" disabled>ON</button>&nbsp;&nbsp;&nbsp;<button id="led-off" disabled>OFF</button>
-<?php echo "<br>".$profile_viewer_uid;
+<?php echo "<br>".$profile_viewer_uid; ?>
 </body>
 </html>
 ?>
