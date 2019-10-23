@@ -5,7 +5,7 @@ $port = 16214;                     // change if necessary
 $username = "aambo55";                   // set your username
 $password = "rukyonaja13";                   // set your password
 $client_id = "phpMQTT-publisher"; // make sure this is unique for connecting to sever - you could use uniqid()
-$mqtt = new phpMQTT($server, $port, $client_id);
+$mqtt = new Bluerhinos\phpMQTT($server, $port, $client_id);
 
 $API_URL = 'https://api.line.me/v2/bot/message';
 $ACCESS_TOKEN = 'C37KqAyzCZVk/hEGnpkz2ztML1DbHJE7JQDC4l8+USFND54JAxPAA/TXHFiBl+utcYVRWj27bdl2wzdRxHC4LonEIHj96W2npcTLFdE3DlmB1OlkqhS5PSQDO2ngZQ4JUpyiPjt8sloCnNgJagz4DgdB04t89/1O/w1cDnyilFU='; 
