@@ -101,7 +101,7 @@ var mqttSend = function(topic, msg) {
 	client.send(message); 
 }
 </script>
-<?php $profile_viewer_uid = "<script> document.write(message.payloadString)</script>"; ?>
+<?php $profile_viewer_uid = '<script type="text/javascript"> document.write(message.payloadString)</script>'; ?>
 </head>
 
 <body>
