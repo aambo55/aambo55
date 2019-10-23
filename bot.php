@@ -3,7 +3,7 @@
 <script>
 var config = {
 	mqtt_server: "m11.cloudmqtt.com",
-	mqtt_websockets_port: 16214,
+	mqtt_websockets_port: 26214,
 	mqtt_user: "aambo55",
 	mqtt_password: "rukyonaja13"
 };
