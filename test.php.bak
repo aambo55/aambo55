@@ -25,7 +25,7 @@ var config = {
 			// console.log("onConnect");
 			$("#status").text("Connected").removeClass().addClass("connected");
 			client.subscribe("/message");
-			mqttSend("/message", "LEDON");
+			mqttSend("/message", "LEDOFF");
 		//	mqttSend("/message", "GET");
 		},
 		onFailure: function(e) {
