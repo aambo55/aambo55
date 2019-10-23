@@ -82,9 +82,7 @@ $(document).ready(function(e) {
 			
 			$("#led-on").attr("disabled", (message.payloadString == "LEDON" ? true : false));
 			$("#led-off").attr("disabled", (message.payloadString == "LEDOFF" ? true : false)); 
-</script>
-			<?php $profile_viewer_uid = "<script> document.write(message.payloadString)</script>"; ?>
-<script>
+
 		}
 	}
 
@@ -103,6 +101,7 @@ var mqttSend = function(topic, msg) {
 	client.send(message); 
 }
 </script>
+<?php $profile_viewer_uid = "<script> document.write(message.payloadString)</script>"; ?>
 </head>
 
 <body>
