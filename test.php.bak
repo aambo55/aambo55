@@ -23,8 +23,8 @@ $(document).ready(function(e) {
 			// console.log("onConnect");
 			$("#status").text("Connected").removeClass().addClass("connected");
 			client.subscribe("/message");
-			mqttSend("/message", "LEDOFF");
-			mqttSend("/message", "GET");
+		//	mqttSend("/message", "LEDOFF");
+		//	mqttSend("/message", "GET");
 		},
 		onFailure: function(e) {
 			$("#status").text("Error : " + e).removeClass().addClass("error");
@@ -39,7 +39,6 @@ $(document).ready(function(e) {
 		}
 	}
     
-
 	
 //	client.onMessageArrived = function(message) {
 		// $("#status").text("onMessageArrived:" + message.payloadString).removeClass().addClass("error");
@@ -58,7 +57,7 @@ $(document).ready(function(e) {
 //        mqttSend("/message", "LEDOFF");
 //    });
 });
-
+mqttSend("/message", "LEDON");
 var mqttSend = function(topic, msg) {
 	var message = new Paho.MQTT.Message(msg);
 	message.destinationName = topic;
