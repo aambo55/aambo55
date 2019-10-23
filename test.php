@@ -1,5 +1,5 @@
 <?php
-echo '<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html>
 <head>
 <meta charset="utf-8">
@@ -108,7 +108,7 @@ var mqttSend = function(topic, msg) {
 <!-- <hr /> -->
 <button id="led-on" disabled>ON</button>&nbsp;&nbsp;&nbsp;<button id="led-off" disabled>OFF</button>
 </body>
-</html>';
+</html>
 ?>
 
 
