@@ -51,16 +51,14 @@ if ( sizeof($deCode['events']) > 0 ) {
         if (preg_match("/Led1 on/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
 	              $mqtt->publish("/message", "Led1 on", 0);
-				  $mqtt->publish("/message", "GET", 0);
 	              $mqtt->close();
         } else {
                    echo "Time out!\n";
         }
         }
-		if (preg_match("/Led1off/", $text)) {  
+		if (preg_match("/Led1 off/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
 	              $mqtt->publish("/message", "Led1 off", 0);
-				  $mqtt->publish("/message", "GET", 0);
 	              $mqtt->close();
         } else {
                    echo "Time out!\n";
