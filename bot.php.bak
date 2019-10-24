@@ -64,6 +64,22 @@ if ( sizeof($deCode['events']) > 0 ) {
                    echo "Time out!\n";
         }
 		}
+		if (preg_match("/Led2 off/", $text)) {  
+		if ($mqtt->connect(true, NULL, $username, $password)) {
+	              $mqtt->publish("/message", "Led2 off", 0);
+	              $mqtt->close();
+        } else {
+                   echo "Time out!\n";
+        }
+		}
+		if (preg_match("/Led2 on/", $text)) {  
+		if ($mqtt->connect(true, NULL, $username, $password)) {
+	              $mqtt->publish("/message", "Led2 on", 0);
+	              $mqtt->close();
+        } else {
+                   echo "Time out!\n";
+        }
+        }
  /*   // ในส่วนที่คอมเม้น เป็นส่วนที่ใช้  subscribe data บน mqtt
 
 		 if(!$mqtt->connect(true, NULL, $username, $password)) {
