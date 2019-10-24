@@ -80,6 +80,24 @@ if ( sizeof($deCode['events']) > 0 ) {
                    $text_reply = "\näÁèÊÒÁÒÃ¶Êè§¤ÓÊÑè§ä´é!\n";
         }
         }
+		if (preg_match("/Open all/", $text)) {  
+		if ($mqtt->connect(true, NULL, $username, $password)) {
+	              $mqtt->publish("/message", "Led2 on", 0);
+				  $mqtt->publish("/message", "Led1 on", 0);
+	              $mqtt->close();
+        } else {
+                   $text_reply = "\näÁèÊÒÁÒÃ¶Êè§¤ÓÊÑè§ä´é!\n";
+        }
+		}
+       if (preg_match("/Close all/", $text)) {  
+		if ($mqtt->connect(true, NULL, $username, $password)) {
+	              $mqtt->publish("/message", "Led2 off", 0);
+				  $mqtt->publish("/message", "Led1 off", 0);
+	              $mqtt->close();
+        } else {
+                   $text_reply = "\näÁèÊÒÁÒÃ¶Êè§¤ÓÊÑè§ä´é!\n";
+        }
+		}
 		if (preg_match("/Status/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
 	              $mqtt->publish("/message", ":", 0);
