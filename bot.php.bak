@@ -310,8 +310,9 @@ function send_reply_message($url, $post_header, $replyToken, $text)
     $data = [
 			   'replyToken' => $replyToken,
 		      //'messages' => [['type' => 'text', 'text' => json_encode($deCode) ]]  //Debug Detail message
-		       'messages' => [['type' => 'text', 'text' => $text ]]
+		       'messages' => [['type' => 'text', 'text' => $text],['type' => 'sticker', 'packageId' => '1' , 'stickerId' => '131']]
     ];
+
     $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
 	$ch = curl_init($url);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
