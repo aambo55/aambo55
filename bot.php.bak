@@ -48,23 +48,24 @@ if ( sizeof($deCode['events']) > 0 ) {
 
 		//*************************************
        
-        if (preg_match("/ledon/", $text)) {  
+        if (preg_match("/Led1 on/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
-	              $mqtt->publish("/message", "LEDON", 0);
+	              $mqtt->publish("/message", "Led1 on", 0);
 				  $mqtt->publish("/message", "GET", 0);
 	              $mqtt->close();
         } else {
                    echo "Time out!\n";
         }
         }
-		if (preg_match("/ledoff/", $text)) {  
+		if (preg_match("/Led1 off/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
-	              $mqtt->publish("/message", "LEDOFF", 0);
+	              $mqtt->publish("/message", "Led1 off", 0);
 				  $mqtt->publish("/message", "GET", 0);
 	              $mqtt->close();
         } else {
                    echo "Time out!\n";
         }
+ /*   // ในส่วนที่คอมเม้น เป็นส่วนที่ใช้  subscribe data บน mqtt
         }
 		 if(!$mqtt->connect(true, NULL, $username, $password)) {
                	exit(1);
@@ -80,6 +81,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 		//echo "Topic: {$topic}\n\n";
 		$text_reply = "\t$msg\n\n";
         }
+*/
         //แปลงรหัสให้เพื่อให้โปรแกรมเอามาเปรียบเทียบได้
 		
         if($text_reply == ''){ $text_reply = how_control($text);  } //บอกวิธีการสั่งงาน
