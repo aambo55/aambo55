@@ -48,7 +48,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 
 		//*************************************
        
-        if (preg_match("/Led1 on/", $text)) {  
+        if (preg_match("/Led1 on/", $text) || preg_match("/Led 1 on/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
 	              $mqtt->publish("/message", "Led1 on", 0);
 	              $mqtt->close();
@@ -56,7 +56,7 @@ if ( sizeof($deCode['events']) > 0 ) {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
         }
         }
-		if (preg_match("/Led1 off/", $text)) {  
+		if (preg_match("/Led1 off/", $text) || preg_match("/Led 1 off/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
 	              $mqtt->publish("/message", "Led1 off", 0);
 	              $mqtt->close();
@@ -64,7 +64,7 @@ if ( sizeof($deCode['events']) > 0 ) {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!!\n";
         }
 		}
-		if (preg_match("/Led2 off/", $text)) {  
+		if (preg_match("/Led2 off/", $text) || preg_match("/Led 2 off/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
 	              $mqtt->publish("/message", "Led2 off", 0);
 	              $mqtt->close();
@@ -72,9 +72,17 @@ if ( sizeof($deCode['events']) > 0 ) {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
         }
 		}
-		if (preg_match("/Led2 on/", $text)) {  
+		if (preg_match("/Led2 on/", $text) || preg_match("/Led 2 on/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
 	              $mqtt->publish("/message", "Led2 on", 0);
+	              $mqtt->close();
+        } else {
+                   $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
+        }
+        }
+		if (preg_match("/Status/", $text)) {  
+		if ($mqtt->connect(true, NULL, $username, $password)) {
+	              $mqtt->publish("/message", ":", 0);
 	              $mqtt->close();
         } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
@@ -100,8 +108,6 @@ if ( sizeof($deCode['events']) > 0 ) {
         //แปลงรหัสให้เพื่อให้โปรแกรมเอามาเปรียบเทียบได้
 		
         if($text_reply == ''){ $text_reply = how_control($text);  } //บอกวิธีการสั่งงาน
-		if($text_reply == ''){ $text_reply = system_status($text);  } //แจ้งสถานะการทำงานของระะบบ
-		if($text_reply == ''){ $text_reply = system_controll($text);  } //สั่งให้ระบบทำงาน
         if($text_reply == ''){ $text_reply = yes_no_message($text); }//ตอบกลับประโยคที่มีคำว่า ใช่ไหม
 		if($text_reply <> ''){
 		   $text_reply= iconv("tis-620","utf-8",$text_reply);
@@ -117,119 +123,11 @@ if ( sizeof($deCode['events']) > 0 ) {
 
 echo "<br> OK <br>";
 
-function system_controll($text)
-{
-   $check_order ='';
-   $text_select = '';
-   $temp_status = "xxx";
-   $moisture_status = "yyy";
-   $bin1_on = "on";
-   $bin1_off = "off";
-   $bin2_on = "on";
-   $bin2_off = "off";
-   $order_command = "\nการสั่งงานระบบ ให้พิมพ์คำสั่งตามข้อความด้านล่าง  \n 1. แจ้งสถานะ   \n 2. เปิดปั๊ม 1(หรือ 2) \n 3. ปิดปั๊ม 1(หรือ  2) \n 4. ปิดปั๊มทั้งหมด  \n 5. เปิดปั๊มทั้งหมด)";
-   $text_status = "\nสถานะของระบบปัจจุบัน\n อุณหถูมิ : ".$temp_status." ํC\n ความชื้น RH : ".$moisture_status."%\n"." สถานะปั๊มน้ำถังที่ 1 : ".$bin1_status."\n สถานะปั๊มน้ำถังที่ 2 : ".$bin2_status;
-   $text_select = $text;
-   
-
-   preg_match('/(เปิดปั๊ม)/', $text_select, $pump_wrong1, PREG_OFFSET_CAPTURE);
-   preg_match('/(ปิดปั๊ม)/', $text_select, $pump_wrong2, PREG_OFFSET_CAPTURE);
-   //ค้นหาคำเปิดปิดปั๊ม 1
-   preg_match('/(เปิดปั๊ม1)/', $text_select, $pump1_1, PREG_OFFSET_CAPTURE);
-   preg_match('/(เปิดปั๊ม 1)/', $text_select, $pump1_2, PREG_OFFSET_CAPTURE);
-   preg_match('/(pump 1 on)/', $text_select, $pump1_3, PREG_OFFSET_CAPTURE);
-   preg_match('/(pump 1 off)/', $text_select, $pump1_4, PREG_OFFSET_CAPTURE);
-   preg_match('/(ปิดปั๊ม1)/', $text_select, $pump1_5, PREG_OFFSET_CAPTURE);
-   preg_match('/(ปิดปั๊ม 1)/', $text_select, $pump1_6, PREG_OFFSET_CAPTURE);
-
-   //ค้นหาคำเปิดปิดปั๊ม 2
-   preg_match('/(เปิดปั๊ม2)/', $text_select, $pump2_1, PREG_OFFSET_CAPTURE);
-   preg_match('/(เปิดปั๊ม 2)/', $text_select, $pump2_2, PREG_OFFSET_CAPTURE);
-   preg_match('/(pump 2 on)/', $text_select, $pump2_3, PREG_OFFSET_CAPTURE);
-   preg_match('/(pump 2 off)/', $text_select, $pump2_4, PREG_OFFSET_CAPTURE);
-   preg_match('/(ปิดปั๊ม2)/', $text_select, $pump2_5, PREG_OFFSET_CAPTURE);
-   preg_match('/(ปิดปั๊ม 2)/', $text_select, $pump2_6, PREG_OFFSET_CAPTURE);
-
-   //เปิดปิดปั๊มทุกตัว
-   preg_match('/(pump all on)/', $text_select, $pump12_1, PREG_OFFSET_CAPTURE);
-   preg_match('/(เปิดปั๊มทั้งหมด)/', $text_select, $pump12_2, PREG_OFFSET_CAPTURE);
-   preg_match('/(ปิดปั๊มทั้งหมด)/', $text_select, $pump12_3, PREG_OFFSET_CAPTURE);
-   preg_match('/(pump all off)/', $text_select, $pump12_4, PREG_OFFSET_CAPTURE);
-   
-  // print_r($matches);
-   //ปั๊ม 1 เปิด
-   if($pump1_1[0][0]=="เปิดปั๊ม1"){ $text_reply = "\nเปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_on.$text_status; }
-   elseif($pump1_2[0][0]=="เปิดปั๊ม 1"){ $text_reply = "\nเปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_on.$text_status; }
-   elseif($pump1_3[0][0]=="pump 1 on"){ $text_reply = "\nเปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_on.$text_status; }
-   //ปั๊ม 1 ปิด
-   elseif($pump1_4[0][0]=="pump 1 off"){ $text_reply = "\nปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_off.$text_status; }
-   elseif($pump1_5[0][0]=="ปิดปั๊ม1"){ $text_reply = "\nปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_off.$text_status; }
-   elseif($pump1_6[0][0]=="ปิดปั๊ม 1"){ $text_reply = "\nปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_off.$text_status; }
-   //ปั๊ม 2 เปิด
-   elseif($pump2_1[0][0]=="เปิดปั๊ม2"){ $text_reply = "\nเปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_on.$text_status; }
-   elseif($pump2_2[0][0]=="เปิดปั๊ม 2"){ $text_reply = "\nเปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_on.$text_status; }
-   elseif($pump2_3[0][0]=="pump 2 on"){ $text_reply = "\nเปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_on.$text_status; }
-   //ปั๊ม 2 ปิด
-   elseif($pump2_4[0][0]=="pump 2 off"){ $text_reply = "\nปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_off.$text_status; }
-   elseif($pump2_5[0][0]=="ปิดปั๊ม2"){ $text_reply = "\nปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_off.$text_status; }
-   elseif($pump2_6[0][0]=="ปิดปั๊ม 2"){ $text_reply = "\nปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_off.$text_status; }
-   //เปิดปั๊มทุกตัว
-   elseif($pump12_1[0][0]=="pump all on"){ $text_reply = "\nเปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_on."\n"."เปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_on.$text_status; }
-   elseif($pump12_2[0][0]=="เปิดปั๊มทั้งหมด"){ $text_reply = "\nเปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_on."\n"."เปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_on.$text_status; }
-   //ปิดปั๊มทุกตัว
-   elseif($pump12_3[0][0]=="ปิดปั๊มทั้งหมด"){ $text_reply = "\nปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_off."\n"."ปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_off.$text_status; }
-   elseif($pump12_4[0][0]=="pump all off"){ $text_reply = "\nปิดปั๊ม 1 แล้ว สถานะ : ".$bin1_off."\n"."ปิดปั๊ม 2 แล้ว สถานะ : ".$bin2_off.$text_status; }
-   //สั่งผิด
-   elseif($pump_wrong1[0][0]=="เปิดปั๊ม"){ $text_reply = $order_command; }
-   elseif($pump_wrong2[0][0]=="ปิดปั๊ม"){ $text_reply = $order_command; }
-
-
-   return $text_reply;
-
-}
-function system_status($text)
-{
-   $check_order ='';
-   $text_select = '';
-   $temp_status = "xxx";
-   $moisture_status = "yyy";
-   $bin1_status = "on";
-   $bin2_status = "off";
-   $text_status = "\nสถานะของระบบปัจจุบัน\n อุณหถูมิ : ".$temp_status." ํC\n ความชื้น RH : ".$moisture_status."%\n"." สถานะปั๊มน้ำถังที่ 1 : ".$bin1_status."\n สถานะปั๊มน้ำถังที่ 2 : ".$bin2_status;
-   $text_select = $text;
-   preg_match('/(แจ้งสถานะ)/', $text_select, $matches1, PREG_OFFSET_CAPTURE);
-   preg_match('/(แจ้ง สถานะ)/', $text_select, $matches2, PREG_OFFSET_CAPTURE);
-   preg_match('/(status)/', $text_select, $matches3, PREG_OFFSET_CAPTURE);
-   
-  // print_r($matches);
-   if($matches1[0][0]=="แจ้งสถานะ"){
-	 
-	 $check_order = '1';
-     
-   }
-   elseif($matches2[0][0]=="แจ้ง สถานะ"){
-         
-		 $check_order = '1';
-		    
-   }
-   elseif($matches3[0][0]=="status"){
-         
-		 $check_order = '1';
-     
-   }
-   if($check_order == '1'){
-	    $text_reply = $text_status;
-   }
-
-   return $text_reply;
-
-}
-
 function how_control($text)
 {
    $check_order ='';
    $text_select = '';
-   $order_command = "\nการสั่งงานระบบ ให้พิมพ์คำสั่งตามข้อความด้านล่าง  \n 1. แจ้งสถานะ   \n 2. เปิดปั๊ม 1(หรือ 2) \n 3. ปิดปั๊ม 1(หรือ  2) \n 4. ปิดปั๊มทั้งหมด  \n 5. เปิดปั๊มทั้งหมด)";
+   $order_command = "\nการสั่งงานระบบ ให้พิมพ์คำสั่งตามข้อความด้านล่าง  \n 1. Status  \n 2. Led1 on/off \n 3. Led2 on/off \n 4. Close all  \n 5. Open all)";
    $text_select = $text;
    preg_match('/(คำสั่ง)/', $text_select, $matches1, PREG_OFFSET_CAPTURE);
    preg_match('/(วิธีใช้)/', $text_select, $matches2, PREG_OFFSET_CAPTURE);
