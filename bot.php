@@ -131,7 +131,7 @@ function how_control($text)
    $text_select = $text;
    preg_match('/(คำสั่ง)/', $text_select, $matches1, PREG_OFFSET_CAPTURE);
    preg_match('/(วิธีใช้)/', $text_select, $matches2, PREG_OFFSET_CAPTURE);
-   preg_match('/(การใช้งาน)/', $text_select, $matches3, PREG_OFFSET_CAPTURE);
+   preg_match('/(Command)/', $text_select, $matches3, PREG_OFFSET_CAPTURE);
    
   // print_r($matches);
    if($matches1[0][0]=="คำสั่ง"){
@@ -144,7 +144,7 @@ function how_control($text)
 		 $check_order = '1';
 		    
    }
-   elseif($matches3[0][0]=="การใช้งาน"){
+   elseif($matches3[0][0]=="Command"){
          
 		 $check_order = '1';
      
