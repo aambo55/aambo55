@@ -53,7 +53,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 	              $mqtt->publish("/message", "Led1 on", 0);
 	              $mqtt->close();
         } else {
-                   echo "Time out!\n";
+                   $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
         }
         }
 		if (preg_match("/Led1 off/", $text)) {  
@@ -61,7 +61,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 	              $mqtt->publish("/message", "Led1 off", 0);
 	              $mqtt->close();
         } else {
-                   echo "Time out!\n";
+                   $text_reply = "\nไม่สามารถส่งคำสั่งได้!!\n";
         }
 		}
 		if (preg_match("/Led2 off/", $text)) {  
@@ -69,7 +69,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 	              $mqtt->publish("/message", "Led2 off", 0);
 	              $mqtt->close();
         } else {
-                   echo "Time out!\n";
+                   $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
         }
 		}
 		if (preg_match("/Led2 on/", $text)) {  
@@ -77,7 +77,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 	              $mqtt->publish("/message", "Led2 on", 0);
 	              $mqtt->close();
         } else {
-                   echo "Time out!\n";
+                   $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
         }
         }
  /*   // ในส่วนที่คอมเม้น เป็นส่วนที่ใช้  subscribe data บน mqtt
