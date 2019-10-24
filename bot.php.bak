@@ -47,20 +47,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 
 
 		//*************************************
-        if(!$mqtt->connect(true, NULL, $username, $password)) {
-               	exit(1);
-        }
-        $topics['/message'] = array("qos" => 0, "function" => "procmsg");
-        $mqtt->subscribe($topics, 0);
-        while($mqtt->proc()){
-		
-        }
-        $mqtt->close();
-        function procmsg($topic, $msg){
-		//echo "Msg Recieved: " . date("r") . "\n";
-		//echo "Topic: {$topic}\n\n";
-		$text_reply = "\t$msg\n\n";
-        }
+       
         if (preg_match("/ledon/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
 	              $mqtt->publish("/message", "LEDON", 0);
@@ -79,7 +66,20 @@ if ( sizeof($deCode['events']) > 0 ) {
                    echo "Time out!\n";
         }
         }
+		 if(!$mqtt->connect(true, NULL, $username, $password)) {
+               	exit(1);
+        }
+        $topics['/message'] = array("qos" => 0, "function" => "procmsg");
+        $mqtt->subscribe($topics, 0);
+        while($mqtt->proc()){
 		
+        }
+        $mqtt->close();
+        function procmsg($topic, $msg){
+		//echo "Msg Recieved: " . date("r") . "\n";
+		//echo "Topic: {$topic}\n\n";
+		$text_reply = "\t$msg\n\n";
+        }
         //แปลงรหัสให้เพื่อให้โปรแกรมเอามาเปรียบเทียบได้
 		
         if($text_reply == ''){ $text_reply = how_control($text);  } //บอกวิธีการสั่งงาน
