@@ -145,7 +145,7 @@ function how_control($text)
 {
    $check_order ='';
    $text_select = '';
-   $order_command = "\nการสั่งงานระบบ ให้พิมพ์คำสั่งตามข้อความด้านล่าง  \n 1. Status  \n 2. Led1 on/off \n 3. Led2 on/off \n 4. Close all  \n 5. Open all)";
+   $order_command = "\nการสั่งงานระบบ ให้พิมพ์คำสั่งตามข้อความด้านล่าง  \n 1. Status  \n 2. Led1 on/off \n 3. Led2 on/off \n 4. Close all  \n 5. Open all";
    $text_select = $text;
    preg_match('/(คำสั่ง)/', $text_select, $matches1, PREG_OFFSET_CAPTURE);
    preg_match('/(วิธีใช้)/', $text_select, $matches2, PREG_OFFSET_CAPTURE);
