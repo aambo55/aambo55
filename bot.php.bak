@@ -48,33 +48,33 @@ if ( sizeof($deCode['events']) > 0 ) {
 
 		//*************************************
        
-        if (preg_match("/Led1 on/", $text) || preg_match("/Led 1 on/", $text)) {  
+        if (preg_match("/Bin1 on/", $text) || preg_match("/bin1 on/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
-	              $mqtt->publish("/message", "Led1 on", 0);
+	              $mqtt->publish("/message", "Bin1 on", 0);
 	              $mqtt->close();
         } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
         }
         }
-		if (preg_match("/Led1 off/", $text) || preg_match("/Led 1 off/", $text)) {  
+		if (preg_match("/Bin1 off/", $text) || preg_match("/bin1 off/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
-	              $mqtt->publish("/message", "Led1 off", 0);
+	              $mqtt->publish("/message", "Bin1 off", 0);
 	              $mqtt->close();
         } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!!\n";
         }
 		}
-		if (preg_match("/Led2 off/", $text) || preg_match("/Led 2 off/", $text)) {  
+		if (preg_match("/Bin2 off/", $text) || preg_match("/bin2 off/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
-	              $mqtt->publish("/message", "Led2 off", 0);
+	              $mqtt->publish("/message", "Bin2 off", 0);
 	              $mqtt->close();
         } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
         }
 		}
-		if (preg_match("/Led2 on/", $text) || preg_match("/Led 2 on/", $text)) {  
+		if (preg_match("/Bin2 on/", $text) || preg_match("/bin2 on/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
-	              $mqtt->publish("/message", "Led2 on", 0);
+	              $mqtt->publish("/message", "Bin2 on", 0);
 	              $mqtt->close();
         } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
@@ -82,8 +82,8 @@ if ( sizeof($deCode['events']) > 0 ) {
         }
 		if (preg_match("/Open all/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
-	              $mqtt->publish("/message", "Led2 on", 0);
-				  $mqtt->publish("/message", "Led1 on", 0);
+	              $mqtt->publish("/message", "Bin2 on", 0);
+				  $mqtt->publish("/message", "Bin1 on", 0);
 	              $mqtt->close();
         } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
@@ -91,8 +91,8 @@ if ( sizeof($deCode['events']) > 0 ) {
 		}
        if (preg_match("/Close all/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
-	              $mqtt->publish("/message", "Led2 off", 0);
-				  $mqtt->publish("/message", "Led1 off", 0);
+	              $mqtt->publish("/message", "Bin2 off", 0);
+				  $mqtt->publish("/message", "Bin1 off", 0);
 	              $mqtt->close();
         } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
@@ -145,7 +145,7 @@ function how_control($text)
 {
    $check_order ='';
    $text_select = '';
-   $order_command = "\nการสั่งงานระบบ ให้พิมพ์คำสั่งตามข้อความด้านล่าง  \n 1. Status  \n 2. Led1 on/off \n 3. Led2 on/off \n 4. Close all  \n 5. Open all";
+   $order_command = "\nการสั่งงานระบบ ให้พิมพ์คำสั่งตามข้อความด้านล่าง  \n 1. Status  \n 2. Bin1 on/off \n 3. Bin2 on/off \n 4. Close all  \n 5. Open all";
    $text_select = $text;
    preg_match('/(คำสั่ง)/', $text_select, $matches1, PREG_OFFSET_CAPTURE);
    preg_match('/(วิธีใช้)/', $text_select, $matches2, PREG_OFFSET_CAPTURE);
