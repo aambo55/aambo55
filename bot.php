@@ -53,7 +53,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 	              $mqtt->publish("/message", "Bin1 on", 0);
 	              $mqtt->close();
         } else {
-                   $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
+                   $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";				   
         }
         }
 		if (preg_match("/Bin1 off/", $text) || preg_match("/bin1 off/", $text)) {  
@@ -106,6 +106,10 @@ if ( sizeof($deCode['events']) > 0 ) {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
         }
         }
+        if (preg_match("/Mqtt clear/", $text) || preg_match("/mqtt clear/", $text)) {  
+		      $mqtt->disconnect();
+        }
+		
  /*   // ในส่วนที่คอมเม้น เป็นส่วนที่ใช้  subscribe data บน mqtt
 
 		 if(!$mqtt->connect(true, NULL, $username, $password)) {
