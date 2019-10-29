@@ -106,9 +106,6 @@ if ( sizeof($deCode['events']) > 0 ) {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
         }
         }
-        if (preg_match("/Mqtt clear/", $text) || preg_match("/mqtt clear/", $text)) {  
-		      $mqtt->disconnect();
-        }
 		
  /*   // ในส่วนที่คอมเม้น เป็นส่วนที่ใช้  subscribe data บน mqtt
 
