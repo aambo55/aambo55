@@ -21,6 +21,7 @@ $text_open1 = "เปิดปั๊มถังที่ 1 แล้ว";
 $text_wrong = iconv("tis-620","utf-8",$text_wrong);
 $text_open1 = iconv("tis-620","utf-8",$text_wrong);
 
+
 // Test Code Zone
 //{"events":[{"type":"message","replyToken":"254f2da0a8d5454cb5023f5aa0bb862b","source":{"userId":"U8ec1d38548c43fb44dd07b90df4ac427","type":"user"},"timestamp":1571539105278,"message":{"type":"text","id":"10771871390735","text":"\u0e43\u0e0a\u0e48\u0e40\u0e2b\u0e23\u0e2d"}}],"destination":"Ub7cffc449b3567dd78a3b1b8b58555d7"}
 
