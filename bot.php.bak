@@ -2,7 +2,7 @@
 require("phpMQTT.php");
 $server = "m11.cloudmqtt.com";     // change if necessary
 $port = 16214;                     // change if necessary
-$username = "aambo55";                   // set your username
+$username = "beantemp";                   // set your username
 $password = "rukyonaja13";                   // set your password
 $client_id = "phpMQTT-publisher"; // make sure this is unique for connecting to sever - you could use uniqid()
 $mqtt = new Bluerhinos\phpMQTT($server, $port, $client_id);
@@ -51,7 +51,7 @@ if ( sizeof($deCode['events']) > 0 ) {
        
         if (preg_match("/Bin1 on/", $text) || preg_match("/bin1 on/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
-	              $mqtt->publish("/message", "Bin1 on", 0);
+	              $mqtt->publish("/temp", "Bin1 on", 0);
 	              $mqtt->close();
         } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";				   
@@ -59,7 +59,7 @@ if ( sizeof($deCode['events']) > 0 ) {
         }
 		if (preg_match("/Bin1 off/", $text) || preg_match("/bin1 off/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
-	              $mqtt->publish("/message", "Bin1 off", 0);
+	              $mqtt->publish("/temp", "Bin1 off", 0);
 	              $mqtt->close();
         } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!!\n";
@@ -67,7 +67,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 		}
 		if (preg_match("/Bin2 off/", $text) || preg_match("/bin2 off/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
-	              $mqtt->publish("/message", "Bin2 off", 0);
+	              $mqtt->publish("/temp", "Bin2 off", 0);
 	              $mqtt->close();
         } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
@@ -75,7 +75,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 		}
 		if (preg_match("/Bin2 on/", $text) || preg_match("/bin2 on/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
-	              $mqtt->publish("/message", "Bin2 on", 0);
+	              $mqtt->publish("/temp", "Bin2 on", 0);
 	              $mqtt->close();
         } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
@@ -83,8 +83,8 @@ if ( sizeof($deCode['events']) > 0 ) {
         }
 		if (preg_match("/Open all/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
-	              $mqtt->publish("/message", "Bin2 on", 0);
-				  $mqtt->publish("/message", "Bin1 on", 0);
+	              $mqtt->publish("/temp", "Bin2 on", 0);
+				  $mqtt->publish("/temp", "Bin1 on", 0);
 	              $mqtt->close();
         } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
@@ -92,8 +92,8 @@ if ( sizeof($deCode['events']) > 0 ) {
 		}
        if (preg_match("/Close all/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
-	              $mqtt->publish("/message", "Bin2 off", 0);
-				  $mqtt->publish("/message", "Bin1 off", 0);
+	              $mqtt->publish("/temp", "Bin2 off", 0);
+				  $mqtt->publish("/temp", "Bin1 off", 0);
 	              $mqtt->close();
         } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
@@ -101,19 +101,27 @@ if ( sizeof($deCode['events']) > 0 ) {
 		}
 		if (preg_match("/Status/", $text) || preg_match("/status/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
-	              $mqtt->publish("/message", ":", 0);
+	              $mqtt->publish("/temp", ":", 0);
 	              $mqtt->close();
         } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
         }
         }
 		
+		if (preg_match("/^bin\d*/", $text) || preg_match("/^bin\d*/", $text)) {  
+		if ($mqtt->connect(true, NULL, $username, $password)) {
+	              $mqtt->publish("/temp", ":", 0);
+	              $mqtt->close();
+        } else {
+                   $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
+        }
+        }
  /*   // ในส่วนที่คอมเม้น เป็นส่วนที่ใช้  subscribe data บน mqtt
 
 		 if(!$mqtt->connect(true, NULL, $username, $password)) {
                	exit(1);
         }
-        $topics['/message'] = array("qos" => 0, "function" => "procmsg");
+        $topics['/temp'] = array("qos" => 0, "function" => "procmsg");
         $mqtt->subscribe($topics, 0);
         while($mqtt->proc()){
 		
