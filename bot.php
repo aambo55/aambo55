@@ -160,7 +160,7 @@ function how_control($text)
    $check_order ='';
    $text_select = '';
    $order_command = "\nการสั่งงานระบบ ให้พิมพ์คำสั่งตามข้อความด้านล่าง  \n 1. Status  \n 2. Bin1 on/off \n 3. Bin2 on/off \n 4. Close all  \n 5. Open all";
-   $order_command = $order_command."\n***ConFig System**";
+   $order_command = $order_command."\n\n***ConFig System**";
    $order_command = $order_command."\n1: bin[num],wifi,[ssid],[pass];";
    $order_command = $order_command."\n2: bin[num],line,[line token];";
    $order_command = $order_command."\n3: bin[num],setting,[Hrs],[min],[ํC];";
