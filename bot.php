@@ -107,17 +107,17 @@ if ( sizeof($deCode['events']) > 0 ) {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
         }
         }
-		preg_match("/((^[B|b]in)\d.*)(;)/", $text,$datasave);
-		if($datasave[3] == ";"){
-               if($datasave[2] == "Bin" || $datasave[2] == "bin"){
-                    if ($mqtt->connect(true, NULL, $username, $password)) {
-	                       $mqtt->publish("/temp", $datasave[1], 0);
-	                       $mqtt->close();
-                    } else {
-                           $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
-                    }
-			   }
-	    }
+//		preg_match("/((^[B|b]in)\d.*)(;)/", $text,$datasave);
+//		if($datasave[3] == ";"){
+  //             if($datasave[2] == "Bin" || $datasave[2] == "bin"){
+ //                   if ($mqtt->connect(true, NULL, $username, $password)) {
+//	                       $mqtt->publish("/temp", $datasave[1], 0);
+//	                       $mqtt->close();
+ //                   } else {
+ //                          $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
+//                    }
+//			   }
+//	    }
 	    
 		
  /*   // ในส่วนที่คอมเม้น เป็นส่วนที่ใช้  subscribe data บน mqtt
