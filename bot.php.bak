@@ -163,9 +163,9 @@ function how_control($text)
    $order_command = $order_command."\n***ConFig System**";
    $order_command = $order_command."\n1: bin[num],wifi,[ssid],[pass];";
    $order_command = $order_command."\n2: bin[num],line,[line token];";
-   $order_command = $order_command."\n2: bin[num],setting,[Hrs],[min],[ÌC];";
-   $order_command = $order_command."\n2: bin[num],blynk,[token],[server],[port];";
-   $order_command = $order_command."\n2: bin[num],mqtt,[server],[user],[pass],[port];";
+   $order_command = $order_command."\n3: bin[num],setting,[Hrs],[min],[ÌC];";
+   $order_command = $order_command."\n4: bin[num],blynk,[token],[server],[port];";
+   $order_command = $order_command."\n5: bin[num],mqtt,[server],[user],[pass],[port];";
    $text_select = $text;
    preg_match('/(§” —Ëß)/', $text_select, $matches1, PREG_OFFSET_CAPTURE);
    preg_match('/(«‘∏’„™È)/', $text_select, $matches2, PREG_OFFSET_CAPTURE);
