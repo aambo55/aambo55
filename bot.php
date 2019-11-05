@@ -173,7 +173,7 @@ function how_control($text)
    $order_command = $order_command."\n3: bin[num],setting,[Hrs],[min],[ํC];";
    $order_command = $order_command."\n4: bin[num],blynk,[token],[server],[port];";
    $order_command = $order_command."\n5: bin[num],mqtt,[server],[user],[pass],[port];";
-   $order_command = $order_command."\n6: bin[num] restart";
+   $order_command = $order_command."\n6: bin[num] restart;";
    $text_select = $text;
    preg_match('/(คำสั่ง)/', $text_select, $matches1, PREG_OFFSET_CAPTURE);
    preg_match('/(วิธีใช้)/', $text_select, $matches2, PREG_OFFSET_CAPTURE);
