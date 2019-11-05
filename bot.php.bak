@@ -118,7 +118,14 @@ if ( sizeof($deCode['events']) > 0 ) {
                    }
 			   }
 	    }
-	    
+	    if (preg_match("/(^[B|b]in)(\d).([R|r]estart)(;)/", $text,$drestart)) {  
+		    if ($mqtt->connect(true, NULL, $username, $password)) {
+	              $mqtt->publish("/temp", $drestart[1].$drestart[2]." restart", 0);
+	              $mqtt->close();
+            } else {
+                   $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
+            }
+        }
 		
  /*   // ในส่วนที่คอมเม้น เป็นส่วนที่ใช้  subscribe data บน mqtt
 
