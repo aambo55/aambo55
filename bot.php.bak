@@ -107,9 +107,10 @@ if ( sizeof($deCode['events']) > 0 ) {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
         }
         }
-		preg_match("/((^[B|b]in)\d.*)(;)/", $text,$datasave);
-		if($datasave[3] == ";"){
-             if($datasave[2] == "Bin" || $datasave[2] == "bin"){
+		preg_match("/(^[B|b]in)(\d)(.*)(;)/", $text,$datasave);
+		if($datasave[4] == ";"){
+             if($datasave[1] == "Bin" || $datasave[1] == "bin"){
+				   $datasave[1] = "Bin".$datasave[2].$datasave[3];
                    if ($mqtt->connect(true, NULL, $username, $password)) {
 	                       $mqtt->publish("/temp", $datasave[1], 0);
 	                       $mqtt->close();
