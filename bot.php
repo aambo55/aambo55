@@ -51,7 +51,7 @@ if ( sizeof($deCode['events']) > 0 ) {
        
         if (preg_match("/Bin1 on/", $text) || preg_match("/bin1 on/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
-	              $mqtt->publish("/temp", "Bin1 on", 0);
+	              $mqtt->publish("/bin1", "Bin1 on", 0);
 	              $mqtt->close();
         } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";				   
@@ -59,7 +59,7 @@ if ( sizeof($deCode['events']) > 0 ) {
         }
 		if (preg_match("/Bin1 off/", $text) || preg_match("/bin1 off/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
-	              $mqtt->publish("/temp", "Bin1 off", 0);
+	              $mqtt->publish("/bin1", "Bin1 off", 0);
 	              $mqtt->close();
         } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!!\n";
@@ -84,7 +84,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 		if (preg_match("/Open all/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
 	              $mqtt->publish("/temp", "Bin2 on", 0);
-				  $mqtt->publish("/temp", "Bin1 on", 0);
+				  $mqtt->publish("/bin1", "Bin1 on", 0);
 	              $mqtt->close();
         } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
@@ -93,7 +93,7 @@ if ( sizeof($deCode['events']) > 0 ) {
        if (preg_match("/Close all/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
 	              $mqtt->publish("/temp", "Bin2 off", 0);
-				  $mqtt->publish("/temp", "Bin1 off", 0);
+				  $mqtt->publish("/bin1", "Bin1 off", 0);
 	              $mqtt->close();
         } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
@@ -102,6 +102,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 		if (preg_match("/Status/", $text) || preg_match("/status/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
 	              $mqtt->publish("/temp", ":", 0);
+				  $mqtt->publish("/bin1", ":", 0);
 	              $mqtt->close();
         } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
@@ -113,6 +114,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 				   $datasave[1] = "Bin".$datasave[2].$datasave[3];
                    if ($mqtt->connect(true, NULL, $username, $password)) {
 	                       $mqtt->publish("/temp", $datasave[1], 0);
+						   $mqtt->publish("/bin1", $datasave[1], 0);
 	                       $mqtt->close();
                    } else {
                            $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
@@ -122,6 +124,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 	    if (preg_match("/(^[B|b]in)(\d).([R|r]estart)(;)/", $text,$drestart)) {  
 		    if ($mqtt->connect(true, NULL, $username, $password)) {
 	              $mqtt->publish("/temp", "Bin".$drestart[2]." restart", 0);
+				  $mqtt->publish("/bin1", "Bin".$drestart[2]." restart", 0);
 	              $mqtt->close();
             } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
