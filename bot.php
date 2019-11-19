@@ -78,7 +78,7 @@ if ( sizeof($deCode['events']) > 0 ) {
 		}
 		if (preg_match("/^Status/", $text) || preg_match("/^status/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
-	              $mqtt->publish("/temp", "sta", 0);
+	              $mqtt->publish("/temp", ":", 0);
 	              $mqtt->close();
         } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
