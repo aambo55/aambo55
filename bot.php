@@ -62,8 +62,7 @@ if ( sizeof($deCode['events']) > 0 ) {
         }
 		if (preg_match("/Open all/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
-	              $mqtt->publish("/temp", "Bin2 on", 0);
-				  $mqtt->publish("/temp", "Bin1 on", 0);
+	              $mqtt->publish("/temp", "Open all", 0);
 	              $mqtt->close();
         } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
@@ -71,13 +70,20 @@ if ( sizeof($deCode['events']) > 0 ) {
 		}
        if (preg_match("/Close all/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
-	              $mqtt->publish("/temp", "Bin2 off", 0);
-				  $mqtt->publish("/temp", "Bin1 off", 0);
+	              $mqtt->publish("/temp", "Close all", 0);
 	              $mqtt->close();
         } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
         }
 		}
+		if (preg_match("/Status/", $text) || preg_match("/status/", $text)) {  
+		if ($mqtt->connect(true, NULL, $username, $password)) {
+	              $mqtt->publish("/temp", ":", 0);
+	              $mqtt->close();
+        } else {
+                   $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
+        }
+        }
 		if (preg_match("/(^[B|b]in)(\d).(status)/", $text,$datasta)) { 
 		  if($datasta[1] == "Bin" || $datasta[1] == "bin"){
 			$datasta[1] = "Bin".$datasta[2]." ".$datasta[3];
