@@ -49,37 +49,16 @@ if ( sizeof($deCode['events']) > 0 ) {
 
 		//*************************************
        
-        if (preg_match("/Bin1 on/", $text) || preg_match("/bin1 on/", $text)) {  
-		if ($mqtt->connect(true, NULL, $username, $password)) {
-	              $mqtt->publish("/temp", "Bin1 on", 0);
+        if (preg_match("/(^[B|b]in)(\d).(on|off)/", $text,$dataon)){
+          if($dataon[1] == "Bin" || $dataon[1] == "bin"){
+            $dataon[1] = "Bin".$dataon[2]." ".$dataon[3];
+		    if ($mqtt->connect(true, NULL, $username, $password)) {
+	              $mqtt->publish("/temp", $dataon[1], 0);
 	              $mqtt->close();
-        } else {
+            } else {
                    $text_reply = "\näÁèÊÒÁÒÃ¶Êè§¤ÓÊÑè§ä´é!\n";				   
-        }
-        }
-		if (preg_match("/Bin1 off/", $text) || preg_match("/bin1 off/", $text)) {  
-		if ($mqtt->connect(true, NULL, $username, $password)) {
-	              $mqtt->publish("/temp", "Bin1 off", 0);
-	              $mqtt->close();
-        } else {
-                   $text_reply = "\näÁèÊÒÁÒÃ¶Êè§¤ÓÊÑè§ä´é!!\n";
-        }
-		}
-		if (preg_match("/Bin2 off/", $text) || preg_match("/bin2 off/", $text)) {  
-		if ($mqtt->connect(true, NULL, $username, $password)) {
-	              $mqtt->publish("/temp", "Bin2 off", 0);
-	              $mqtt->close();
-        } else {
-                   $text_reply = "\näÁèÊÒÁÒÃ¶Êè§¤ÓÊÑè§ä´é!\n";
-        }
-		}
-		if (preg_match("/Bin2 on/", $text) || preg_match("/bin2 on/", $text)) {  
-		if ($mqtt->connect(true, NULL, $username, $password)) {
-	              $mqtt->publish("/temp", "Bin2 on", 0);
-	              $mqtt->close();
-        } else {
-                   $text_reply = "\näÁèÊÒÁÒÃ¶Êè§¤ÓÊÑè§ä´é!\n";
-        }
+            }
+		  }
         }
 		if (preg_match("/Open all/", $text)) {  
 		if ($mqtt->connect(true, NULL, $username, $password)) {
@@ -107,8 +86,8 @@ if ( sizeof($deCode['events']) > 0 ) {
                    $text_reply = "\näÁèÊÒÁÒÃ¶Êè§¤ÓÊÑè§ä´é!\n";
         }
         }
-		preg_match("/(^[B|b]in)(\d)(.*)(;)/", $text,$datasave);
-		if($datasave[4] == ";"){
+		if (preg_match("/(^[B|b]in)(\d)(.*)(;)/", $text,$datasave)){
+		  if($datasave[4] == ";"){
              if($datasave[1] == "Bin" || $datasave[1] == "bin"){
 				   $datasave[1] = "Bin".$datasave[2].$datasave[3];
                    if ($mqtt->connect(true, NULL, $username, $password)) {
@@ -118,7 +97,8 @@ if ( sizeof($deCode['events']) > 0 ) {
                            $text_reply = "\näÁèÊÒÁÒÃ¶Êè§¤ÓÊÑè§ä´é!\n";
                    }
 			   }
-	    }
+	      }
+		}
 	    if (preg_match("/(^[B|b]in)(\d).([R|r]estart)(;)/", $text,$drestart)) {  
 		    if ($mqtt->connect(true, NULL, $username, $password)) {
 	              $mqtt->publish("/temp", "Bin".$drestart[2]." restart", 0);
