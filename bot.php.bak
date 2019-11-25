@@ -55,7 +55,6 @@ if ( sizeof($deCode['events']) > 0 ) {
 		    if ($mqtt->connect(true, NULL, $username, $password)) {
 	              $mqtt->publish("/temp", $dataon[1], 0);
 	              $mqtt->close();
-				  sleep(10);
             } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";				   
             }
@@ -81,7 +80,6 @@ if ( sizeof($deCode['events']) > 0 ) {
 		if ($mqtt->connect(true, NULL, $username, $password)) {
 	              $mqtt->publish("/temp", ":", 0);
 	              $mqtt->close();
-				  sleep(10);
         } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
         }
@@ -92,7 +90,6 @@ if ( sizeof($deCode['events']) > 0 ) {
 		    if ($mqtt->connect(true, NULL, $username, $password)) {
 	              $mqtt->publish("/temp", $datasta[1], 0);
 	              $mqtt->close();
-				  sleep(10);
             } else {
                    $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
             }
@@ -105,7 +102,6 @@ if ( sizeof($deCode['events']) > 0 ) {
                    if ($mqtt->connect(true, NULL, $username, $password)) {
 	                       $mqtt->publish("/temp", $datasave[1], 0);
 	                       $mqtt->close();
-						   sleep(10);
                    } else {
                            $text_reply = "\nไม่สามารถส่งคำสั่งได้!\n";
                    }
