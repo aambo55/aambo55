@@ -1,5 +1,5 @@
 <?php
 
-   echo 'dfgdfgsdgdfgdfgdfgdf';
+   echo 'helo world Nichaphat Saefung';
 
 ?>
