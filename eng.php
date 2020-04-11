@@ -1,8 +1,8 @@
 <?php
 
-   echo 'helo world Nichaphat Saefung';
-   echo "　　　";
-   echo 'good girl';
-   echo "dddddd";
+   echo 'helo world Nichaphat Saefung\n';
+   echo "　　　\n";
+   echo 'good girl\n';
+   echo "dddddd\n";
 
 ?>
